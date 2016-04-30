@@ -49,7 +49,29 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
 Opal.modules["nodejs/file"] = function(Opal) {
   var self = Opal.top, $scope = Opal, nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
 
-  Opal.add_stubs(['$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$raise', '$message', '$error', '$call', '$exist?', '$new', '$close', '$match', '$warn', '$gsub', '$attr_reader']);
+  Opal.add_stubs(['$raise', '$warn', '$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$message', '$error', '$call', '$exist?', '$new', '$close', '$match', '$gsub', '$attr_reader']);
+  
+  var warnings = {};
+  function handle_unsupported_feature(message) {
+    switch (Opal.config.unsupported_features_severity) {
+    case 'error':
+      $scope.get('Kernel').$raise($scope.get('NotImplementedError'), message)
+      break;
+    case 'warning':
+      warn(message)
+      break;
+    default: // ignore
+      // noop
+    }
+  }
+  function warn(string) {
+    if (warnings[string]) {
+      return;
+    }
+    warnings[string] = true;
+    self.$warn(string);
+  }
+
   (function($base, $super) {
     function $File(){};
     var self = $File = $klass($base, $super, 'File', $File);
@@ -200,10 +222,10 @@ Opal.modules["nodejs/file"] = function(Opal) {
       binary_flag_regexp = /b/;
       encoding_flag_regexp = /:(.*)/;
       if ((($a = flags.$match(binary_flag_regexp)) !== nil && (!$a.$$is_boolean || $a == true))) {
-        self.$warn("Binary flag (b) is unsupported by Node.js openSync method, removing flag.")};
+        handle_unsupported_feature("Binary flag (b) is unsupported by Node.js openSync method, removing flag.");};
       flags = flags.$gsub(binary_flag_regexp, "");
       if ((($a = flags.$match(encoding_flag_regexp)) !== nil && (!$a.$$is_boolean || $a == true))) {
-        self.$warn("Encoding flag (:encoding) is unsupported by Node.js openSync method, removing flag.")};
+        handle_unsupported_feature("Encoding flag (:encoding) is unsupported by Node.js openSync method, removing flag.");};
       flags = flags.$gsub(encoding_flag_regexp, "");
       self.path = path;
       self.flags = flags;
@@ -343,12 +365,12 @@ Opal.modules["nodejs/io"] = function(Opal) {
         return ""
         } else {
         if ((($a = length['$nil?']()) !== nil && (!$a.$$is_boolean || $a == true))) {
-          res = __fs__.readFileSync(self.path).toString();
+          res = __fs__.readSync(self.fd).toString();
           self.eof = true;
         } else if (length['$=='](0)) {
           ""
           } else {
-          res = __fs__.readFileSync(self.path).toString()
+          res = __fs__.readSync(self.fd, length).toString()
         };
         self.lineno = res.$size();
         return res;

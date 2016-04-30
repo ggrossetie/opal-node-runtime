@@ -5663,7 +5663,34 @@ Opal.modules["corelib/regexp"] = function(Opal) {
     Opal.defn(self, '$inspect', TMP_9 = function ːinspect() {
       var self = this;
 
-      return self.toString();
+      
+      var regexp_format = /^\/(.*)\/(.*)/;
+      var value = self.toString();
+      var matches = regexp_format.exec(value);
+      if (matches) {
+        var regexp_pattern = matches[1];
+        var regexp_flags = matches[2];
+        var chars = regexp_pattern.split('');
+        var charsLength = chars.length;
+        var char_escaped = false;
+        var regexp_pattern_escaped = '';
+        for (var i = 0; i < charsLength; i++) {
+          var current_char = chars[i];
+          if (!char_escaped && current_char == '/') {
+            regexp_pattern_escaped = regexp_pattern_escaped.concat('\\');
+          }
+          regexp_pattern_escaped = regexp_pattern_escaped.concat(current_char);
+          if (current_char == '\\') {
+            char_escaped = true;
+          } else {
+            char_escaped = false;
+          }
+        }
+        return '/' + regexp_pattern_escaped + '/' + regexp_flags;
+      } else {
+        return value;
+      }
+    
     }, TMP_9.$$arity = 0);
 
     Opal.defn(self, '$match', TMP_10 = function ːmatch(string, pos) {
