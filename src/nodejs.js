@@ -355,23 +355,14 @@ Opal.modules["nodejs/io"] = function(Opal) {
       return self.lineno = 0;
     }, TMP_1.$$arity = 0);
 
-    Opal.defn(self, '$read', TMP_2 = function ːread(length) {
+    Opal.defn(self, '$read', TMP_2 = function ːread() {
       var $a, self = this, res = nil;
 
-      if (length == null) {
-        length = nil;
-      }
       if ((($a = self.eof) !== nil && (!$a.$$is_boolean || $a == true))) {
         return ""
-        } else {
-        if ((($a = length['$nil?']()) !== nil && (!$a.$$is_boolean || $a == true))) {
-          res = __fs__.readSync(self.fd).toString();
-          self.eof = true;
-        } else if (length['$=='](0)) {
-          ""
-          } else {
-          res = __fs__.readSync(self.fd, length).toString()
-        };
+      } else {
+        res = __fs__.readFileSync(self.path).toString();
+        self.eof = true;
         self.lineno = res.$size();
         return res;
       };
