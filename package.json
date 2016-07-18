@@ -3,7 +3,7 @@
   "description":  "Opal Runtime",
   "keywords":     ["javascript", "opal", "runtime", "ruby"],
   "author":       "Guillaume Grossetie",
-  "version":      "0.10.0-integration1",
+  "version":      "0.10.1",
   "license":      "MIT",
   "engines":      {
     "node":       "0.12.x"
@@ -12,6 +12,9 @@
     "lib" : "src"
   },
   "main" : "src/index.js",
+  "scripts": {
+    "test": "node npm/test.js"
+  },
   "homepage":     "http://github.com/asciidoctor/opal-node-runtime",
   "bugs":         "https://github.com/asciidoctor/opal-node-runtime/issues",
   "repository":   {
@@ -20,5 +23,9 @@
   },
   "dependencies": {
     "glob": "6.0.4"
+  },
+  "devDependencies": {
+    "jasmine": "^2.4.1",
+    "jasmine-core": "^2.4.1"
   }
 }
