@@ -213,6 +213,9 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defn(self, '$initialize', TMP_12 = function ːinitialize(path, flags) {
       var $a, self = this, binary_flag_regexp = nil, encoding_flag_regexp = nil;
 
+      if (flags == null) {
+        flags = "r";
+      }
       binary_flag_regexp = /b/;
       encoding_flag_regexp = /:(.*)/;
       if ((($a = flags.$match(binary_flag_regexp)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
@@ -224,7 +227,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       self.path = path;
       self.flags = flags;
       return self.fd = __fs__.openSync(path, flags);
-    }, TMP_12.$$arity = 2);
+    }, TMP_12.$$arity = -2);
 
     self.$attr_reader("path");
 
