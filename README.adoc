@@ -1,6 +1,6 @@
-= Opal Runtime for Node.js
+# Opal Runtime for Node.js
 
-== Usage
+## Usage
 
 ```javascript
 var Opal = require('opal-runtime').Opal;
