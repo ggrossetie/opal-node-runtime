@@ -171,7 +171,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
         } else {
         return nil
       };
-      !!executeIOAction(function(){return __fs__.lstatSync(path).isDirectory()});
+      return executeIOAction(function(){return !!__fs__.lstatSync(path).isDirectory()});
     }, TMP_File_directory$q_6.$$arity = 1);
     Opal.defs(self, '$file?', TMP_File_file$q_7 = function(path) {
       var $a, self = this;
@@ -181,7 +181,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
         } else {
         return nil
       };
-      !!executeIOAction(function(){return __fs__.lstatSync(path).isFile()});
+      return executeIOAction(function(){return !!__fs__.lstatSync(path).isFile()});
     }, TMP_File_file$q_7.$$arity = 1);
     Opal.defs(self, '$size', TMP_File_size_8 = function $$size(path) {
       var $a, self = this;
