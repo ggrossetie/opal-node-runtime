@@ -1189,19 +1189,23 @@
     var subscriber, subscribers = Opal.stub_subscribers,
         i, ilength = stubs.length,
         j, jlength = subscribers.length,
-        method_name, stub;
+        method_name, stub,
+        opal_stubs = Opal.stubs;
 
     for (i = 0; i < ilength; i++) {
       method_name = stubs[i];
-      // Save method name to populate other subscribers with this stub
-      Opal.stubs[method_name] = true;
-      stub = Opal.stub_for(method_name);
 
-      for (j = 0; j < jlength; j++) {
-        subscriber = subscribers[j];
+      if(!opal_stubs.hasOwnProperty(method_name)) {
+        // Save method name to populate other subscribers with this stub
+        opal_stubs[method_name] = true;
+        stub = Opal.stub_for(method_name);
 
-        if (!(method_name in subscriber)) {
-          subscriber[method_name] = stub;
+        for (j = 0; j < jlength; j++) {
+          subscriber = subscribers[j];
+
+          if (!(method_name in subscriber)) {
+            subscriber[method_name] = stub;
+          }
         }
       }
     }
@@ -1482,19 +1486,15 @@
   };
 
   Opal.is_a = function(object, klass) {
-    if (object.$$meta === klass) {
+    if (object.$$meta === klass || object.$$class === klass) {
       return true;
     }
 
-    var i, length, ancestors = Opal.ancestors(object.$$class);
-
-    for (i = 0, length = ancestors.length; i < length; i++) {
-      if (ancestors[i] === klass) {
-        return true;
-      }
+    if (object.$$is_number && klass.$$is_number_class) {
+      return true;
     }
 
-    ancestors = Opal.ancestors(object.$$meta);
+    var i, length, ancestors = Opal.ancestors(object.$$is_class ? Opal.get_singleton_class(object) : (object.$$meta || object.$$class));
 
     for (i = 0, length = ancestors.length; i < length; i++) {
       if (ancestors[i] === klass) {
@@ -1795,7 +1795,8 @@
   Opal.alias = function(obj, name, old) {
     var id     = '$' + name,
         old_id = '$' + old,
-        body   = obj.$$proto['$' + old];
+        body   = obj.$$proto['$' + old],
+        new_body;
 
     // instance_eval is being run on a class/module, so that need to alias class methods
     if (obj.$$eval) {
@@ -1815,7 +1816,20 @@
       }
     }
 
-    Opal.defn(obj, id, body);
+    new_body = function() {
+      body.$$p = new_body.$$p;
+      new_body.$$p = null;
+      return body.apply(this, arguments);
+    };
+
+    new_body.length = body.length;
+    new_body.$$arity = body.$$arity;
+    new_body.$$parameters = body.$$parameters;
+    new_body.$$source_location = body.$$source_location;
+    new_body.$$alias_of = body;
+    new_body.$$alias_name = name;
+
+    Opal.defn(obj, id, new_body);
 
     return obj;
   };
@@ -3048,7 +3062,7 @@ if (Opal.const_get($scopes, 'Proc', true, true)['$===']($case)) {return method}e
         self.$raise(Opal.const_get($scopes, 'NameError', true, true).$new("" + "undefined method `" + (name) + "' for class `" + (self.$name()) + "'", name));
       }
 
-      return Opal.const_get($scopes, 'UnboundMethod', true, true).$new(self, meth, name);
+      return Opal.const_get($scopes, 'UnboundMethod', true, true).$new(self, meth.$$owner || self, meth, name);
     
     }, TMP_Module_instance_method_36.$$arity = 1);
     Opal.defn(self, '$instance_methods', TMP_Module_instance_methods_37 = function $$instance_methods(include_super) {
@@ -3715,7 +3729,7 @@ Opal.modules["corelib/kernel"] = function(Opal) {
         self.$raise(Opal.const_get($scopes, 'NameError', true, true).$new("" + "undefined method `" + (name) + "' for class `" + (self.$class()) + "'", name));
       }
 
-      return Opal.const_get($scopes, 'Method', true, true).$new(self, meth, name);
+      return Opal.const_get($scopes, 'Method', true, true).$new(self, meth.$$owner || self.$class(), meth, name);
     
     }, TMP_Kernel_method_6.$$arity = 1);
     Opal.defn(self, '$methods', TMP_Kernel_methods_7 = function $$methods(all) {
@@ -10581,7 +10595,7 @@ Opal.modules["corelib/array"] = function(Opal) {
   }
   var self = Opal.top, $scope = Opal, $scopes = [Opal], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2, $send = Opal.send, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$require', '$include', '$to_a', '$raise', '$replace', '$respond_to?', '$to_ary', '$coerce_to', '$coerce_to?', '$===', '$join', '$to_str', '$class', '$clone', '$hash', '$<=>', '$==', '$object_id', '$inspect', '$empty?', '$enum_for', '$bsearch_index', '$to_proc', '$coerce_to!', '$>', '$*', '$enumerator_size', '$size', '$[]', '$dig', '$eql?', '$length', '$begin', '$end', '$exclude_end?', '$flatten', '$__id__', '$to_s', '$new', '$!', '$>=', '$**', '$delete_if', '$each', '$reverse', '$rotate', '$rand', '$at', '$keep_if', '$shuffle!', '$dup', '$<', '$sort', '$sort_by', '$!=', '$times', '$[]=', '$<<', '$values', '$kind_of?', '$last', '$first', '$upto', '$reject', '$pristine']);
+  Opal.add_stubs(['$require', '$include', '$to_a', '$raise', '$replace', '$respond_to?', '$to_ary', '$coerce_to', '$coerce_to?', '$===', '$join', '$to_str', '$class', '$hash', '$<=>', '$==', '$object_id', '$inspect', '$empty?', '$enum_for', '$bsearch_index', '$to_proc', '$coerce_to!', '$>', '$*', '$enumerator_size', '$size', '$[]', '$dig', '$eql?', '$length', '$begin', '$end', '$exclude_end?', '$flatten', '$__id__', '$to_s', '$new', '$!', '$>=', '$**', '$delete_if', '$each', '$reverse', '$rotate', '$rand', '$at', '$keep_if', '$shuffle!', '$dup', '$<', '$sort', '$sort_by', '$!=', '$times', '$[]=', '$<<', '$values', '$kind_of?', '$last', '$first', '$upto', '$reject', '$pristine']);
   
   self.$require("corelib/enumerable");
   self.$require("corelib/numeric");
@@ -10770,7 +10784,7 @@ Opal.modules["corelib/array"] = function(Opal) {
       if ((($a = self.length === 0) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         return []};
       if ((($a = other.length === 0) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-        return self.$clone().$to_a()};
+        return self.slice()};
       
       var result = [], hash = $hash2([], {}), i, length, item;
 
@@ -14380,6 +14394,7 @@ Opal.modules["corelib/number"] = function(Opal) {
     
     Opal.const_get($scopes, 'Opal', true, true).$bridge(self, Number);
     Number.prototype.$$is_number = true;
+    self.$$is_number_class = true;
     Opal.defn(self, '$coerce', TMP_Number_coerce_1 = function $$coerce(other) {
       var self = this;
 
@@ -15341,6 +15356,7 @@ Opal.modules["corelib/number"] = function(Opal) {
     var def = self.$$proto, $scope = self.$$scope, $scopes = $visibility_scopes.slice().concat($scope), TMP_Integer_$eq$eq$eq_69;
 
     
+    self.$$is_number_class = true;
     Opal.defs(self, '$===', TMP_Integer_$eq$eq$eq_69 = function(other) {
       var self = this;
 
@@ -15359,9 +15375,10 @@ Opal.modules["corelib/number"] = function(Opal) {
     function $Float(){};
     var self = $Float = $klass($base, $super, 'Float', $Float);
 
-    var def = self.$$proto, $scope = self.$$scope, $scopes = $visibility_scopes.slice().concat($scope), TMP_Float_$eq$eq$eq_70, $a;
+    var def = self.$$proto, $scope = self.$$scope, $scopes = $visibility_scopes.slice().concat($scope), TMP_Float_$eq$eq$eq_70;
 
     
+    self.$$is_number_class = true;
     Opal.defs(self, '$===', TMP_Float_$eq$eq$eq_70 = function(other) {
       var self = this;
 
@@ -15374,11 +15391,7 @@ Opal.modules["corelib/number"] = function(Opal) {
     Opal.cdecl($scope, 'DIG', 15);
     Opal.cdecl($scope, 'MANT_DIG', 53);
     Opal.cdecl($scope, 'RADIX', 2);
-    if ((($a = (typeof(Number.EPSILON) !== "undefined")) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-      return Opal.cdecl($scope, 'EPSILON', Number.EPSILON)
-      } else {
-      return Opal.cdecl($scope, 'EPSILON', 2.2204460492503130808472633361816E-16)
-    };
+    return Opal.cdecl($scope, 'EPSILON', Number.EPSILON || 2.2204460492503130808472633361816E-16);
   })($scope.base, Opal.const_get($scopes, 'Numeric', true, true), $scopes);
 };
 
@@ -15974,7 +15987,7 @@ Opal.modules["corelib/proc"] = function(Opal) {
 Opal.modules["corelib/method"] = function(Opal) {
   var self = Opal.top, $scope = Opal, $scopes = [Opal], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
 
-  Opal.add_stubs(['$attr_reader', '$class', '$arity', '$new', '$name']);
+  Opal.add_stubs(['$attr_reader', '$arity', '$new', '$class', '$join', '$source_location', '$raise']);
   
   (function($base, $super, $visibility_scopes) {
     function $Method(){};
@@ -15985,15 +15998,15 @@ Opal.modules["corelib/method"] = function(Opal) {
     def.method = def.receiver = def.owner = def.name = nil;
     
     self.$attr_reader("owner", "receiver", "name");
-    Opal.defn(self, '$initialize', TMP_Method_initialize_1 = function $$initialize(receiver, method, name) {
+    Opal.defn(self, '$initialize', TMP_Method_initialize_1 = function $$initialize(receiver, owner, method, name) {
       var self = this;
 
       
       self.receiver = receiver;
-      self.owner = receiver.$class();
+      self.owner = owner;
       self.name = name;
       return (self.method = method);
-    }, TMP_Method_initialize_1.$$arity = 3);
+    }, TMP_Method_initialize_1.$$arity = 4);
     Opal.defn(self, '$arity', TMP_Method_arity_2 = function $$arity() {
       var self = this;
 
@@ -16034,7 +16047,7 @@ Opal.modules["corelib/method"] = function(Opal) {
     Opal.defn(self, '$unbind', TMP_Method_unbind_7 = function $$unbind() {
       var self = this;
 
-      return Opal.const_get($scopes, 'UnboundMethod', true, true).$new(self.owner, self.method, self.name)
+      return Opal.const_get($scopes, 'UnboundMethod', true, true).$new(self.receiver.$class(), self.owner, self.method, self.name)
     }, TMP_Method_unbind_7.$$arity = 0);
     Opal.defn(self, '$to_proc', TMP_Method_to_proc_8 = function $$to_proc() {
       var self = this;
@@ -16049,7 +16062,7 @@ Opal.modules["corelib/method"] = function(Opal) {
     return (Opal.defn(self, '$inspect', TMP_Method_inspect_9 = function $$inspect() {
       var self = this;
 
-      return "" + "#<Method: " + (self.receiver.$class()) + "#" + (self.name) + ">"
+      return "" + "#<" + (self.$class()) + ": " + (self.receiver.$class()) + "#" + (self.name) + " (defined in " + (self.owner) + " in " + (self.$source_location().$join(":")) + ")>"
     }, TMP_Method_inspect_9.$$arity = 0), nil) && 'inspect';
   })($scope.base, null, $scopes);
   return (function($base, $super, $visibility_scopes) {
@@ -16058,17 +16071,18 @@ Opal.modules["corelib/method"] = function(Opal) {
 
     var def = self.$$proto, $scope = self.$$scope, $scopes = $visibility_scopes.slice().concat($scope), TMP_UnboundMethod_initialize_10, TMP_UnboundMethod_arity_11, TMP_UnboundMethod_parameters_12, TMP_UnboundMethod_source_location_13, TMP_UnboundMethod_comments_14, TMP_UnboundMethod_bind_15, TMP_UnboundMethod_inspect_16;
 
-    def.method = def.name = def.owner = nil;
+    def.method = def.owner = def.name = def.source = nil;
     
-    self.$attr_reader("owner", "name");
-    Opal.defn(self, '$initialize', TMP_UnboundMethod_initialize_10 = function $$initialize(owner, method, name) {
+    self.$attr_reader("source", "owner", "name");
+    Opal.defn(self, '$initialize', TMP_UnboundMethod_initialize_10 = function $$initialize(source, owner, method, name) {
       var self = this;
 
       
+      self.source = source;
       self.owner = owner;
       self.method = method;
       return (self.name = name);
-    }, TMP_UnboundMethod_initialize_10.$$arity = 3);
+    }, TMP_UnboundMethod_initialize_10.$$arity = 4);
     Opal.defn(self, '$arity', TMP_UnboundMethod_arity_11 = function $$arity() {
       var self = this;
 
@@ -16092,12 +16106,19 @@ Opal.modules["corelib/method"] = function(Opal) {
     Opal.defn(self, '$bind', TMP_UnboundMethod_bind_15 = function $$bind(object) {
       var self = this;
 
-      return Opal.const_get($scopes, 'Method', true, true).$new(object, self.method, self.name)
+      
+      if (self.owner.$$is_module || Opal.is_a(object, self.owner)) {
+        return Opal.const_get($scopes, 'Method', true, true).$new(object, self.owner, self.method, self.name);
+      }
+      else {
+        self.$raise(Opal.const_get($scopes, 'TypeError', true, true), "" + "can't bind singleton method to a different class (expected " + (object) + ".kind_of?(" + (self.owner) + " to be true)");
+      }
+    
     }, TMP_UnboundMethod_bind_15.$$arity = 1);
     return (Opal.defn(self, '$inspect', TMP_UnboundMethod_inspect_16 = function $$inspect() {
       var self = this;
 
-      return "" + "#<UnboundMethod: " + (self.owner.$name()) + "#" + (self.name) + ">"
+      return "" + "#<" + (self.$class()) + ": " + (self.source) + "#" + (self.name) + " (defined in " + (self.owner) + " in " + (self.$source_location().$join(":")) + ")>"
     }, TMP_UnboundMethod_inspect_16.$$arity = 0), nil) && 'inspect';
   })($scope.base, null, $scopes);
 };
@@ -16684,6 +16705,11 @@ if (const$ == null) const$ = nil;
       var $a, self = this;
 
       
+      
+      if (encoding === self.encoding) {
+        return self;
+      }
+    ;
       encoding = Opal.const_get($scopes, 'Opal', true, true)['$coerce_to!'](encoding, Opal.const_get($scopes, 'String', true, true), "to_s");
       encoding = Opal.const_get($scopes, 'Encoding', true, true).$find(encoding);
       if (encoding['$=='](self.encoding)) {
