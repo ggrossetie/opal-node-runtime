@@ -137,7 +137,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       if (cache == null) {
         cache = nil;
       }
-      TMP_File_realpath_4.$$p = null;
+      if ($iter) TMP_File_realpath_4.$$p = null;
       
       if (dir_string !== false && dir_string !== nil && dir_string != null) {
         pathname = self.$join(dir_string, pathname)};
@@ -196,7 +196,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$open', TMP_File_open_9 = function $$open(path, flags) {
       var self = this, $iter = TMP_File_open_9.$$p, $yield = $iter || nil, file = nil;
 
-      TMP_File_open_9.$$p = null;
+      if ($iter) TMP_File_open_9.$$p = null;
       
       file = self.$new(path, flags);
       if (($yield !== nil)) {
@@ -396,7 +396,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
       if (separator == null) {
         separator = $gvars["/"];
       }
-      TMP_IO_each_line_3.$$p = null;
+      if ($iter) TMP_IO_each_line_3.$$p = null;
       
       if ((($a = self.eof) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         return (function() {if ((block !== nil)) {
