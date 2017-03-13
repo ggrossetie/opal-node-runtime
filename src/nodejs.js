@@ -105,9 +105,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     var __fs__ = self.__fs__;
     var __path__ = self.__path__;
     if ((($a = __path__.sep !== Opal.const_get($scopes, 'Separator', true, true)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
-      
-      Opal.cdecl($scope, 'ALT_SEPARATOR', Opal.const_get($scopes, 'Separator', true, true));
-      Opal.cdecl($scope, 'Separator', Opal.cdecl($scope, 'SEPARATOR', __path__.sep));};
+      Opal.cdecl($scope, 'ALT_SEPARATOR', __path__.sep)};
     Opal.defs(self, '$read', TMP_File_read_1 = function $$read(path) {
       var self = this;
 

@@ -169,7 +169,8 @@ Opal.modules["pathname"] = function(Opal) {
       
       path = self.path;
       while ((($b = (r = self.$chop_basename(path))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-      $c = r, $b = Opal.to_ary($c), (path = ($b[0] == null ? nil : $b[0])), $c};
+        $c = r, $b = Opal.to_ary($c), (path = ($b[0] == null ? nil : $b[0])), $c
+      };
       return path['$==']("");
     }, TMP_Pathname_relative$q_4.$$arity = 0);
     Opal.defn(self, '$chop_basename', TMP_Pathname_chop_basename_5 = function $$chop_basename(path) {
@@ -250,38 +251,42 @@ Opal.modules["pathname"] = function(Opal) {
       index_list2 = [];
       basename_list2 = [];
       while ((($b = (r2 = self.$chop_basename(prefix2))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-      
-      $c = r2, $b = Opal.to_ary($c), (prefix2 = ($b[0] == null ? nil : $b[0])), (basename2 = ($b[1] == null ? nil : $b[1])), $c;
-      index_list2.$unshift(prefix2.$length());
-      basename_list2.$unshift(basename2);};
+        
+        $c = r2, $b = Opal.to_ary($c), (prefix2 = ($b[0] == null ? nil : $b[0])), (basename2 = ($b[1] == null ? nil : $b[1])), $c;
+        index_list2.$unshift(prefix2.$length());
+        basename_list2.$unshift(basename2);
+      };
       if ((($a = prefix2['$!=']("")) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         return path2};
       prefix1 = path1;
       while ((($b = true) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-      
-      while ((($c = ($d = basename_list2['$empty?']()['$!'](), $d !== false && $d !== nil && $d != null ?basename_list2.$first()['$=='](".") : $d)) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
-      
-      index_list2.$shift();
-      basename_list2.$shift();};
-      if ((($b = (r1 = self.$chop_basename(prefix1))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-        } else {
-        break;
-      };
-      $c = r1, $b = Opal.to_ary($c), (prefix1 = ($b[0] == null ? nil : $b[0])), (basename1 = ($b[1] == null ? nil : $b[1])), $c;
-      if (basename1['$=='](".")) {
-        continue;};
-      if ((($b = ((($c = ((($d = basename1['$==']("..")) !== false && $d !== nil && $d != null) ? $d : basename_list2['$empty?']())) !== false && $c !== nil && $c != null) ? $c : basename_list2.$first()['$!='](".."))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
         
-        prefix1 = $rb_plus(prefix1, basename1);
-        break;;};
-      index_list2.$shift();
-      basename_list2.$shift();};
+        while ((($c = ($d = basename_list2['$empty?']()['$!'](), $d !== false && $d !== nil && $d != null ?basename_list2.$first()['$=='](".") : $d)) !== nil && $c != null && (!$c.$$is_boolean || $c == true))) {
+          
+          index_list2.$shift();
+          basename_list2.$shift();
+        };
+        if ((($b = (r1 = self.$chop_basename(prefix1))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
+          } else {
+          break;
+        };
+        $c = r1, $b = Opal.to_ary($c), (prefix1 = ($b[0] == null ? nil : $b[0])), (basename1 = ($b[1] == null ? nil : $b[1])), $c;
+        if (basename1['$=='](".")) {
+          continue;};
+        if ((($b = ((($c = ((($d = basename1['$==']("..")) !== false && $d !== nil && $d != null) ? $d : basename_list2['$empty?']())) !== false && $c !== nil && $c != null) ? $c : basename_list2.$first()['$!='](".."))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
+          
+          prefix1 = $rb_plus(prefix1, basename1);
+          break;;};
+        index_list2.$shift();
+        basename_list2.$shift();
+      };
       r1 = self.$chop_basename(prefix1);
       if ((($a = ($b = r1['$!'](), $b !== false && $b !== nil && $b != null ?new RegExp(Opal.const_get($scopes, 'SEPARATOR_PAT', true, true))['$=~'](Opal.const_get($scopes, 'File', true, true).$basename(prefix1)) : $b)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         while ((($b = ($c = basename_list2['$empty?']()['$!'](), $c !== false && $c !== nil && $c != null ?basename_list2.$first()['$==']("..") : $c)) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-        
-        index_list2.$shift();
-        basename_list2.$shift();}};
+          
+          index_list2.$shift();
+          basename_list2.$shift();
+        }};
       if ((($a = basename_list2['$empty?']()['$!']()) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         
         suffix2 = path2['$[]'](Opal.Range.$new(index_list2.$first(), -1, false));
@@ -384,25 +389,28 @@ if (a == null) a = nil;if (b == null) b = nil;
       dest_prefix = dest_directory;
       dest_names = [];
       while ((($b = (r = self.$chop_basename(dest_prefix))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-      
-      $c = r, $b = Opal.to_ary($c), (dest_prefix = ($b[0] == null ? nil : $b[0])), (basename = ($b[1] == null ? nil : $b[1])), $c;
-      if ((($b = basename['$!='](".")) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-        dest_names.$unshift(basename)};};
+        
+        $c = r, $b = Opal.to_ary($c), (dest_prefix = ($b[0] == null ? nil : $b[0])), (basename = ($b[1] == null ? nil : $b[1])), $c;
+        if ((($b = basename['$!='](".")) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
+          dest_names.$unshift(basename)};
+      };
       base_prefix = base_directory;
       base_names = [];
       while ((($b = (r = self.$chop_basename(base_prefix))) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-      
-      $c = r, $b = Opal.to_ary($c), (base_prefix = ($b[0] == null ? nil : $b[0])), (basename = ($b[1] == null ? nil : $b[1])), $c;
-      if ((($b = basename['$!='](".")) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-        base_names.$unshift(basename)};};
+        
+        $c = r, $b = Opal.to_ary($c), (base_prefix = ($b[0] == null ? nil : $b[0])), (basename = ($b[1] == null ? nil : $b[1])), $c;
+        if ((($b = basename['$!='](".")) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
+          base_names.$unshift(basename)};
+      };
       if ((($a = Opal.const_get($scopes, 'SAME_PATHS', true, true)['$[]'](dest_prefix, base_prefix)) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         } else {
         self.$raise(Opal.const_get($scopes, 'ArgumentError', true, true), "" + "different prefix: " + (dest_prefix.$inspect()) + " and " + (base_directory.$inspect()))
       };
       while ((($b = ($c = ($d = dest_names['$empty?']()['$!'](), $d !== false && $d !== nil && $d != null ?base_names['$empty?']()['$!']() : $d), $c !== false && $c !== nil && $c != null ?Opal.const_get($scopes, 'SAME_PATHS', true, true)['$[]'](dest_names.$first(), base_names.$first()) : $c)) !== nil && $b != null && (!$b.$$is_boolean || $b == true))) {
-      
-      dest_names.$shift();
-      base_names.$shift();};
+        
+        dest_names.$shift();
+        base_names.$shift();
+      };
       if ((($a = base_names['$include?']("..")) !== nil && $a != null && (!$a.$$is_boolean || $a == true))) {
         self.$raise(Opal.const_get($scopes, 'ArgumentError', true, true), "" + "base_directory has ..: " + (base_directory.$inspect()))};
       base_names.$fill("..");
