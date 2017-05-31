@@ -9,7 +9,7 @@ describe('Opal node runtime', function () {
 
     it('Pathname methods should be available', function() {
       Opal.load('pathname');
-      var Pathname = Opal.get('Pathname');
+      var Pathname = Opal.const_get_relative([], 'Pathname');
       var path1 = Pathname.$new('/foo/bar');
       var path2 = Pathname.$new('qux');
       expect(path1['$+'](path2)['$to_path']()).toBe('/foo/bar/qux');
@@ -17,7 +17,7 @@ describe('Opal node runtime', function () {
 
     it('Node.js specific implementations should be available', function() {
       Opal.load('nodejs');
-      var Dir = Opal.get('Dir');
+      var Dir = Opal.const_get_relative([], 'Dir');
       var currentDir = Dir['$pwd']();
       expect(currentDir).toBe(process.cwd());
     });
