@@ -373,9 +373,9 @@ Opal.modules["nodejs/io"] = function(Opal) {
   function $rb_minus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs - rhs : lhs['$-'](rhs);
   }
-  var TMP_5, TMP_6, self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $gvars = Opal.gvars, $send = Opal.send, $writer = nil;
+  var TMP_7, TMP_8, self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $gvars = Opal.gvars, $send = Opal.send, $writer = nil;
 
-  Opal.add_stubs(['$node_require', '$attr_reader', '$size', '$to_enum', '$read', '$chomp', '$each_line', '$lambda', '$write_proc=', '$-', '$tty=']);
+  Opal.add_stubs(['$node_require', '$attr_reader', '$write', '$read', '$size', '$to_enum', '$chomp', '$each_line', '$lambda', '$write_proc=', '$-', '$tty=']);
   
   
   function executeIOAction(action) {
@@ -397,7 +397,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
     function $IO(){};
     var self = $IO = $klass($base, $super, 'IO', $IO);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_IO_initialize_1, TMP_IO_read_2, TMP_IO_each_line_3, TMP_IO_binread_4;
+    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_IO_initialize_1, TMP_IO_write_2, TMP_IO_read_3, TMP_IO_read_4, TMP_IO_each_line_5, TMP_IO_binread_6;
     if (self.__fs__ == null) self.__fs__ = nil;
 
     def.eof = def.path = nil;
@@ -414,8 +414,18 @@ Opal.modules["nodejs/io"] = function(Opal) {
       self.eof = false;
       return (self.lineno = 0);
     }, TMP_IO_initialize_1.$$arity = 0);
+    Opal.defs(self, '$write', TMP_IO_write_2 = function $$write(path, data) {
+      var self = this;
+
+      return Opal.const_get_relative($nesting, 'File').$write(path, data)
+    }, TMP_IO_write_2.$$arity = 2);
+    Opal.defs(self, '$read', TMP_IO_read_3 = function $$read(path) {
+      var self = this;
+
+      return Opal.const_get_relative($nesting, 'File').$read(path)
+    }, TMP_IO_read_3.$$arity = 1);
     
-    Opal.defn(self, '$read', TMP_IO_read_2 = function $$read() {
+    Opal.defn(self, '$read', TMP_IO_read_4 = function $$read() {
       var self = this, res = nil;
 
       if ($truthy(self.eof)) {
@@ -427,16 +437,16 @@ Opal.modules["nodejs/io"] = function(Opal) {
         self.lineno = res.$size();
         return res;
       }
-    }, TMP_IO_read_2.$$arity = 0);
+    }, TMP_IO_read_4.$$arity = 0);
     
-    Opal.defn(self, '$each_line', TMP_IO_each_line_3 = function $$each_line(separator) {
-      var self = this, $iter = TMP_IO_each_line_3.$$p, block = $iter || nil, lines = nil;
+    Opal.defn(self, '$each_line', TMP_IO_each_line_5 = function $$each_line(separator) {
+      var self = this, $iter = TMP_IO_each_line_5.$$p, block = $iter || nil, lines = nil;
       if ($gvars["/"] == null) $gvars["/"] = nil;
 
       if (separator == null) {
         separator = $gvars["/"];
       }
-      if ($iter) TMP_IO_each_line_3.$$p = null;
+      if ($iter) TMP_IO_each_line_5.$$p = null;
       
       if ($truthy(self.eof)) {
         return (function() {if ((block !== nil)) {
@@ -468,23 +478,23 @@ Opal.modules["nodejs/io"] = function(Opal) {
         } else {
         return self.$read().$each_line()
       };
-    }, TMP_IO_each_line_3.$$arity = -1);
-    return Opal.defs(self, '$binread', TMP_IO_binread_4 = function $$binread(path) {
+    }, TMP_IO_each_line_5.$$arity = -1);
+    return Opal.defs(self, '$binread', TMP_IO_binread_6 = function $$binread(path) {
       var self = this;
 
       return executeIOAction(function(){return __fs__.readFileSync(path).toString('binary')})
-    }, TMP_IO_binread_4.$$arity = 1);
+    }, TMP_IO_binread_6.$$arity = 1);
   })($nesting[0], null, $nesting);
   
-  $writer = [$send(self, 'lambda', [], (TMP_5 = function(string){var self = TMP_5.$$s || this;
+  $writer = [$send(self, 'lambda', [], (TMP_7 = function(string){var self = TMP_7.$$s || this;
 if (string == null) string = nil;
-  return process.stdout.write(string)}, TMP_5.$$s = self, TMP_5.$$arity = 1, TMP_5))];
+  return process.stdout.write(string)}, TMP_7.$$s = self, TMP_7.$$arity = 1, TMP_7))];
   $send(Opal.const_get_relative($nesting, 'STDOUT'), 'write_proc=', Opal.to_a($writer));
   $writer[$rb_minus($writer["length"], 1)];;
   
-  $writer = [$send(self, 'lambda', [], (TMP_6 = function(string){var self = TMP_6.$$s || this;
+  $writer = [$send(self, 'lambda', [], (TMP_8 = function(string){var self = TMP_8.$$s || this;
 if (string == null) string = nil;
-  return process.stderr.write(string)}, TMP_6.$$s = self, TMP_6.$$arity = 1, TMP_6))];
+  return process.stderr.write(string)}, TMP_8.$$s = self, TMP_8.$$arity = 1, TMP_8))];
   $send(Opal.const_get_relative($nesting, 'STDERR'), 'write_proc=', Opal.to_a($writer));
   $writer[$rb_minus($writer["length"], 1)];;
   
