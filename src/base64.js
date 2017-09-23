@@ -99,7 +99,8 @@ Opal.modules["base64"] = function(Opal) {
           throw Opal.ArgumentError.$new('expected kwargs');
         }
       }
-      if ((padding = $kwargs.$$smap['padding']) == null) {
+      padding = $kwargs.$$smap['padding'];
+      if (padding == null) {
         padding = true
       }
       

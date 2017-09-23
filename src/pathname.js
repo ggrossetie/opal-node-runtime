@@ -12,7 +12,7 @@ Opal.modules["corelib/comparable"] = function(Opal) {
   return (function($base, $parent_nesting) {
     var $Comparable, self = $Comparable = $module($base, 'Comparable');
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Comparable_normalize_1, TMP_Comparable_$eq$eq_2, TMP_Comparable_$gt_3, TMP_Comparable_$gt$eq_4, TMP_Comparable_$lt_5, TMP_Comparable_$lt$eq_6, TMP_Comparable_between$q_7;
+    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Comparable_normalize_1, TMP_Comparable_$eq$eq_2, TMP_Comparable_$gt_3, TMP_Comparable_$gt$eq_4, TMP_Comparable_$lt_5, TMP_Comparable_$lt$eq_6, TMP_Comparable_between$q_7, TMP_Comparable_clamp_8;
 
     
     Opal.defs(self, '$normalize', TMP_Comparable_normalize_1 = function $$normalize(what) {
@@ -114,6 +114,24 @@ Opal.modules["corelib/comparable"] = function(Opal) {
         return false};
       return true;
     }, TMP_Comparable_between$q_7.$$arity = 2);
+    
+    Opal.defn(self, '$clamp', TMP_Comparable_clamp_8 = function $$clamp(min, max) {
+      var self = this, cmp = nil;
+
+      
+      cmp = min['$<=>'](max);
+      if ($truthy(cmp)) {
+        } else {
+        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "comparison of " + (min.$class()) + " with " + (max.$class()) + " failed")
+      };
+      if ($truthy($rb_gt(Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp), 0))) {
+        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "min argument must be smaller than max argument")};
+      if ($truthy($rb_lt(Opal.const_get_relative($nesting, 'Comparable').$normalize(self['$<=>'](min)), 0))) {
+        return min};
+      if ($truthy($rb_gt(Opal.const_get_relative($nesting, 'Comparable').$normalize(self['$<=>'](max)), 0))) {
+        return max};
+      return self;
+    }, TMP_Comparable_clamp_8.$$arity = 2);
   })($nesting[0], $nesting)
 };
 
