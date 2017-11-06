@@ -2261,7 +2261,13 @@
 
   // Forward .toString() to #to_s
   _Object.$$proto.toString = function() {
-    return this.$to_s();
+    var to_s = this.$to_s();
+    if (to_s.$$is_string && typeof(to_s) === 'object') {
+      // a string created using new String('string')
+      return to_s.valueOf();
+    } else {
+      return to_s;
+    }
   };
 
   // Make Kernel#require immediately available as it's needed to require all the
@@ -3990,9 +3996,19 @@ Opal.modules["corelib/kernel"] = function(Opal) {
         block = $gvars.__at_exit__.$pop();
         block.$call();
       };
-      if ($truthy(status === true)) {
-        status = 0};
-      Opal.exit(status);;
+      
+      if (status == null) {
+        status = 0
+      } else if (status.$$is_boolean) {
+        status = status ? 0 : 1;
+      } else if (status.$$is_numeric) {
+        status = status.$to_i();
+      } else {
+        status = 0
+      }
+
+      Opal.exit(status);
+    ;
       return nil;
     }, TMP_Kernel_exit_21.$$arity = -1);
     
@@ -17300,7 +17316,7 @@ Opal.modules["corelib/string/inheritance"] = function(Opal) {
   }
   var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $send = Opal.send, $truthy = Opal.truthy, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$require', '$new', '$allocate', '$initialize', '$to_proc', '$__send__', '$class', '$clone', '$respond_to?', '$==', '$inspect', '$+', '$*', '$map', '$split', '$enum_for', '$each_line', '$to_a', '$%', '$-']);
+  Opal.add_stubs(['$require', '$new', '$allocate', '$initialize', '$to_proc', '$__send__', '$class', '$clone', '$respond_to?', '$==', '$to_s', '$inspect', '$+', '$*', '$map', '$split', '$enum_for', '$each_line', '$to_a', '$%', '$-']);
   
   self.$require("corelib/string");
   (function($base, $super, $parent_nesting) {
@@ -17433,7 +17449,7 @@ Opal.modules["corelib/string/inheritance"] = function(Opal) {
     Opal.defn(self, '$to_s', TMP_Wrapper_to_s_10 = function $$to_s() {
       var self = this;
 
-      return self.literal
+      return self.literal.$to_s()
     }, TMP_Wrapper_to_s_10.$$arity = 0);
     Opal.alias(self, "to_str", "to_s");
     
@@ -20751,28 +20767,28 @@ Opal.modules["corelib/file"] = function(Opal) {
   function $rb_minus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs - rhs : lhs['$-'](rhs);
   }
-  var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send, $range = Opal.range;
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $range = Opal.range, $send = Opal.send;
 
-  Opal.add_stubs(['$start_with?', '$home', '$raise', '$+', '$sub', '$pwd', '$match?', '$split', '$each', '$nil?', '$==', '$!', '$empty?', '$pop', '$<<', '$!=', '$[]', '$unshift', '$join', '$respond_to?', '$coerce_to!', '$basename', '$rindex', '$-', '$length', '$gsub', '$find', '$=~', '$map', '$each_with_index', '$flatten', '$reject', '$end_with?']);
+  Opal.add_stubs(['$home', '$raise', '$start_with?', '$+', '$sub', '$pwd', '$split', '$unshift', '$join', '$respond_to?', '$coerce_to!', '$basename', '$empty?', '$rindex', '$[]', '$nil?', '$==', '$-', '$length', '$gsub', '$find', '$=~', '$map', '$each_with_index', '$flatten', '$reject', '$end_with?']);
   return (function($base, $super, $parent_nesting) {
     function $File(){};
     var self = $File = $klass($base, $super, 'File', $File);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting);
+    var def = self.$$proto, $nesting = [self].concat($parent_nesting), windows_root_rx = nil;
 
     
     Opal.const_set($nesting[0], 'Separator', Opal.const_set($nesting[0], 'SEPARATOR', "/"));
     Opal.const_set($nesting[0], 'ALT_SEPARATOR', nil);
     Opal.const_set($nesting[0], 'PATH_SEPARATOR', ":");
     Opal.const_set($nesting[0], 'FNM_SYSCASE', 0);
-    Opal.const_set($nesting[0], 'WindowsRootRx', /^[a-zA-Z]:(?:\\|\/)/);
+    windows_root_rx = /^[a-zA-Z]:(?:\\|\/)/;
     return (function(self, $parent_nesting) {
-      var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_expand_path_2, TMP_dirname_3, TMP_basename_4, TMP_extname_5, TMP_exist$q_6, TMP_directory$q_8, TMP_join_12, TMP_split_13;
+      var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_expand_path_1, TMP_dirname_2, TMP_basename_3, TMP_extname_4, TMP_exist$q_5, TMP_directory$q_7, TMP_join_11, TMP_split_12;
 
       
       
-      Opal.defn(self, '$expand_path', TMP_expand_path_2 = function $$expand_path(path, basedir) {
-        var $a, $b, TMP_1, self = this, sep = nil, sep_chars = nil, new_parts = nil, home = nil, path_abs = nil, basedir_abs = nil, parts = nil, leading_sep = nil, abs = nil, new_path = nil;
+      Opal.defn(self, '$expand_path', TMP_expand_path_1 = function $$expand_path(path, basedir) {
+        var self = this, sep = nil, sep_chars = nil, new_parts = nil, home = nil, home_path_regexp = nil, path_abs = nil, basedir_abs = nil, parts = nil, leading_sep = nil, abs = nil, new_path = nil;
 
         if (basedir == null) {
           basedir = nil;
@@ -20781,7 +20797,7 @@ Opal.modules["corelib/file"] = function(Opal) {
         sep = Opal.const_get_relative($nesting, 'SEPARATOR');
         sep_chars = $sep_chars();
         new_parts = [];
-        if ($truthy(($truthy($a = path['$start_with?']("~")) ? $a : ($truthy($b = basedir) ? basedir['$start_with?']("~") : $b)))) {
+        if ($truthy(path[0] === '~' || (basedir && basedir[0] === '~'))) {
           
           home = Opal.const_get_relative($nesting, 'Dir').$home();
           if ($truthy(home)) {
@@ -20793,55 +20809,55 @@ Opal.modules["corelib/file"] = function(Opal) {
             self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "non-absolute home")
           };
           home = $rb_plus(home, sep);
-          path = path.$sub(new RegExp("" + "^\\~(?:" + (sep) + "|$)"), home);
+          home_path_regexp = new RegExp("" + "^\\~(?:" + (sep) + "|$)");
+          path = path.$sub(home_path_regexp, home);
           if ($truthy(basedir)) {
-            basedir = basedir.$sub(new RegExp("" + "^\\~(?:" + (sep) + "|$)"), home)};};
+            basedir = basedir.$sub(home_path_regexp, home)};};
         if ($truthy(basedir)) {
           } else {
           basedir = Opal.const_get_relative($nesting, 'Dir').$pwd()
         };
-        path_abs = ($truthy($a = path['$start_with?'](sep)) ? $a : Opal.const_get_relative($nesting, 'WindowsRootRx')['$match?'](path));
-        basedir_abs = ($truthy($a = basedir['$start_with?'](sep)) ? $a : Opal.const_get_relative($nesting, 'WindowsRootRx')['$match?'](basedir));
+        path_abs = path.substr(0, sep.length) === sep || windows_root_rx.test(path);
+        basedir_abs = basedir.substr(0, sep.length) === sep || windows_root_rx.test(basedir);
         if ($truthy(path_abs)) {
           
           parts = path.$split(new RegExp("" + "[" + (sep_chars) + "]"));
-          leading_sep = (function() {if ($truthy(Opal.const_get_relative($nesting, 'WindowsRootRx')['$match?'](path))) {
-            return ""
-            } else {
-            return path.$sub(new RegExp("" + "^([" + (sep_chars) + "]+).*$"), "\\1")
-          }; return nil; })();
+          leading_sep = windows_root_rx.test(path) ? '' : path.$sub(new RegExp("" + "^([" + (sep_chars) + "]+).*$"), "\\1");
           abs = true;
           } else {
           
           parts = $rb_plus(basedir.$split(new RegExp("" + "[" + (sep_chars) + "]")), path.$split(new RegExp("" + "[" + (sep_chars) + "]")));
-          leading_sep = (function() {if ($truthy(Opal.const_get_relative($nesting, 'WindowsRootRx')['$match?'](basedir))) {
-            return ""
-            } else {
-            return basedir.$sub(new RegExp("" + "^([" + (sep_chars) + "]+).*$"), "\\1")
-          }; return nil; })();
+          leading_sep = windows_root_rx.test(basedir) ? '' : basedir.$sub(new RegExp("" + "^([" + (sep_chars) + "]+).*$"), "\\1");
           abs = basedir_abs;
         };
-        $send(parts, 'each', [], (TMP_1 = function(part){var self = TMP_1.$$s || this, $c, $d;
-if (part == null) part = nil;
         
-          if ($truthy(part['$nil?']())) {
-            return nil;};
-          if ($truthy((($c = part['$==']("")) ? ($truthy($d = new_parts['$empty?']()['$!']()) ? $d : abs) : part['$==']("")))) {
-            return nil;};
-          if ($truthy((($c = part['$=='](".")) ? ($truthy($d = new_parts['$empty?']()['$!']()) ? $d : abs) : part['$=='](".")))) {
-            return nil;};
-          if (part['$==']("..")) {
-            return new_parts.$pop()
-            } else {
-            return new_parts['$<<'](part)
-          };}, TMP_1.$$s = self, TMP_1.$$arity = 1, TMP_1));
-        if ($truthy(($truthy($a = abs['$!']()) ? parts['$[]'](0)['$!='](".") : $a))) {
-          new_parts.$unshift(".")};
+        var part;
+        for (var i = 0, ii = parts.length; i < ii; i++) {
+          part = parts[i];
+
+          if (
+            (part === nil) ||
+            (part === ''  && ((new_parts.length === 0) || abs)) ||
+            (part === '.' && ((new_parts.length === 0) || abs))
+          ) {
+            continue;
+          }
+          if (part === '..') {
+            new_parts.pop();
+          } else {
+            new_parts.push(part);
+          }
+        }
+
+        if (!abs && parts[0] !== '.') {
+          new_parts.$unshift(".")
+        }
+      ;
         new_path = new_parts.$join(sep);
         if ($truthy(abs)) {
           new_path = $rb_plus(leading_sep, new_path)};
         return new_path;
-      }, TMP_expand_path_2.$$arity = -2);
+      }, TMP_expand_path_1.$$arity = -2);
       Opal.alias(self, "realpath", "expand_path");
       
       // Coerce a given path to a path string using #to_path and #to_str
@@ -20865,7 +20881,7 @@ if (part == null) part = nil;
       }
     ;
       
-      Opal.defn(self, '$dirname', TMP_dirname_3 = function $$dirname(path) {
+      Opal.defn(self, '$dirname', TMP_dirname_2 = function $$dirname(path) {
         var self = this, sep_chars = nil;
 
         
@@ -20884,9 +20900,9 @@ if (part == null) part = nil;
 
         return path;
       ;
-      }, TMP_dirname_3.$$arity = 1);
+      }, TMP_dirname_2.$$arity = 1);
       
-      Opal.defn(self, '$basename', TMP_basename_4 = function $$basename(name, suffix) {
+      Opal.defn(self, '$basename', TMP_basename_3 = function $$basename(name, suffix) {
         var self = this, sep_chars = nil;
 
         if (suffix == null) {
@@ -20918,9 +20934,9 @@ if (part == null) part = nil;
 
         return name;
       ;
-      }, TMP_basename_4.$$arity = -2);
+      }, TMP_basename_3.$$arity = -2);
       
-      Opal.defn(self, '$extname', TMP_extname_5 = function $$extname(path) {
+      Opal.defn(self, '$extname', TMP_extname_4 = function $$extname(path) {
         var $a, self = this, filename = nil, last_dot_idx = nil;
 
         
@@ -20934,17 +20950,17 @@ if (part == null) part = nil;
           } else {
           return filename['$[]'](Opal.Range.$new($rb_plus(last_dot_idx, 1), -1, false))
         };
-      }, TMP_extname_5.$$arity = 1);
+      }, TMP_extname_4.$$arity = 1);
       
-      Opal.defn(self, '$exist?', TMP_exist$q_6 = function(path) {
+      Opal.defn(self, '$exist?', TMP_exist$q_5 = function(path) {
         var self = this;
 
         return Opal.modules[path] != null
-      }, TMP_exist$q_6.$$arity = 1);
+      }, TMP_exist$q_5.$$arity = 1);
       Opal.alias(self, "exists?", "exist?");
       
-      Opal.defn(self, '$directory?', TMP_directory$q_8 = function(path) {
-        var TMP_7, self = this, files = nil, file = nil;
+      Opal.defn(self, '$directory?', TMP_directory$q_7 = function(path) {
+        var TMP_6, self = this, files = nil, file = nil;
 
         
         files = [];
@@ -20954,14 +20970,14 @@ if (part == null) part = nil;
         }
       ;
         path = path.$gsub(new RegExp("" + "(^." + (Opal.const_get_relative($nesting, 'SEPARATOR')) + "+|" + (Opal.const_get_relative($nesting, 'SEPARATOR')) + "+$)"));
-        file = $send(files, 'find', [], (TMP_7 = function(file){var self = TMP_7.$$s || this;
+        file = $send(files, 'find', [], (TMP_6 = function(file){var self = TMP_6.$$s || this;
 if (file == null) file = nil;
-        return file['$=~'](new RegExp("" + "^" + (path)))}, TMP_7.$$s = self, TMP_7.$$arity = 1, TMP_7));
+        return file['$=~'](new RegExp("" + "^" + (path)))}, TMP_6.$$s = self, TMP_6.$$arity = 1, TMP_6));
         return file;
-      }, TMP_directory$q_8.$$arity = 1);
+      }, TMP_directory$q_7.$$arity = 1);
       
-      Opal.defn(self, '$join', TMP_join_12 = function $$join($a_rest) {
-        var TMP_9, TMP_10, TMP_11, self = this, paths, result = nil;
+      Opal.defn(self, '$join', TMP_join_11 = function $$join($a_rest) {
+        var TMP_8, TMP_9, TMP_10, self = this, paths, result = nil;
 
         var $args_len = arguments.length, $rest_len = $args_len - 0;
         if ($rest_len < 0) { $rest_len = 0; }
@@ -20973,7 +20989,7 @@ if (file == null) file = nil;
         if (paths.$length()['$=='](0)) {
           return ""};
         result = "";
-        paths = $send(paths.$flatten().$each_with_index(), 'map', [], (TMP_9 = function(item, index){var self = TMP_9.$$s || this, $a;
+        paths = $send(paths.$flatten().$each_with_index(), 'map', [], (TMP_8 = function(item, index){var self = TMP_8.$$s || this, $a;
 if (item == null) item = nil;if (index == null) index = nil;
         if ($truthy((($a = index['$=='](0)) ? item['$empty?']() : index['$=='](0)))) {
             return Opal.const_get_relative($nesting, 'SEPARATOR')
@@ -20981,11 +20997,11 @@ if (item == null) item = nil;if (index == null) index = nil;
             return Opal.const_get_relative($nesting, 'SEPARATOR')
             } else {
             return item
-          }}, TMP_9.$$s = self, TMP_9.$$arity = 2, TMP_9));
-        paths = $send(paths, 'reject', [], (TMP_10 = function(path){var self = TMP_10.$$s || this;
+          }}, TMP_8.$$s = self, TMP_8.$$arity = 2, TMP_8));
+        paths = $send(paths, 'reject', [], (TMP_9 = function(path){var self = TMP_9.$$s || this;
 if (path == null) path = nil;
-        return path['$empty?']()}, TMP_10.$$s = self, TMP_10.$$arity = 1, TMP_10));
-        $send(paths, 'each_with_index', [], (TMP_11 = function(item, index){var self = TMP_11.$$s || this, $a, next_item = nil;
+        return path['$empty?']()}, TMP_9.$$s = self, TMP_9.$$arity = 1, TMP_9));
+        $send(paths, 'each_with_index', [], (TMP_10 = function(item, index){var self = TMP_10.$$s || this, $a, next_item = nil;
 if (item == null) item = nil;if (index == null) index = nil;
         
           next_item = paths['$[]']($rb_plus(index, 1));
@@ -21000,14 +21016,14 @@ if (item == null) item = nil;if (index == null) index = nil;
               } else {
               return (result = "" + (result) + (item) + (Opal.const_get_relative($nesting, 'SEPARATOR')))
             };
-          };}, TMP_11.$$s = self, TMP_11.$$arity = 2, TMP_11));
+          };}, TMP_10.$$s = self, TMP_10.$$arity = 2, TMP_10));
         return result;
-      }, TMP_join_12.$$arity = -1);
-      return (Opal.defn(self, '$split', TMP_split_13 = function $$split(path) {
+      }, TMP_join_11.$$arity = -1);
+      return (Opal.defn(self, '$split', TMP_split_12 = function $$split(path) {
         var self = this;
 
         return path.$split(Opal.const_get_relative($nesting, 'SEPARATOR'))
-      }, TMP_split_13.$$arity = 1), nil) && 'split';
+      }, TMP_split_12.$$arity = 1), nil) && 'split';
     })(Opal.get_singleton_class(self), $nesting);
   })($nesting[0], Opal.const_get_relative($nesting, 'IO'), $nesting)
 };

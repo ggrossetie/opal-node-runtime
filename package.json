@@ -3,7 +3,7 @@
   "description":  "Opal Runtime",
   "keywords":     ["javascript", "opal", "runtime", "ruby"],
   "author":       "Guillaume Grossetie",
-  "version":      "0.11.0-integration10",
+  "version":      "0.11.0-rc1+934d65a",
   "license":      "MIT",
   "engines":      {
     "node":       ">=4"

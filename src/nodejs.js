@@ -58,10 +58,17 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
 Opal.modules["nodejs/file"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy;
 
-  Opal.add_stubs(['$raise', '$warn', '$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$new', '$close', '$match', '$gsub', '$attr_reader']);
+  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$close', '$match', '$gsub', '$attr_reader']);
   
   
-  var warnings = {};
+  var warnings = {}, errno_code, errno_codes = [
+    'EACCES',
+    'EISDIR',
+    'EMFILE',
+    'ENOENT',
+    'EPERM'
+  ];
+
   function handle_unsupported_feature(message) {
     switch (Opal.config.unsupported_features_severity) {
     case 'error':
@@ -85,14 +92,18 @@ Opal.modules["nodejs/file"] = function(Opal) {
     try {
       return action();
     } catch (error) {
-      if (error.code === 'EACCES' ||
-          error.code === 'EISDIR' ||
-          error.code === 'EMFILE' ||
-          error.code === 'ENOENT' ||
-          error.code === 'EPERM') {
-        throw Opal.IOError.$new(error.message)
+      if (errno_codes.indexOf(error.code) >= 0) {
+        var error_class = Opal.const_get_relative($nesting, 'Errno').$const_get(error.code)
+        throw (error_class).$new(error.message);
       }
       throw error;
+    }
+  }
+
+  for(var i = 0, ii = errno_codes.length; i < ii; i++) {
+    errno_code = errno_codes[i];
+    if (!Opal.const_get_relative($nesting, 'Errno')['$const_defined?'](errno_code)) {
+      Opal.const_get_relative($nesting, 'Errno').$const_set(errno_code, Opal.const_get_relative($nesting, 'Class').$new(Opal.const_get_relative($nesting, 'SystemCallError')))
     }
   }
 ;
@@ -204,12 +215,15 @@ Opal.modules["nodejs/file"] = function(Opal) {
 
       return executeIOAction(function(){return __fs__.lstatSync(path).size})
     }, TMP_File_size_9.$$arity = 1);
-    Opal.defs(self, '$open', TMP_File_open_10 = function $$open(path, flags) {
+    Opal.defs(self, '$open', TMP_File_open_10 = function $$open(path, mode) {
       var self = this, $iter = TMP_File_open_10.$$p, $yield = $iter || nil, file = nil;
 
+      if (mode == null) {
+        mode = "r";
+      }
       if ($iter) TMP_File_open_10.$$p = null;
       
-      file = self.$new(path, flags);
+      file = self.$new(path, mode);
       if (($yield !== nil)) {
         
         return (function() { try {
@@ -220,7 +234,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
         } else {
         return file
       };
-    }, TMP_File_open_10.$$arity = 2);
+    }, TMP_File_open_10.$$arity = -2);
     Opal.defs(self, '$stat', TMP_File_stat_11 = function $$stat(path) {
       var self = this;
 
