@@ -8,7 +8,7 @@
     "ruby"
   ],
   "author": "Guillaume Grossetie",
-  "version": "1.0.0-alpha.3+opal.934d65a",
+  "version": "1.0.0-alpha.4+opal.934d65a",
   "license": "MIT",
   "engines": {
     "node": ">=4"
