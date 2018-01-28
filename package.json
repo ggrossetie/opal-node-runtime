@@ -1,23 +1,31 @@
 {
-  "name":         "opal-runtime",
-  "description":  "Opal Runtime",
-  "keywords":     ["javascript", "opal", "runtime", "ruby"],
-  "author":       "Guillaume Grossetie",
-  "version":      "0.11.0-rc1+934d65a",
-  "license":      "MIT",
-  "engines":      {
-    "node":       ">=4"
+  "name": "opal-runtime",
+  "description": "Opal Runtime",
+  "keywords": [
+    "javascript",
+    "opal",
+    "runtime",
+    "ruby"
+  ],
+  "author": "Guillaume Grossetie",
+  "version": "1.0.0-alpha.1+opal.934d65a",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
   },
-  "directories" : {
-    "lib" : "src"
+  "directories": {
+    "lib": "src"
   },
-  "main" : "src/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "node npm/test.js"
+    "test": "node npm/test.js",
+    "lint": "eslint src/index.js spec npm",
+    "prepublishOnly": "node npm/prepublish.js",
+    "postpublish": "node npm/postpublish.js"
   },
-  "homepage":     "http://github.com/asciidoctor/opal-node-runtime",
-  "bugs":         "https://github.com/asciidoctor/opal-node-runtime/issues",
-  "repository":   {
+  "homepage": "http://github.com/asciidoctor/opal-node-runtime",
+  "bugs": "https://github.com/asciidoctor/opal-node-runtime/issues",
+  "repository": {
     "type": "git",
     "url": "git://github.com/asciidoctor/opal-node-runtime.git"
   },
@@ -25,6 +33,7 @@
     "glob": "6.0.4"
   },
   "devDependencies": {
+    "eslint": "^4.16.0",
     "jasmine": "2.8.0",
     "jasmine-core": "2.8.0"
   }
