@@ -1,7 +1,7 @@
 = Opal Runtime for Node.js
 
 ifdef::env-github[]
-image:https://img.shields.io/travis/mogztter/opal-runtime/master.svg[Travis build status, link=https://travis-ci.org/mogztter/opal-runtime]
+image:https://img.shields.io/travis/Mogztter/opal-node-runtime/master.svg[Travis build status, link=https://travis-ci.org/Mogztter/opal-node-runtime]
 image:http://img.shields.io/npm/v/opal-runtime.svg[npm version, link=https://www.npmjs.org/package/opal-runtime]
 endif::[]
 
