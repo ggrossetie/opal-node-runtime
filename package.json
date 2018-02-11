@@ -30,7 +30,8 @@
     "url": "git://github.com/mogztter/opal-node-runtime.git"
   },
   "dependencies": {
-    "glob": "6.0.4"
+    "glob": "6.0.4",
+    "xmlhttprequest": "1.8.0"
   },
   "devDependencies": {
     "eslint": "^4.16.0",
