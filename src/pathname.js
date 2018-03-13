@@ -249,7 +249,7 @@ Opal.modules["pathname"] = function(Opal) {
     Opal.def(self, '$cleanpath', TMP_Pathname_cleanpath_9 = function $$cleanpath() {
       var self = this;
 
-      return Opal.normalize(self.path);
+      return Opal.normalize(self.path)
     }, TMP_Pathname_cleanpath_9.$$arity = 0);
     
     Opal.def(self, '$to_path', TMP_Pathname_to_path_10 = function $$to_path() {

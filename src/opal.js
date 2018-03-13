@@ -4873,7 +4873,7 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       
       file = Opal.const_get_relative($nesting, 'Opal')['$coerce_to!'](file, Opal.const_get_relative($nesting, 'String'), "to_str");
-      return Opal.load(file);;
+      return Opal.load(file);
     }, TMP_Kernel_load_39.$$arity = 1);
     
     Opal.def(self, '$loop', TMP_Kernel_loop_40 = function $$loop() {
@@ -5103,7 +5103,7 @@ if (obj == null) obj = nil;
 
       
       file = Opal.const_get_relative($nesting, 'Opal')['$coerce_to!'](file, Opal.const_get_relative($nesting, 'String'), "to_str");
-      return Opal.require(file);;
+      return Opal.require(file);
     }, TMP_Kernel_require_54.$$arity = 1);
     
     Opal.def(self, '$require_relative', TMP_Kernel_require_relative_55 = function $$require_relative(file) {
@@ -5112,7 +5112,7 @@ if (obj == null) obj = nil;
       
       Opal.const_get_relative($nesting, 'Opal')['$try_convert!'](file, Opal.const_get_relative($nesting, 'String'), "to_str");
       file = Opal.const_get_relative($nesting, 'File').$expand_path(Opal.const_get_relative($nesting, 'File').$join(Opal.current_file, "..", file));
-      return Opal.require(file);;
+      return Opal.require(file);
     }, TMP_Kernel_require_relative_55.$$arity = 1);
     
     Opal.def(self, '$require_tree', TMP_Kernel_require_tree_56 = function $$require_tree(path) {
@@ -12175,7 +12175,7 @@ Opal.modules["corelib/array"] = function(Opal) {
       } else {
         return $send(self, 'enum_for', ["combination", num], (TMP_29 = function(){var self = TMP_29.$$s || this;
 
-        return binomial_coefficient(self.length, num);}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29))
+        return binomial_coefficient(self.length, num)}, TMP_29.$$s = self, TMP_29.$$arity = 0, TMP_29))
       };
       
       var i, length, stack, chosen, lev, done, next;
@@ -21028,7 +21028,7 @@ if (name == null) name = nil;if (h == null) h = nil;
       
       args = $send(args, 'map', [], (TMP_34 = function(arg){var self = TMP_34.$$s || this;
 if (arg == null) arg = nil;
-      return arg.$$is_range ? arg.$to_a() : arg;}, TMP_34.$$s = self, TMP_34.$$arity = 1, TMP_34)).$flatten();
+      return arg.$$is_range ? arg.$to_a() : arg}, TMP_34.$$s = self, TMP_34.$$arity = 1, TMP_34)).$flatten();
       
       var result = [];
       for (var i = 0, len = args.length; i < len; i++) {
@@ -21482,7 +21482,7 @@ Opal.modules["corelib/file"] = function(Opal) {
       Opal.def(self, '$exist?', TMP_exist$q_5 = function(path) {
         var self = this;
 
-        return Opal.modules[path] != null;
+        return Opal.modules[path] != null
       }, TMP_exist$q_5.$$arity = 1);
       Opal.alias(self, "exists?", "exist?");
       

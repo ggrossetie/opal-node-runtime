@@ -50,7 +50,7 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
   return (Opal.defs(Opal.const_get_relative($nesting, 'ENV'), '$[]', TMP_$$_4 = function(name) {
     var self = this;
 
-    return process.env[name] || nil;
+    return process.env[name] || nil
   }, TMP_$$_4.$$arity = 1), nil) && '[]';
 };
 
@@ -58,7 +58,7 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
 Opal.modules["nodejs/file"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy;
 
-  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$match', '$gsub', '$attr_reader']);
+  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$delete', '$match?', '$sub', '$attr_reader']);
   
   
   var warnings = {}, errno_code, errno_codes = [
@@ -128,7 +128,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$read', TMP_File_read_1 = function $$read(path) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.readFileSync(path).toString()});
+      return executeIOAction(function(){return __fs__.readFileSync(path).toString()})
     }, TMP_File_read_1.$$arity = 1);
     Opal.defs(self, '$write', TMP_File_write_2 = function $$write(path, data) {
       var self = this;
@@ -143,7 +143,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       
       if ($truthy(path['$respond_to?']("path"))) {
         path = path.$path()};
-      return executeIOAction(function(){return __fs__.existsSync(path)});;
+      return executeIOAction(function(){return __fs__.existsSync(path)});
     }, TMP_File_exist$q_3.$$arity = 1);
     Opal.defs(self, '$realpath', TMP_File_realpath_4 = function $$realpath(pathname, dir_string, cache) {
       var self = this, $iter = TMP_File_realpath_4.$$p, block = $iter || nil;
@@ -166,7 +166,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       })
       
       } else {
-        return executeIOAction(function(){return __fs__.realpathSync(pathname, cache)});
+        return executeIOAction(function(){return __fs__.realpathSync(pathname, cache)})
       };
     }, TMP_File_realpath_4.$$arity = -2);
     Opal.defs(self, '$join', TMP_File_join_5 = function $$join($a_rest) {
@@ -178,7 +178,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       for (var $arg_idx = 0; $arg_idx < $args_len; $arg_idx++) {
         paths[$arg_idx - 0] = arguments[$arg_idx];
       }
-      return __path__.join.apply(__path__, paths);
+      return __path__.join.apply(__path__, paths)
     }, TMP_File_join_5.$$arity = -1);
     Opal.defs(self, '$directory?', TMP_File_directory$q_6 = function(path) {
       var self = this, result = nil, realpath = nil;
@@ -262,29 +262,27 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$mtime', TMP_File_mtime_12 = function $$mtime(path) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.statSync(path).mtime});
+      return executeIOAction(function(){return __fs__.statSync(path).mtime})
     }, TMP_File_mtime_12.$$arity = 1);
     Opal.defs(self, '$symlink?', TMP_File_symlink$q_13 = function(path) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.lstatSync(path).isSymbolicLink()});
+      return executeIOAction(function(){return __fs__.lstatSync(path).isSymbolicLink()})
     }, TMP_File_symlink$q_13.$$arity = 1);
     
     Opal.def(self, '$initialize', TMP_File_initialize_14 = function $$initialize(path, flags) {
-      var self = this, binary_flag_regexp = nil, encoding_flag_regexp = nil;
+      var self = this, encoding_option_rx = nil;
 
       if (flags == null) {
         flags = "r";
       }
       
-      binary_flag_regexp = /b/;
-      encoding_flag_regexp = /:(.*)/;
-      if ($truthy(flags.$match(binary_flag_regexp))) {
-        handle_unsupported_feature("Binary flag (b) is unsupported by Node.js openSync method, removing flag.")};
-      flags = flags.$gsub(binary_flag_regexp, "");
-      if ($truthy(flags.$match(encoding_flag_regexp))) {
-        handle_unsupported_feature("Encoding flag (:encoding) is unsupported by Node.js openSync method, removing flag.")};
-      flags = flags.$gsub(encoding_flag_regexp, "");
+      flags = flags.$delete("b");
+      encoding_option_rx = /:(.*)/;
+      if ($truthy(encoding_option_rx['$match?'](flags))) {
+        
+        handle_unsupported_feature("Encoding option (:encoding) is unsupported by Node.js openSync method and will be removed.");
+        flags = flags.$sub(encoding_option_rx, "");};
       self.path = path;
       self.flags = flags;
       return (self.fd = executeIOAction(function(){return __fs__.openSync(path, flags)}));
@@ -294,24 +292,24 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.def(self, '$write', TMP_File_write_15 = function $$write(string) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.writeSync(self.fd, string)});
+      return executeIOAction(function(){return __fs__.writeSync(self.fd, string)})
     }, TMP_File_write_15.$$arity = 1);
     
     Opal.def(self, '$flush', TMP_File_flush_16 = function $$flush() {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.fsyncSync(self.fd)});
+      return executeIOAction(function(){return __fs__.fsyncSync(self.fd)})
     }, TMP_File_flush_16.$$arity = 0);
     
     Opal.def(self, '$close', TMP_File_close_17 = function $$close() {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.closeSync(self.fd)});
+      return executeIOAction(function(){return __fs__.closeSync(self.fd)})
     }, TMP_File_close_17.$$arity = 0);
     return (Opal.def(self, '$mtime', TMP_File_mtime_18 = function $$mtime() {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.statSync(self.path).mtime});
+      return executeIOAction(function(){return __fs__.statSync(self.path).mtime})
     }, TMP_File_mtime_18.$$arity = 0), nil) && 'mtime';
   })($nesting[0], Opal.const_get_relative($nesting, 'IO'), $nesting);
   return (function($base, $super, $parent_nesting) {
@@ -335,12 +333,12 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.def(self, '$file?', TMP_Stat_file$q_20 = function() {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.statSync(self.path).isFile()});
+      return executeIOAction(function(){return __fs__.statSync(self.path).isFile()})
     }, TMP_Stat_file$q_20.$$arity = 0);
     return (Opal.def(self, '$mtime', TMP_Stat_mtime_21 = function $$mtime() {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.statSync(self.path).mtime});
+      return executeIOAction(function(){return __fs__.statSync(self.path).mtime})
     }, TMP_Stat_mtime_21.$$arity = 0), nil) && 'mtime';
   })(Opal.const_get_relative($nesting, 'File'), null, $nesting);
 };
@@ -371,7 +369,7 @@ Opal.modules["nodejs/dir"] = function(Opal) {
       Opal.def(self, '$[]', TMP_$$_1 = function(glob) {
         var self = this;
 
-        return __glob__.sync(glob);
+        return __glob__.sync(glob)
       }, TMP_$$_1.$$arity = 1);
       
       Opal.def(self, '$pwd', TMP_pwd_2 = function $$pwd() {
@@ -383,7 +381,7 @@ Opal.modules["nodejs/dir"] = function(Opal) {
       Opal.def(self, '$mkdir', TMP_mkdir_3 = function $$mkdir(path) {
         var self = this;
 
-        return __fs__.mkdirSync(path);
+        return __fs__.mkdirSync(path)
       }, TMP_mkdir_3.$$arity = 1);
       
       Opal.def(self, '$entries', TMP_entries_4 = function $$entries(dirname) {
@@ -534,7 +532,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
     return (Opal.defs(self, '$binread', TMP_IO_binread_6 = function $$binread(path) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.readFileSync(path).toString('binary')});
+      return executeIOAction(function(){return __fs__.readFileSync(path).toString('binary')})
     }, TMP_IO_binread_6.$$arity = 1), nil) && 'binread';
   })($nesting[0], null, $nesting);
   
