@@ -6,7 +6,7 @@ Opal.modules["corelib/comparable"] = function(Opal) {
   function $rb_lt(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs < rhs : lhs['$<'](rhs);
   }
-  var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $truthy = Opal.truthy;
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $truthy = Opal.truthy;
 
   Opal.add_stubs(['$===', '$>', '$<', '$equal?', '$<=>', '$normalize', '$raise', '$class']);
   return (function($base, $parent_nesting) {
@@ -19,7 +19,7 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       var self = this;
 
       
-      if ($truthy(Opal.const_get_relative($nesting, 'Integer')['$==='](what))) {
+      if ($truthy($$($nesting, 'Integer')['$==='](what))) {
         return what};
       if ($truthy($rb_gt(what, 0))) {
         return 1};
@@ -50,9 +50,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
         } else {
           return false
         };
-        return Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp) == 0;
+        return $$($nesting, 'Comparable').$normalize(cmp) == 0;
       } catch ($err) {
-        if (Opal.rescue($err, [Opal.const_get_relative($nesting, 'StandardError')])) {
+        if (Opal.rescue($err, [$$($nesting, 'StandardError')])) {
           try {
             return false
           } finally { Opal.pop_exception() }
@@ -66,9 +66,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
+        self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
-      return Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp) > 0;
+      return $$($nesting, 'Comparable').$normalize(cmp) > 0;
     }, TMP_Comparable_$gt_3.$$arity = 1);
     
     Opal.def(self, '$>=', TMP_Comparable_$gt$eq_4 = function(other) {
@@ -77,9 +77,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
+        self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
-      return Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp) >= 0;
+      return $$($nesting, 'Comparable').$normalize(cmp) >= 0;
     }, TMP_Comparable_$gt$eq_4.$$arity = 1);
     
     Opal.def(self, '$<', TMP_Comparable_$lt_5 = function(other) {
@@ -88,9 +88,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
+        self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
-      return Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp) < 0;
+      return $$($nesting, 'Comparable').$normalize(cmp) < 0;
     }, TMP_Comparable_$lt_5.$$arity = 1);
     
     Opal.def(self, '$<=', TMP_Comparable_$lt$eq_6 = function(other) {
@@ -99,9 +99,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
+        self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
-      return Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp) <= 0;
+      return $$($nesting, 'Comparable').$normalize(cmp) <= 0;
     }, TMP_Comparable_$lt$eq_6.$$arity = 1);
     
     Opal.def(self, '$between?', TMP_Comparable_between$q_7 = function(min, max) {
@@ -122,13 +122,13 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       cmp = min['$<=>'](max);
       if ($truthy(cmp)) {
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "comparison of " + (min.$class()) + " with " + (max.$class()) + " failed")
+        self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (min.$class()) + " with " + (max.$class()) + " failed")
       };
-      if ($truthy($rb_gt(Opal.const_get_relative($nesting, 'Comparable').$normalize(cmp), 0))) {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "min argument must be smaller than max argument")};
-      if ($truthy($rb_lt(Opal.const_get_relative($nesting, 'Comparable').$normalize(self['$<=>'](min)), 0))) {
+      if ($truthy($rb_gt($$($nesting, 'Comparable').$normalize(cmp), 0))) {
+        self.$raise($$($nesting, 'ArgumentError'), "min argument must be smaller than max argument")};
+      if ($truthy($rb_lt($$($nesting, 'Comparable').$normalize(self['$<=>'](min)), 0))) {
         return min};
-      if ($truthy($rb_gt(Opal.const_get_relative($nesting, 'Comparable').$normalize(self['$<=>'](max)), 0))) {
+      if ($truthy($rb_gt($$($nesting, 'Comparable').$normalize(self['$<=>'](max)), 0))) {
         return max};
       return self;
     }, TMP_Comparable_clamp_8.$$arity = 2);
@@ -140,7 +140,7 @@ Opal.modules["pathname"] = function(Opal) {
   function $rb_plus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs + rhs : lhs['$+'](rhs);
   }
-  var self = Opal.top, $nesting = [], nil = Opal.nil, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send, $module = Opal.module;
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send, $module = Opal.module;
 
   Opal.add_stubs(['$require', '$include', '$quote', '$===', '$to_s', '$path', '$respond_to?', '$to_path', '$is_a?', '$nil?', '$raise', '$class', '$==', '$attr_reader', '$!', '$relative?', '$chop_basename', '$basename', '$=~', '$new', '$source', '$[]', '$rindex', '$sub', '$absolute?', '$expand_path', '$plus', '$unshift', '$length', '$!=', '$empty?', '$first', '$shift', '$+', '$join', '$dirname', '$pop', '$reverse_each', '$directory?', '$extname', '$<=>', '$nonzero?', '$proc', '$casecmp', '$cleanpath', '$inspect', '$include?', '$fill', '$map', '$entries']);
   
@@ -153,26 +153,26 @@ Opal.modules["pathname"] = function(Opal) {
 
     def.path = nil;
     
-    self.$include(Opal.const_get_relative($nesting, 'Comparable'));
-    Opal.const_set($nesting[0], 'SEPARATOR_PAT', new RegExp(Opal.const_get_relative($nesting, 'Regexp').$quote(Opal.const_get_qualified(Opal.const_get_relative($nesting, 'File'), 'SEPARATOR'))));
+    self.$include($$($nesting, 'Comparable'));
+    Opal.const_set($nesting[0], 'SEPARATOR_PAT', new RegExp($$($nesting, 'Regexp').$quote($$$($$($nesting, 'File'), 'SEPARATOR'))));
     
     Opal.def(self, '$initialize', TMP_Pathname_initialize_1 = function $$initialize(path) {
       var self = this;
 
       
-      if ($truthy(Opal.const_get_relative($nesting, 'Pathname')['$==='](path))) {
+      if ($truthy($$($nesting, 'Pathname')['$==='](path))) {
         self.path = path.$path().$to_s()
       } else if ($truthy(path['$respond_to?']("to_path"))) {
         self.path = path.$to_path()
-      } else if ($truthy(path['$is_a?'](Opal.const_get_relative($nesting, 'String')))) {
+      } else if ($truthy(path['$is_a?']($$($nesting, 'String')))) {
         self.path = path
       } else if ($truthy(path['$nil?']())) {
-        self.$raise(Opal.const_get_relative($nesting, 'TypeError'), "no implicit conversion of nil into String")
+        self.$raise($$($nesting, 'TypeError'), "no implicit conversion of nil into String")
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'TypeError'), "" + "no implicit conversion of " + (path.$class()) + " into String")
+        self.$raise($$($nesting, 'TypeError'), "" + "no implicit conversion of " + (path.$class()) + " into String")
       };
       if (self.path['$==']("\u0000")) {
-        return self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'))
+        return self.$raise($$($nesting, 'ArgumentError'))
       } else {
         return nil
       };
@@ -206,8 +206,8 @@ Opal.modules["pathname"] = function(Opal) {
       var self = this, base = nil;
 
       
-      base = Opal.const_get_relative($nesting, 'File').$basename(path);
-      if ($truthy(Opal.const_get_relative($nesting, 'Regexp').$new("" + "^" + (Opal.const_get_qualified(Opal.const_get_relative($nesting, 'Pathname'), 'SEPARATOR_PAT').$source()) + "?$")['$=~'](base))) {
+      base = $$($nesting, 'File').$basename(path);
+      if ($truthy($$($nesting, 'Regexp').$new("" + "^" + ($$$($$($nesting, 'Pathname'), 'SEPARATOR_PAT').$source()) + "?$")['$=~'](base))) {
         return nil
       } else {
         return [path['$[]'](0, path.$rindex(base)), base]
@@ -231,7 +231,7 @@ Opal.modules["pathname"] = function(Opal) {
         } else {
           return "."
         }; return nil; })()};
-      return Opal.const_get_relative($nesting, 'Pathname').$new(new_path);
+      return $$($nesting, 'Pathname').$new(new_path);
     }, TMP_Pathname_parent_7.$$arity = 0);
     
     Opal.def(self, '$sub', TMP_Pathname_sub_8 = function $$sub($a_rest) {
@@ -243,7 +243,7 @@ Opal.modules["pathname"] = function(Opal) {
       for (var $arg_idx = 0; $arg_idx < $args_len; $arg_idx++) {
         args[$arg_idx - 0] = arguments[$arg_idx];
       }
-      return Opal.const_get_relative($nesting, 'Pathname').$new($send(self.path, 'sub', Opal.to_a(args)))
+      return $$($nesting, 'Pathname').$new($send(self.path, 'sub', Opal.to_a(args)))
     }, TMP_Pathname_sub_8.$$arity = -1);
     
     Opal.def(self, '$cleanpath', TMP_Pathname_cleanpath_9 = function $$cleanpath() {
@@ -267,18 +267,18 @@ Opal.modules["pathname"] = function(Opal) {
     Opal.def(self, '$expand_path', TMP_Pathname_expand_path_12 = function $$expand_path() {
       var self = this;
 
-      return Opal.const_get_relative($nesting, 'File').$expand_path(self.path)
+      return $$($nesting, 'File').$expand_path(self.path)
     }, TMP_Pathname_expand_path_12.$$arity = 0);
     
     Opal.def(self, '$+', TMP_Pathname_$_13 = function(other) {
       var self = this;
 
       
-      if ($truthy(Opal.const_get_relative($nesting, 'Pathname')['$==='](other))) {
+      if ($truthy($$($nesting, 'Pathname')['$==='](other))) {
       } else {
-        other = Opal.const_get_relative($nesting, 'Pathname').$new(other)
+        other = $$($nesting, 'Pathname').$new(other)
       };
-      return Opal.const_get_relative($nesting, 'Pathname').$new(self.$plus(self.path, other.$to_s()));
+      return $$($nesting, 'Pathname').$new(self.$plus(self.path, other.$to_s()));
     }, TMP_Pathname_$_13.$$arity = 1);
     
     Opal.def(self, '$plus', TMP_Pathname_plus_14 = function $$plus(path1, path2) {
@@ -319,7 +319,7 @@ Opal.modules["pathname"] = function(Opal) {
         basename_list2.$shift();
       };
       r1 = self.$chop_basename(prefix1);
-      if ($truthy(($truthy($a = r1['$!']()) ? new RegExp(Opal.const_get_relative($nesting, 'SEPARATOR_PAT'))['$=~'](Opal.const_get_relative($nesting, 'File').$basename(prefix1)) : $a))) {
+      if ($truthy(($truthy($a = r1['$!']()) ? new RegExp($$($nesting, 'SEPARATOR_PAT'))['$=~']($$($nesting, 'File').$basename(prefix1)) : $a))) {
         while ($truthy(($truthy($b = basename_list2['$empty?']()['$!']()) ? basename_list2.$first()['$==']("..") : $b))) {
           
           index_list2.$shift();
@@ -329,14 +329,14 @@ Opal.modules["pathname"] = function(Opal) {
         
         suffix2 = path2['$[]'](Opal.Range.$new(index_list2.$first(), -1, false));
         if ($truthy(r1)) {
-          return Opal.const_get_relative($nesting, 'File').$join(prefix1, suffix2)
+          return $$($nesting, 'File').$join(prefix1, suffix2)
         } else {
           return $rb_plus(prefix1, suffix2)
         };
       } else if ($truthy(r1)) {
         return prefix1
       } else {
-        return Opal.const_get_relative($nesting, 'File').$dirname(prefix1)
+        return $$($nesting, 'File').$dirname(prefix1)
       };
     }, TMP_Pathname_plus_14.$$arity = 2);
     
@@ -354,18 +354,18 @@ Opal.modules["pathname"] = function(Opal) {
       if ($truthy(args['$empty?']())) {
         return self};
       result = args.$pop();
-      if ($truthy(Opal.const_get_relative($nesting, 'Pathname')['$==='](result))) {
+      if ($truthy($$($nesting, 'Pathname')['$==='](result))) {
       } else {
-        result = Opal.const_get_relative($nesting, 'Pathname').$new(result)
+        result = $$($nesting, 'Pathname').$new(result)
       };
       if ($truthy(result['$absolute?']())) {
         return result};
       $send(args, 'reverse_each', [], (TMP_15 = function(arg){var self = TMP_15.$$s || this;
 if (arg == null) arg = nil;
       
-        if ($truthy(Opal.const_get_relative($nesting, 'Pathname')['$==='](arg))) {
+        if ($truthy($$($nesting, 'Pathname')['$==='](arg))) {
         } else {
-          arg = Opal.const_get_relative($nesting, 'Pathname').$new(arg)
+          arg = $$($nesting, 'Pathname').$new(arg)
         };
         result = $rb_plus(arg, result);
         if ($truthy(result['$absolute?']())) {
@@ -386,25 +386,25 @@ if (arg == null) arg = nil;
     Opal.def(self, '$dirname', TMP_Pathname_dirname_18 = function $$dirname() {
       var self = this;
 
-      return Opal.const_get_relative($nesting, 'Pathname').$new(Opal.const_get_relative($nesting, 'File').$dirname(self.path))
+      return $$($nesting, 'Pathname').$new($$($nesting, 'File').$dirname(self.path))
     }, TMP_Pathname_dirname_18.$$arity = 0);
     
     Opal.def(self, '$basename', TMP_Pathname_basename_19 = function $$basename() {
       var self = this;
 
-      return Opal.const_get_relative($nesting, 'Pathname').$new(Opal.const_get_relative($nesting, 'File').$basename(self.path))
+      return $$($nesting, 'Pathname').$new($$($nesting, 'File').$basename(self.path))
     }, TMP_Pathname_basename_19.$$arity = 0);
     
     Opal.def(self, '$directory?', TMP_Pathname_directory$q_20 = function() {
       var self = this;
 
-      return Opal.const_get_relative($nesting, 'File')['$directory?'](self.path)
+      return $$($nesting, 'File')['$directory?'](self.path)
     }, TMP_Pathname_directory$q_20.$$arity = 0);
     
     Opal.def(self, '$extname', TMP_Pathname_extname_21 = function $$extname() {
       var self = this;
 
-      return Opal.const_get_relative($nesting, 'File').$extname(self.path)
+      return $$($nesting, 'File').$extname(self.path)
     }, TMP_Pathname_extname_21.$$arity = 0);
     
     Opal.def(self, '$<=>', TMP_Pathname_$lt$eq$gt_22 = function(other) {
@@ -416,7 +416,7 @@ if (arg == null) arg = nil;
     Opal.alias(self, "===", "==");
     Opal.alias(self, "to_str", "to_path");
     Opal.alias(self, "to_s", "to_path");
-    Opal.const_set($nesting[0], 'SAME_PATHS', (function() {if ($truthy(Opal.const_get_qualified(Opal.const_get_relative($nesting, 'File'), 'FNM_SYSCASE')['$nonzero?']())) {
+    Opal.const_set($nesting[0], 'SAME_PATHS', (function() {if ($truthy($$$($$($nesting, 'File'), 'FNM_SYSCASE')['$nonzero?']())) {
       return $send(self, 'proc', [], (TMP_Pathname_23 = function(a, b){var self = TMP_Pathname_23.$$s || this;
 if (a == null) a = nil;if (b == null) b = nil;
       return a.$casecmp(b)['$=='](0)}, TMP_Pathname_23.$$s = self, TMP_Pathname_23.$$arity = 2, TMP_Pathname_23))
@@ -448,29 +448,29 @@ if (a == null) a = nil;if (b == null) b = nil;
         if ($truthy(basename['$!=']("."))) {
           base_names.$unshift(basename)};
       };
-      if ($truthy(Opal.const_get_relative($nesting, 'SAME_PATHS')['$[]'](dest_prefix, base_prefix))) {
+      if ($truthy($$($nesting, 'SAME_PATHS')['$[]'](dest_prefix, base_prefix))) {
       } else {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "different prefix: " + (dest_prefix.$inspect()) + " and " + (base_directory.$inspect()))
+        self.$raise($$($nesting, 'ArgumentError'), "" + "different prefix: " + (dest_prefix.$inspect()) + " and " + (base_directory.$inspect()))
       };
-      while ($truthy(($truthy($b = ($truthy($c = dest_names['$empty?']()['$!']()) ? base_names['$empty?']()['$!']() : $c)) ? Opal.const_get_relative($nesting, 'SAME_PATHS')['$[]'](dest_names.$first(), base_names.$first()) : $b))) {
+      while ($truthy(($truthy($b = ($truthy($c = dest_names['$empty?']()['$!']()) ? base_names['$empty?']()['$!']() : $c)) ? $$($nesting, 'SAME_PATHS')['$[]'](dest_names.$first(), base_names.$first()) : $b))) {
         
         dest_names.$shift();
         base_names.$shift();
       };
       if ($truthy(base_names['$include?'](".."))) {
-        self.$raise(Opal.const_get_relative($nesting, 'ArgumentError'), "" + "base_directory has ..: " + (base_directory.$inspect()))};
+        self.$raise($$($nesting, 'ArgumentError'), "" + "base_directory has ..: " + (base_directory.$inspect()))};
       base_names.$fill("..");
       relpath_names = $rb_plus(base_names, dest_names);
       if ($truthy(relpath_names['$empty?']())) {
-        return Opal.const_get_relative($nesting, 'Pathname').$new(".")
+        return $$($nesting, 'Pathname').$new(".")
       } else {
-        return Opal.const_get_relative($nesting, 'Pathname').$new($send(Opal.const_get_relative($nesting, 'File'), 'join', Opal.to_a(relpath_names)))
+        return $$($nesting, 'Pathname').$new($send($$($nesting, 'File'), 'join', Opal.to_a(relpath_names)))
       };
     }, TMP_Pathname_relative_path_from_25.$$arity = 1);
     return (Opal.def(self, '$entries', TMP_Pathname_entries_27 = function $$entries() {
       var TMP_26, self = this;
 
-      return $send(Opal.const_get_relative($nesting, 'Dir').$entries(self.path), 'map', [], (TMP_26 = function(f){var self = TMP_26.$$s || this;
+      return $send($$($nesting, 'Dir').$entries(self.path), 'map', [], (TMP_26 = function(f){var self = TMP_26.$$s || this;
 if (f == null) f = nil;
       return self.$class().$new(f)}, TMP_26.$$s = self, TMP_26.$$arity = 1, TMP_26))
     }, TMP_Pathname_entries_27.$$arity = 0), nil) && 'entries';
@@ -484,7 +484,7 @@ if (f == null) f = nil;
     Opal.def(self, '$Pathname', TMP_Kernel_Pathname_28 = function $$Pathname(path) {
       var self = this;
 
-      return Opal.const_get_relative($nesting, 'Pathname').$new(path)
+      return $$($nesting, 'Pathname').$new(path)
     }, TMP_Kernel_Pathname_28.$$arity = 1)
   })($nesting[0], $nesting);
 };
