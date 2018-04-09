@@ -20,7 +20,7 @@ if (process.env.SKIP_BUILD) {
 }
 
 // copy
-const files = ['base64.js', 'nodejs.js', 'opal.js', 'pathname.js'];
+const files = ['base64.js', 'nodejs.js', 'opal.js', 'pathname.js', 'stringio.js'];
 files.forEach((file) => {
   console.log(`Copy ${opalDirectory}/build/${file} to src/${file}`);
   fs.createReadStream(`${opalDirectory}/build/${file}`)

@@ -6439,10 +6439,17 @@ Opal.modules["corelib/regexp"] = function(Opal) {
       }
 
       if (pos === undefined) {
-        pos = 0;
-      } else {
-        pos = $$($nesting, 'Opal').$coerce_to(pos, $$($nesting, 'Integer'), "to_int");
+        if (string === nil) return ($gvars["~"] = nil);
+        var m = self.exec($$($nesting, 'Opal').$coerce_to(string, $$($nesting, 'String'), "to_str"));
+        if (m) {
+          ($gvars["~"] = $$($nesting, 'MatchData').$new(self, m));
+          return block === nil ? $gvars["~"] : Opal.yield1(block, $gvars["~"]);
+        } else {
+          return ($gvars["~"] = nil);
+        }
       }
+
+      pos = $$($nesting, 'Opal').$coerce_to(pos, $$($nesting, 'Integer'), "to_int");
 
       if (string === nil) {
         return ($gvars["~"] = nil);
@@ -6458,12 +6465,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
       }
 
       var source = self.source;
-      var flags = 'g';
-      // m flag + a . in Ruby will match white space, but in JS, it only matches beginning/ending of lines, so we get the equivalent here
-      if (self.multiline) {
-        source = source.replace('.', "[\\s\\S]");
-        flags += 'm';
-      }
+      var flags = self.multiline ? 'gm' : 'g';
 
       // global RegExp maintains state, so not using self/this
       var md, re = new RegExp(source, flags + (self.ignoreCase ? 'i' : ''));
@@ -6474,7 +6476,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
           return ($gvars["~"] = nil);
         }
         if (md.index >= pos) {
-          ($gvars["~"] = $$($nesting, 'MatchData').$new(re, md))
+          ($gvars["~"] = $$($nesting, 'MatchData').$new(re, md));
           return block === nil ? $gvars["~"] : Opal.yield1(block, $gvars["~"]);
         }
         re.lastIndex = md.index + 1;
@@ -6491,10 +6493,10 @@ Opal.modules["corelib/regexp"] = function(Opal) {
       }
 
       if (pos === undefined) {
-        pos = 0;
-      } else {
-        pos = $$($nesting, 'Opal').$coerce_to(pos, $$($nesting, 'Integer'), "to_int");
+        return string === nil ? false : self.test($$($nesting, 'Opal').$coerce_to(string, $$($nesting, 'String'), "to_str"));
       }
+
+      pos = $$($nesting, 'Opal').$coerce_to(pos, $$($nesting, 'Integer'), "to_int");
 
       if (string === nil) {
         return false;
@@ -6510,12 +6512,7 @@ Opal.modules["corelib/regexp"] = function(Opal) {
       }
 
       var source = self.source;
-      var flags = 'g';
-      // m flag + a . in Ruby will match white space, but in JS, it only matches beginning/ending of lines, so we get the equivalent here
-      if (self.multiline) {
-        source = source.replace('.', "[\\s\\S]");
-        flags += 'm';
-      }
+      var flags = self.multiline ? 'gm' : 'g';
 
       // global RegExp maintains state, so not using self/this
       var md, re = new RegExp(source, flags + (self.ignoreCase ? 'i' : ''));
