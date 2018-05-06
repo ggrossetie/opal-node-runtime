@@ -6,6 +6,4 @@ require('./base64.js');
 require('./open-uri.js');
 require('./stringio.js');
 
-Opal.require('opal');
-
 module.exports.Opal = Opal;

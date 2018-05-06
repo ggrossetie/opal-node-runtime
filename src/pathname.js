@@ -267,7 +267,7 @@ Opal.modules["pathname"] = function(Opal) {
     Opal.def(self, '$expand_path', TMP_Pathname_expand_path_12 = function $$expand_path() {
       var self = this;
 
-      return $$($nesting, 'File').$expand_path(self.path)
+      return $$($nesting, 'Pathname').$new($$($nesting, 'File').$expand_path(self.path))
     }, TMP_Pathname_expand_path_12.$$arity = 0);
     
     Opal.def(self, '$+', TMP_Pathname_$_13 = function(other) {
