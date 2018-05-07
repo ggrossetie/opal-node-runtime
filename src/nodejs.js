@@ -178,7 +178,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       for (var $arg_idx = 0; $arg_idx < $args_len; $arg_idx++) {
         paths[$arg_idx - 0] = arguments[$arg_idx];
       }
-      return __path__.join.apply(__path__, paths)
+      return __path__.posix.join.apply(__path__, paths)
     }, TMP_File_join_5.$$arity = -1);
     Opal.defs(self, '$directory?', TMP_File_directory$q_6 = function(path) {
       var self = this, result = nil, realpath = nil;
