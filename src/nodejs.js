@@ -531,7 +531,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
     return (Opal.defs(self, '$binread', TMP_IO_binread_4 = function $$binread(path) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.readFileSync(path).toString('binary')})
+      return executeIOAction(function(){return __fs__.readFileSync(path).toString('utf-8')})
     }, TMP_IO_binread_4.$$arity = 1), nil) && 'binread';
   })($nesting[0], null, $nesting);
   
