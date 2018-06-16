@@ -10,9 +10,10 @@ Opal.modules["corelib/comparable"] = function(Opal) {
 
   Opal.add_stubs(['$===', '$>', '$<', '$equal?', '$<=>', '$normalize', '$raise', '$class']);
   return (function($base, $parent_nesting) {
-    var $Comparable, self = $Comparable = $module($base, 'Comparable');
+    function $Comparable() {};
+    var self = $Comparable = $module($base, 'Comparable', $Comparable);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Comparable_normalize_1, TMP_Comparable_$eq$eq_2, TMP_Comparable_$gt_3, TMP_Comparable_$gt$eq_4, TMP_Comparable_$lt_5, TMP_Comparable_$lt$eq_6, TMP_Comparable_between$q_7, TMP_Comparable_clamp_8;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Comparable_normalize_1, TMP_Comparable_$eq$eq_2, TMP_Comparable_$gt_3, TMP_Comparable_$gt$eq_4, TMP_Comparable_$lt_5, TMP_Comparable_$lt$eq_6, TMP_Comparable_between$q_7, TMP_Comparable_clamp_8;
 
     
     Opal.defs(self, '$normalize', TMP_Comparable_normalize_1 = function $$normalize(what) {
@@ -149,7 +150,7 @@ Opal.modules["pathname"] = function(Opal) {
     function $Pathname(){};
     var self = $Pathname = $klass($base, $super, 'Pathname', $Pathname);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Pathname_initialize_1, TMP_Pathname_$eq$eq_2, TMP_Pathname_absolute$q_3, TMP_Pathname_relative$q_4, TMP_Pathname_chop_basename_5, TMP_Pathname_root$q_6, TMP_Pathname_parent_7, TMP_Pathname_sub_8, TMP_Pathname_cleanpath_9, TMP_Pathname_to_path_10, TMP_Pathname_hash_11, TMP_Pathname_expand_path_12, TMP_Pathname_$_13, TMP_Pathname_plus_14, TMP_Pathname_join_16, TMP_Pathname_split_17, TMP_Pathname_dirname_18, TMP_Pathname_basename_19, TMP_Pathname_directory$q_20, TMP_Pathname_extname_21, TMP_Pathname_$lt$eq$gt_22, TMP_Pathname_23, TMP_Pathname_24, TMP_Pathname_relative_path_from_25, TMP_Pathname_entries_27;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Pathname_initialize_1, TMP_Pathname_$eq$eq_2, TMP_Pathname_absolute$q_3, TMP_Pathname_relative$q_4, TMP_Pathname_chop_basename_5, TMP_Pathname_root$q_6, TMP_Pathname_parent_7, TMP_Pathname_sub_8, TMP_Pathname_cleanpath_9, TMP_Pathname_to_path_10, TMP_Pathname_hash_11, TMP_Pathname_expand_path_12, TMP_Pathname_$_13, TMP_Pathname_plus_14, TMP_Pathname_join_16, TMP_Pathname_split_17, TMP_Pathname_dirname_18, TMP_Pathname_basename_19, TMP_Pathname_directory$q_20, TMP_Pathname_extname_21, TMP_Pathname_$lt$eq$gt_22, TMP_Pathname_23, TMP_Pathname_24, TMP_Pathname_relative_path_from_25, TMP_Pathname_entries_27;
 
     def.path = nil;
     
@@ -476,9 +477,10 @@ if (f == null) f = nil;
     }, TMP_Pathname_entries_27.$$arity = 0), nil) && 'entries';
   })($nesting[0], null, $nesting);
   return (function($base, $parent_nesting) {
-    var $Kernel, self = $Kernel = $module($base, 'Kernel');
+    function $Kernel() {};
+    var self = $Kernel = $module($base, 'Kernel', $Kernel);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Kernel_Pathname_28;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Kernel_Pathname_28;
 
     
     Opal.def(self, '$Pathname', TMP_Kernel_Pathname_28 = function $$Pathname(path) {

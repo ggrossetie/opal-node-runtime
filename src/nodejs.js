@@ -6,9 +6,10 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
   
   Opal.exit = process.exit;
   (function($base, $parent_nesting) {
-    var $Kernel, self = $Kernel = $module($base, 'Kernel');
+    function $Kernel() {};
+    var self = $Kernel = $module($base, 'Kernel', $Kernel);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Kernel_caller_1, TMP_Kernel_node_require_2;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Kernel_caller_1, TMP_Kernel_node_require_2;
 
     
     Opal.const_set($nesting[0], 'NODE_REQUIRE', require);
@@ -111,7 +112,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     function $File(){};
     var self = $File = $klass($base, $super, 'File', $File);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_File_read_1, TMP_File_write_2, TMP_File_exist$q_3, TMP_File_realpath_4, TMP_File_join_5, TMP_File_directory$q_6, TMP_File_file$q_7, TMP_File_readable$q_8, TMP_File_size_9, TMP_File_open_10, TMP_File_stat_11, TMP_File_mtime_12, TMP_File_symlink$q_13, TMP_File_initialize_14, TMP_File_read_15, TMP_File_each_line_16, TMP_File_write_17, TMP_File_flush_18, TMP_File_close_19, TMP_File_mtime_20;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_File_read_1, TMP_File_write_2, TMP_File_exist$q_3, TMP_File_realpath_4, TMP_File_join_5, TMP_File_directory$q_6, TMP_File_file$q_7, TMP_File_readable$q_8, TMP_File_size_9, TMP_File_open_10, TMP_File_stat_11, TMP_File_mtime_12, TMP_File_symlink$q_13, TMP_File_initialize_14, TMP_File_read_15, TMP_File_each_line_16, TMP_File_write_17, TMP_File_flush_18, TMP_File_close_19, TMP_File_mtime_20;
     if (self.__fs__ == null) self.__fs__ = nil;
     if (self.__path__ == null) self.__path__ = nil;
 
@@ -371,7 +372,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     function $Stat(){};
     var self = $Stat = $klass($base, $super, 'Stat', $Stat);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_Stat_initialize_21, TMP_Stat_file$q_22, TMP_Stat_mtime_23;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Stat_initialize_21, TMP_Stat_file$q_22, TMP_Stat_mtime_23;
     if (self.__fs__ == null) self.__fs__ = nil;
 
     def.path = nil;
@@ -407,7 +408,7 @@ Opal.modules["nodejs/dir"] = function(Opal) {
     function $Dir(){};
     var self = $Dir = $klass($base, $super, 'Dir', $Dir);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting);
+    var def = self.prototype, $nesting = [self].concat($parent_nesting);
     if (self.__glob__ == null) self.__glob__ = nil;
     if (self.__fs__ == null) self.__fs__ = nil;
 
@@ -417,7 +418,7 @@ Opal.modules["nodejs/dir"] = function(Opal) {
     var __glob__ = self.__glob__;
     var __fs__ = self.__fs__;
     return (function(self, $parent_nesting) {
-      var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_$$_1, TMP_pwd_2, TMP_mkdir_3, TMP_entries_4, TMP_glob_6;
+      var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_$$_1, TMP_pwd_2, TMP_mkdir_3, TMP_entries_4, TMP_glob_6;
 
       
       
@@ -502,7 +503,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
     function $IO(){};
     var self = $IO = $klass($base, $super, 'IO', $IO);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_IO_initialize_1, TMP_IO_write_2, TMP_IO_read_3, TMP_IO_binread_4;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_IO_initialize_1, TMP_IO_write_2, TMP_IO_read_3, TMP_IO_binread_4;
     if (self.__fs__ == null) self.__fs__ = nil;
 
     
@@ -531,7 +532,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
     return (Opal.defs(self, '$binread', TMP_IO_binread_4 = function $$binread(path) {
       var self = this;
 
-      return executeIOAction(function(){return __fs__.readFileSync(path).toString('utf-8')})
+      return executeIOAction(function(){return __fs__.readFileSync(path).toString('binary')})
     }, TMP_IO_binread_4.$$arity = 1), nil) && 'binread';
   })($nesting[0], null, $nesting);
   
@@ -562,9 +563,10 @@ Opal.modules["nodejs/open-uri"] = function(Opal) {
 
   Opal.add_stubs(['$node_require']);
   return (function($base, $parent_nesting) {
-    var $OpenURI, self = $OpenURI = $module($base, 'OpenURI');
+    function $OpenURI() {};
+    var self = $OpenURI = $module($base, 'OpenURI', $OpenURI);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_OpenURI_request_1;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_OpenURI_request_1;
     if (self.__xmlhttprequest__ == null) self.__xmlhttprequest__ = nil;
 
     
@@ -590,9 +592,10 @@ Opal.modules["nodejs"] = function(Opal) {
   Opal.add_stubs(['$require']);
   
   (function($base, $parent_nesting) {
-    var $NodeJS, self = $NodeJS = $module($base, 'NodeJS');
+    function $NodeJS() {};
+    var self = $NodeJS = $module($base, 'NodeJS', $NodeJS);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting);
+    var def = self.prototype, $nesting = [self].concat($parent_nesting);
 
     nil
   })($nesting[0], $nesting);

@@ -19,7 +19,7 @@ Opal.modules["stringio"] = function(Opal) {
     function $StringIO(){};
     var self = $StringIO = $klass($base, $super, 'StringIO', $StringIO);
 
-    var def = self.$$proto, $nesting = [self].concat($parent_nesting), TMP_StringIO_open_1, TMP_StringIO_initialize_2, TMP_StringIO_eof$q_3, TMP_StringIO_seek_4, TMP_StringIO_tell_5, TMP_StringIO_rewind_6, TMP_StringIO_each_byte_7, TMP_StringIO_each_char_8, TMP_StringIO_each_9, TMP_StringIO_write_10, TMP_StringIO_read_11, TMP_StringIO_close_12, TMP_StringIO_close_read_13, TMP_StringIO_close_write_14, TMP_StringIO_closed$q_15, TMP_StringIO_closed_read$q_16, TMP_StringIO_closed_write$q_17, TMP_StringIO_check_writable_18, TMP_StringIO_check_readable_19;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_StringIO_open_1, TMP_StringIO_initialize_2, TMP_StringIO_eof$q_3, TMP_StringIO_seek_4, TMP_StringIO_tell_5, TMP_StringIO_rewind_6, TMP_StringIO_each_byte_7, TMP_StringIO_each_char_8, TMP_StringIO_each_9, TMP_StringIO_write_10, TMP_StringIO_read_11, TMP_StringIO_close_12, TMP_StringIO_close_read_13, TMP_StringIO_close_write_14, TMP_StringIO_closed$q_15, TMP_StringIO_closed_read$q_16, TMP_StringIO_closed_write$q_17, TMP_StringIO_check_writable_18, TMP_StringIO_check_readable_19;
 
     def.position = def.string = def.closed = nil;
     
