@@ -10,9 +10,6 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
     var self = $Kernel = $module($base, 'Kernel', $Kernel);
 
     var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Kernel_caller_1, TMP_Kernel_node_require_2;
-
-    
-    Opal.const_set($nesting[0], 'NODE_REQUIRE', require);
     
     Opal.def(self, '$caller', TMP_Kernel_caller_1 = function $$caller($a) {
       var $post_args, args, self = this;
@@ -34,13 +31,6 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
     ;
     }, TMP_Kernel_caller_1.$$arity = -1);
     
-    Opal.def(self, '$node_require', TMP_Kernel_node_require_2 = function $$node_require(path) {
-      var self = this;
-
-      
-      self.$warn("[DEPRECATION] node_require is deprecated. Please use `require('module')` instead.");
-      return $$($nesting, 'NODE_REQUIRE')(path.$to_str());
-    }, TMP_Kernel_node_require_2.$$arity = 1);
   })($nesting[0], $nesting);
   Opal.const_set($nesting[0], 'ARGV', process.argv.slice(2));
   Opal.const_set($nesting[0], 'ENV', $$($nesting, 'Object').$new());
