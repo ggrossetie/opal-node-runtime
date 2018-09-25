@@ -2,7 +2,7 @@
 Opal.modules["nodejs/kernel"] = function(Opal) {
   var TMP_$$$eq_3, TMP_$$_4, self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module;
 
-  Opal.add_stubs(['$to_str', '$new', '$to_s']);
+  Opal.add_stubs(['$warn', '$to_str', '$new', '$to_s']);
   
   Opal.exit = process.exit;
   (function($base, $parent_nesting) {
@@ -37,7 +37,9 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
     Opal.def(self, '$node_require', TMP_Kernel_node_require_2 = function $$node_require(path) {
       var self = this;
 
-      return $$($nesting, 'NODE_REQUIRE')(path.$to_str())
+      
+      self.$warn("[DEPRECATION] node_require is deprecated. Please use `require('module')` instead.");
+      return $$($nesting, 'NODE_REQUIRE')(path.$to_str());
     }, TMP_Kernel_node_require_2.$$arity = 1);
   })($nesting[0], $nesting);
   Opal.const_set($nesting[0], 'ARGV', process.argv.slice(2));
@@ -58,7 +60,7 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
 Opal.modules["nodejs/file"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$node_require', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$delete', '$match?', '$sub', '$attr_reader', '$to_enum', '$read', '$chomp', '$each_line']);
+  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$delete', '$match?', '$sub', '$attr_reader', '$to_a', '$each_line', '$to_enum', '$read', '$chomp']);
   
   
   var warnings = {}, errno_code, errno_codes = [
@@ -111,7 +113,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     function $File(){};
     var self = $File = $klass($base, $super, 'File', $File);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_File_read_1, TMP_File_write_2, TMP_File_exist$q_3, TMP_File_realpath_4, TMP_File_join_5, TMP_File_directory$q_6, TMP_File_file$q_7, TMP_File_readable$q_8, TMP_File_size_9, TMP_File_open_10, TMP_File_stat_11, TMP_File_mtime_12, TMP_File_symlink$q_13, TMP_File_initialize_14, TMP_File_read_15, TMP_File_each_line_16, TMP_File_write_17, TMP_File_flush_18, TMP_File_close_19, TMP_File_mtime_20;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_File_read_1, TMP_File_write_2, TMP_File_exist$q_3, TMP_File_realpath_4, TMP_File_join_5, TMP_File_directory$q_6, TMP_File_file$q_7, TMP_File_readable$q_8, TMP_File_size_9, TMP_File_open_10, TMP_File_stat_11, TMP_File_mtime_12, TMP_File_symlink$q_13, TMP_File_initialize_14, TMP_File_read_15, TMP_File_readlines_16, TMP_File_each_line_17, TMP_File_write_18, TMP_File_flush_19, TMP_File_close_20, TMP_File_mtime_21;
     if (self.__fs__ == null) self.__fs__ = nil;
     if (self.__path__ == null) self.__path__ = nil;
 
@@ -119,8 +121,8 @@ Opal.modules["nodejs/file"] = function(Opal) {
     
     self.$include($$$($$$('::', 'IO'), 'Writable'));
     self.$include($$$($$$('::', 'IO'), 'Readable'));
-    self.__fs__ = self.$node_require("fs");
-    self.__path__ = self.$node_require("path");
+    self.__fs__ = require('fs');
+    self.__path__ = require('path');
     var __fs__ = self.__fs__;
     var __path__ = self.__path__;
     if ($truthy(__path__.sep !== $$($nesting, 'Separator'))) {
@@ -308,14 +310,26 @@ Opal.modules["nodejs/file"] = function(Opal) {
       }
     }, TMP_File_read_15.$$arity = 0);
     
-    Opal.def(self, '$each_line', TMP_File_each_line_16 = function $$each_line(separator) {
-      var $iter = TMP_File_each_line_16.$$p, block = $iter || nil, self = this, lines = nil;
+    Opal.def(self, '$readlines', TMP_File_readlines_16 = function $$readlines(separator) {
+      var self = this;
       if ($gvars["/"] == null) $gvars["/"] = nil;
 
-      if ($iter) TMP_File_each_line_16.$$p = null;
       
       
-      if ($iter) TMP_File_each_line_16.$$p = null;;
+      if (separator == null) {
+        separator = $gvars["/"];
+      };
+      return self.$each_line(separator).$to_a();
+    }, TMP_File_readlines_16.$$arity = -1);
+    
+    Opal.def(self, '$each_line', TMP_File_each_line_17 = function $$each_line(separator) {
+      var $iter = TMP_File_each_line_17.$$p, block = $iter || nil, self = this, lines = nil;
+      if ($gvars["/"] == null) $gvars["/"] = nil;
+
+      if ($iter) TMP_File_each_line_17.$$p = null;
+      
+      
+      if ($iter) TMP_File_each_line_17.$$p = null;;
       
       if (separator == null) {
         separator = $gvars["/"];
@@ -348,61 +362,61 @@ Opal.modules["nodejs/file"] = function(Opal) {
       ;
         return self;
       } else {
-        return self.$read().$each_line()
+        return self.$read().$each_line(separator)
       };
-    }, TMP_File_each_line_16.$$arity = -1);
+    }, TMP_File_each_line_17.$$arity = -1);
     
-    Opal.def(self, '$write', TMP_File_write_17 = function $$write(string) {
+    Opal.def(self, '$write', TMP_File_write_18 = function $$write(string) {
       var self = this;
 
       return executeIOAction(function(){return __fs__.writeSync(self.fd, string)})
-    }, TMP_File_write_17.$$arity = 1);
+    }, TMP_File_write_18.$$arity = 1);
     
-    Opal.def(self, '$flush', TMP_File_flush_18 = function $$flush() {
+    Opal.def(self, '$flush', TMP_File_flush_19 = function $$flush() {
       var self = this;
 
       return executeIOAction(function(){return __fs__.fsyncSync(self.fd)})
-    }, TMP_File_flush_18.$$arity = 0);
+    }, TMP_File_flush_19.$$arity = 0);
     
-    Opal.def(self, '$close', TMP_File_close_19 = function $$close() {
+    Opal.def(self, '$close', TMP_File_close_20 = function $$close() {
       var self = this;
 
       return executeIOAction(function(){return __fs__.closeSync(self.fd)})
-    }, TMP_File_close_19.$$arity = 0);
-    return (Opal.def(self, '$mtime', TMP_File_mtime_20 = function $$mtime() {
+    }, TMP_File_close_20.$$arity = 0);
+    return (Opal.def(self, '$mtime', TMP_File_mtime_21 = function $$mtime() {
       var self = this;
 
       return executeIOAction(function(){return __fs__.statSync(self.path).mtime})
-    }, TMP_File_mtime_20.$$arity = 0), nil) && 'mtime';
+    }, TMP_File_mtime_21.$$arity = 0), nil) && 'mtime';
   })($nesting[0], $$($nesting, 'IO'), $nesting);
   return (function($base, $super, $parent_nesting) {
     function $Stat(){};
     var self = $Stat = $klass($base, $super, 'Stat', $Stat);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Stat_initialize_21, TMP_Stat_file$q_22, TMP_Stat_mtime_23;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Stat_initialize_22, TMP_Stat_file$q_23, TMP_Stat_mtime_24;
     if (self.__fs__ == null) self.__fs__ = nil;
 
     def.path = nil;
     
-    self.__fs__ = self.$node_require("fs");
+    self.__fs__ = require('fs');
     var __fs__ = self.__fs__;
     
-    Opal.def(self, '$initialize', TMP_Stat_initialize_21 = function $$initialize(path) {
+    Opal.def(self, '$initialize', TMP_Stat_initialize_22 = function $$initialize(path) {
       var self = this;
 
       return (self.path = path)
-    }, TMP_Stat_initialize_21.$$arity = 1);
+    }, TMP_Stat_initialize_22.$$arity = 1);
     
-    Opal.def(self, '$file?', TMP_Stat_file$q_22 = function() {
+    Opal.def(self, '$file?', TMP_Stat_file$q_23 = function() {
       var self = this;
 
       return executeIOAction(function(){return __fs__.statSync(self.path).isFile()})
-    }, TMP_Stat_file$q_22.$$arity = 0);
-    return (Opal.def(self, '$mtime', TMP_Stat_mtime_23 = function $$mtime() {
+    }, TMP_Stat_file$q_23.$$arity = 0);
+    return (Opal.def(self, '$mtime', TMP_Stat_mtime_24 = function $$mtime() {
       var self = this;
 
       return executeIOAction(function(){return __fs__.statSync(self.path).mtime})
-    }, TMP_Stat_mtime_23.$$arity = 0), nil) && 'mtime';
+    }, TMP_Stat_mtime_24.$$arity = 0), nil) && 'mtime';
   })($$($nesting, 'File'), null, $nesting);
 };
 
@@ -410,7 +424,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
 Opal.modules["nodejs/dir"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send;
 
-  Opal.add_stubs(['$node_require', '$respond_to?', '$flat_map', '$to_path', '$coerce_to!']);
+  Opal.add_stubs(['$respond_to?', '$flat_map', '$to_path', '$coerce_to!']);
   return (function($base, $super, $parent_nesting) {
     function $Dir(){};
     var self = $Dir = $klass($base, $super, 'Dir', $Dir);
@@ -420,8 +434,8 @@ Opal.modules["nodejs/dir"] = function(Opal) {
     if (self.__fs__ == null) self.__fs__ = nil;
 
     
-    self.__glob__ = self.$node_require("glob");
-    self.__fs__ = self.$node_require("fs");
+    self.__glob__ = require('glob');
+    self.__fs__ = require('fs');
     var __glob__ = self.__glob__;
     var __fs__ = self.__fs__;
     return (function(self, $parent_nesting) {
@@ -492,7 +506,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
   }
   var TMP_5, TMP_6, self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $lambda = Opal.lambda, $send = Opal.send, $writer = nil;
 
-  Opal.add_stubs(['$node_require', '$attr_reader', '$write', '$read', '$write_proc=', '$-', '$tty=']);
+  Opal.add_stubs(['$attr_reader', '$write', '$read', '$write_proc=', '$-', '$tty=']);
   
   
   function executeIOAction(action) {
@@ -518,7 +532,7 @@ Opal.modules["nodejs/io"] = function(Opal) {
     if (self.__fs__ == null) self.__fs__ = nil;
 
     
-    self.__fs__ = self.$node_require("fs");
+    self.__fs__ = require('fs');
     var __fs__ = self.__fs__;
     self.$attr_reader("eof");
     self.$attr_reader("lineno");
@@ -582,7 +596,6 @@ Opal.modules["nodejs/io"] = function(Opal) {
 Opal.modules["nodejs/open-uri"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module;
 
-  Opal.add_stubs(['$node_require']);
   return (function($base, $parent_nesting) {
     function $OpenURI() {};
     var self = $OpenURI = $module($base, 'OpenURI', $OpenURI);
@@ -591,7 +604,7 @@ Opal.modules["nodejs/open-uri"] = function(Opal) {
     if (self.__xmlhttprequest__ == null) self.__xmlhttprequest__ = nil;
 
     
-    self.__xmlhttprequest__ = self.$node_require("xmlhttprequest");
+    self.__xmlhttprequest__ = require('xmlhttprequest');
     var __XMLHttpRequest__ = self.__xmlhttprequest__.XMLHttpRequest;
     Opal.defs(self, '$request', TMP_OpenURI_request_1 = function $$request(uri) {
       var self = this;
