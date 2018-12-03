@@ -16,7 +16,8 @@ for (let index in fundamentalObjects) {
   backup[fundamentalObject.name] = {
     call: fundamentalObject.call,
     apply: fundamentalObject.apply,
-    bind: fundamentalObject.bind
+    bind: fundamentalObject.bind,
+    toString: fundamentalObject.toString
   }
 }
 require('./opal.js');
@@ -32,6 +33,9 @@ for (let index in fundamentalObjects) {
   }
   if (typeof fundamentalObject.bind !== 'function') {
     fundamentalObject.bind = backup[name].bind;
+  }
+  if (backup[name].toString) {
+    fundamentalObject.toString = backup[name].toString;
   }
 }
 require('./nodejs.js');
