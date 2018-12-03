@@ -1,6 +1,24 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const fundamentalObjects = [
+  Function,
+  Boolean,
+  Error,
+  Number,
+  Date,
+  String,
+  RegExp,
+  Array
+];
+
+// Save the current value of toString() for each object, before the import of Opal
+const fundamentalToStringValues = []
+for (let index in fundamentalObjects) {
+  const fundamentalObject = fundamentalObjects[index];
+  fundamentalToStringValues.push(fundamentalObject.toString());
+}
+
 const Opal = require('../src/index').Opal;
 
 describe('Opal Node Runtime', function () {
@@ -11,21 +29,14 @@ describe('Opal Node Runtime', function () {
     });
 
     it('should preserve Function methods', function() {
-      const fundamentalObjects = [
-        Function,
-        Boolean,
-        Error,
-        Number,
-        Date,
-        String,
-        RegExp,
-        Array
-      ];
+
       for (let index in fundamentalObjects) {
         const fundamentalObject = fundamentalObjects[index];
         expect(fundamentalObject.call, `${fundamentalObject.name}.call should be a Function`).to.be.an.instanceof(Function);
         expect(fundamentalObject.apply, `${fundamentalObject.name}.apply should be a Function`).to.be.an.instanceof(Function);
         expect(fundamentalObject.bind, `${fundamentalObject.name}.bind should be a Function`).to.be.an.instanceof(Function);
+        expect(fundamentalObject.toString(), `${fundamentalObject.name}.toString should be native function`).to.be.equal(fundamentalToStringValues[index]);
+        expect(fundamentalObject.toString()).to.equal(`function ${fundamentalObject.name}() { [native code] }`);
       }
     });
   });
