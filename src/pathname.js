@@ -13,10 +13,10 @@ Opal.modules["corelib/comparable"] = function(Opal) {
     function $Comparable() {};
     var self = $Comparable = $module($base, 'Comparable', $Comparable);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Comparable_normalize_1, TMP_Comparable_$eq$eq_2, TMP_Comparable_$gt_3, TMP_Comparable_$gt$eq_4, TMP_Comparable_$lt_5, TMP_Comparable_$lt$eq_6, TMP_Comparable_between$q_7, TMP_Comparable_clamp_8;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Comparable_normalize$1, $Comparable_$eq_eq$2, $Comparable_$gt$3, $Comparable_$gt_eq$4, $Comparable_$lt$5, $Comparable_$lt_eq$6, $Comparable_between$ques$7, $Comparable_clamp$8;
 
     
-    Opal.defs(self, '$normalize', TMP_Comparable_normalize_1 = function $$normalize(what) {
+    Opal.defs(self, '$normalize', $Comparable_normalize$1 = function $$normalize(what) {
       var self = this;
 
       
@@ -27,9 +27,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       if ($truthy($rb_lt(what, 0))) {
         return -1};
       return 0;
-    }, TMP_Comparable_normalize_1.$$arity = 1);
+    }, $Comparable_normalize$1.$$arity = 1);
     
-    Opal.def(self, '$==', TMP_Comparable_$eq$eq_2 = function(other) {
+    Opal.def(self, '$==', $Comparable_$eq_eq$2 = function(other) {
       var self = this, cmp = nil;
 
       try {
@@ -59,9 +59,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
           } finally { Opal.pop_exception() }
         } else { throw $err; }
       }
-    }, TMP_Comparable_$eq$eq_2.$$arity = 1);
+    }, $Comparable_$eq_eq$2.$$arity = 1);
     
-    Opal.def(self, '$>', TMP_Comparable_$gt_3 = function(other) {
+    Opal.def(self, '$>', $Comparable_$gt$3 = function(other) {
       var self = this, cmp = nil;
 
       
@@ -70,9 +70,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
         self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
       return $$($nesting, 'Comparable').$normalize(cmp) > 0;
-    }, TMP_Comparable_$gt_3.$$arity = 1);
+    }, $Comparable_$gt$3.$$arity = 1);
     
-    Opal.def(self, '$>=', TMP_Comparable_$gt$eq_4 = function(other) {
+    Opal.def(self, '$>=', $Comparable_$gt_eq$4 = function(other) {
       var self = this, cmp = nil;
 
       
@@ -81,9 +81,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
         self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
       return $$($nesting, 'Comparable').$normalize(cmp) >= 0;
-    }, TMP_Comparable_$gt$eq_4.$$arity = 1);
+    }, $Comparable_$gt_eq$4.$$arity = 1);
     
-    Opal.def(self, '$<', TMP_Comparable_$lt_5 = function(other) {
+    Opal.def(self, '$<', $Comparable_$lt$5 = function(other) {
       var self = this, cmp = nil;
 
       
@@ -92,9 +92,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
         self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
       return $$($nesting, 'Comparable').$normalize(cmp) < 0;
-    }, TMP_Comparable_$lt_5.$$arity = 1);
+    }, $Comparable_$lt$5.$$arity = 1);
     
-    Opal.def(self, '$<=', TMP_Comparable_$lt$eq_6 = function(other) {
+    Opal.def(self, '$<=', $Comparable_$lt_eq$6 = function(other) {
       var self = this, cmp = nil;
 
       
@@ -103,9 +103,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
         self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + (self.$class()) + " with " + (other.$class()) + " failed")
       };
       return $$($nesting, 'Comparable').$normalize(cmp) <= 0;
-    }, TMP_Comparable_$lt$eq_6.$$arity = 1);
+    }, $Comparable_$lt_eq$6.$$arity = 1);
     
-    Opal.def(self, '$between?', TMP_Comparable_between$q_7 = function(min, max) {
+    Opal.def(self, '$between?', $Comparable_between$ques$7 = function(min, max) {
       var self = this;
 
       
@@ -114,9 +114,9 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       if ($rb_gt(self, max)) {
         return false};
       return true;
-    }, TMP_Comparable_between$q_7.$$arity = 2);
+    }, $Comparable_between$ques$7.$$arity = 2);
     
-    Opal.def(self, '$clamp', TMP_Comparable_clamp_8 = function $$clamp(min, max) {
+    Opal.def(self, '$clamp', $Comparable_clamp$8 = function $$clamp(min, max) {
       var self = this, cmp = nil;
 
       
@@ -132,7 +132,7 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       if ($truthy($rb_gt($$($nesting, 'Comparable').$normalize(self['$<=>'](max)), 0))) {
         return max};
       return self;
-    }, TMP_Comparable_clamp_8.$$arity = 2);
+    }, $Comparable_clamp$8.$$arity = 2);
   })($nesting[0], $nesting)
 };
 
@@ -150,14 +150,14 @@ Opal.modules["pathname"] = function(Opal) {
     function $Pathname(){};
     var self = $Pathname = $klass($base, $super, 'Pathname', $Pathname);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Pathname_initialize_1, TMP_Pathname_$eq$eq_2, TMP_Pathname_absolute$q_3, TMP_Pathname_relative$q_4, TMP_Pathname_chop_basename_5, TMP_Pathname_root$q_6, TMP_Pathname_parent_7, TMP_Pathname_sub_8, TMP_Pathname_cleanpath_9, TMP_Pathname_to_path_10, TMP_Pathname_hash_11, TMP_Pathname_expand_path_12, TMP_Pathname_$_13, TMP_Pathname_plus_14, TMP_Pathname_join_15, TMP_Pathname_split_17, TMP_Pathname_dirname_18, TMP_Pathname_basename_19, TMP_Pathname_directory$q_20, TMP_Pathname_extname_21, TMP_Pathname_$lt$eq$gt_22, TMP_Pathname_23, TMP_Pathname_24, TMP_Pathname_relative_path_from_25, TMP_Pathname_entries_26;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Pathname_initialize$1, $Pathname_$eq_eq$2, $Pathname_absolute$ques$3, $Pathname_relative$ques$4, $Pathname_chop_basename$5, $Pathname_root$ques$6, $Pathname_parent$7, $Pathname_sub$8, $Pathname_cleanpath$9, $Pathname_to_path$10, $Pathname_hash$11, $Pathname_expand_path$12, $Pathname_$plus$13, $Pathname_plus$14, $Pathname_join$15, $Pathname_split$17, $Pathname_dirname$18, $Pathname_basename$19, $Pathname_directory$ques$20, $Pathname_extname$21, $Pathname_$lt_eq_gt$22, $Pathname$23, $Pathname$24, $Pathname_relative_path_from$25, $Pathname_entries$26;
 
     def.path = nil;
     
     self.$include($$($nesting, 'Comparable'));
     Opal.const_set($nesting[0], 'SEPARATOR_PAT', new RegExp($$($nesting, 'Regexp').$quote($$$($$($nesting, 'File'), 'SEPARATOR'))));
     
-    Opal.def(self, '$initialize', TMP_Pathname_initialize_1 = function $$initialize(path) {
+    Opal.def(self, '$initialize', $Pathname_initialize$1 = function $$initialize(path) {
       var self = this;
 
       
@@ -177,22 +177,22 @@ Opal.modules["pathname"] = function(Opal) {
       } else {
         return nil
       };
-    }, TMP_Pathname_initialize_1.$$arity = 1);
+    }, $Pathname_initialize$1.$$arity = 1);
     self.$attr_reader("path");
     
-    Opal.def(self, '$==', TMP_Pathname_$eq$eq_2 = function(other) {
+    Opal.def(self, '$==', $Pathname_$eq_eq$2 = function(other) {
       var self = this;
 
       return other.$path()['$=='](self.path)
-    }, TMP_Pathname_$eq$eq_2.$$arity = 1);
+    }, $Pathname_$eq_eq$2.$$arity = 1);
     
-    Opal.def(self, '$absolute?', TMP_Pathname_absolute$q_3 = function() {
+    Opal.def(self, '$absolute?', $Pathname_absolute$ques$3 = function() {
       var self = this;
 
       return self['$relative?']()['$!']()
-    }, TMP_Pathname_absolute$q_3.$$arity = 0);
+    }, $Pathname_absolute$ques$3.$$arity = 0);
     
-    Opal.def(self, '$relative?', TMP_Pathname_relative$q_4 = function() {
+    Opal.def(self, '$relative?', $Pathname_relative$ques$4 = function() {
       var $a, $b, $c, self = this, path = nil, r = nil;
 
       
@@ -201,9 +201,9 @@ Opal.modules["pathname"] = function(Opal) {
         $c = r, $b = Opal.to_ary($c), (path = ($b[0] == null ? nil : $b[0])), $c
       };
       return path['$==']("");
-    }, TMP_Pathname_relative$q_4.$$arity = 0);
+    }, $Pathname_relative$ques$4.$$arity = 0);
     
-    Opal.def(self, '$chop_basename', TMP_Pathname_chop_basename_5 = function $$chop_basename(path) {
+    Opal.def(self, '$chop_basename', $Pathname_chop_basename$5 = function $$chop_basename(path) {
       var self = this, base = nil;
 
       
@@ -213,15 +213,15 @@ Opal.modules["pathname"] = function(Opal) {
       } else {
         return [path['$[]'](0, path.$rindex(base)), base]
       };
-    }, TMP_Pathname_chop_basename_5.$$arity = 1);
+    }, $Pathname_chop_basename$5.$$arity = 1);
     
-    Opal.def(self, '$root?', TMP_Pathname_root$q_6 = function() {
+    Opal.def(self, '$root?', $Pathname_root$ques$6 = function() {
       var self = this;
 
       return self.path['$==']("/")
-    }, TMP_Pathname_root$q_6.$$arity = 0);
+    }, $Pathname_root$ques$6.$$arity = 0);
     
-    Opal.def(self, '$parent', TMP_Pathname_parent_7 = function $$parent() {
+    Opal.def(self, '$parent', $Pathname_parent$7 = function $$parent() {
       var self = this, new_path = nil;
 
       
@@ -233,9 +233,9 @@ Opal.modules["pathname"] = function(Opal) {
           return "."
         }; return nil; })()};
       return $$($nesting, 'Pathname').$new(new_path);
-    }, TMP_Pathname_parent_7.$$arity = 0);
+    }, $Pathname_parent$7.$$arity = 0);
     
-    Opal.def(self, '$sub', TMP_Pathname_sub_8 = function $$sub($a) {
+    Opal.def(self, '$sub', $Pathname_sub$8 = function $$sub($a) {
       var $post_args, args, self = this;
 
       
@@ -244,33 +244,33 @@ Opal.modules["pathname"] = function(Opal) {
       
       args = $post_args;;
       return $$($nesting, 'Pathname').$new($send(self.path, 'sub', Opal.to_a(args)));
-    }, TMP_Pathname_sub_8.$$arity = -1);
+    }, $Pathname_sub$8.$$arity = -1);
     
-    Opal.def(self, '$cleanpath', TMP_Pathname_cleanpath_9 = function $$cleanpath() {
+    Opal.def(self, '$cleanpath', $Pathname_cleanpath$9 = function $$cleanpath() {
       var self = this;
 
       return Opal.normalize(self.path)
-    }, TMP_Pathname_cleanpath_9.$$arity = 0);
+    }, $Pathname_cleanpath$9.$$arity = 0);
     
-    Opal.def(self, '$to_path', TMP_Pathname_to_path_10 = function $$to_path() {
+    Opal.def(self, '$to_path', $Pathname_to_path$10 = function $$to_path() {
       var self = this;
 
       return self.path
-    }, TMP_Pathname_to_path_10.$$arity = 0);
+    }, $Pathname_to_path$10.$$arity = 0);
     
-    Opal.def(self, '$hash', TMP_Pathname_hash_11 = function $$hash() {
+    Opal.def(self, '$hash', $Pathname_hash$11 = function $$hash() {
       var self = this;
 
       return self.path
-    }, TMP_Pathname_hash_11.$$arity = 0);
+    }, $Pathname_hash$11.$$arity = 0);
     
-    Opal.def(self, '$expand_path', TMP_Pathname_expand_path_12 = function $$expand_path() {
+    Opal.def(self, '$expand_path', $Pathname_expand_path$12 = function $$expand_path() {
       var self = this;
 
       return $$($nesting, 'Pathname').$new($$($nesting, 'File').$expand_path(self.path))
-    }, TMP_Pathname_expand_path_12.$$arity = 0);
+    }, $Pathname_expand_path$12.$$arity = 0);
     
-    Opal.def(self, '$+', TMP_Pathname_$_13 = function(other) {
+    Opal.def(self, '$+', $Pathname_$plus$13 = function(other) {
       var self = this;
 
       
@@ -279,9 +279,9 @@ Opal.modules["pathname"] = function(Opal) {
         other = $$($nesting, 'Pathname').$new(other)
       };
       return $$($nesting, 'Pathname').$new(self.$plus(self.path, other.$to_s()));
-    }, TMP_Pathname_$_13.$$arity = 1);
+    }, $Pathname_$plus$13.$$arity = 1);
     
-    Opal.def(self, '$plus', TMP_Pathname_plus_14 = function $$plus(path1, path2) {
+    Opal.def(self, '$plus', $Pathname_plus$14 = function $$plus(path1, path2) {
       var $a, $b, $c, self = this, prefix2 = nil, index_list2 = nil, basename_list2 = nil, r2 = nil, basename2 = nil, prefix1 = nil, r1 = nil, basename1 = nil, suffix2 = nil;
 
       
@@ -338,11 +338,11 @@ Opal.modules["pathname"] = function(Opal) {
       } else {
         return $$($nesting, 'File').$dirname(prefix1)
       };
-    }, TMP_Pathname_plus_14.$$arity = 2);
+    }, $Pathname_plus$14.$$arity = 2);
     
-    Opal.def(self, '$join', TMP_Pathname_join_15 = function $$join($a) {try {
+    Opal.def(self, '$join', $Pathname_join$15 = function $$join($a) {try {
 
-      var $post_args, args, TMP_16, self = this, result = nil;
+      var $post_args, args, $$16, self = this, result = nil;
 
       
       
@@ -358,7 +358,7 @@ Opal.modules["pathname"] = function(Opal) {
       };
       if ($truthy(result['$absolute?']())) {
         return result};
-      $send(args, 'reverse_each', [], (TMP_16 = function(arg){var self = TMP_16.$$s || this;
+      $send(args, 'reverse_each', [], ($$16 = function(arg){var self = $$16.$$s || this;
 
       
         
@@ -374,52 +374,52 @@ Opal.modules["pathname"] = function(Opal) {
           Opal.ret(result)
         } else {
           return nil
-        };}, TMP_16.$$s = self, TMP_16.$$arity = 1, TMP_16));
+        };}, $$16.$$s = self, $$16.$$arity = 1, $$16));
       return $rb_plus(self, result);
       } catch ($returner) { if ($returner === Opal.returner) { return $returner.$v } throw $returner; }
-    }, TMP_Pathname_join_15.$$arity = -1);
+    }, $Pathname_join$15.$$arity = -1);
     
-    Opal.def(self, '$split', TMP_Pathname_split_17 = function $$split() {
+    Opal.def(self, '$split', $Pathname_split$17 = function $$split() {
       var self = this;
 
       return [self.$dirname(), self.$basename()]
-    }, TMP_Pathname_split_17.$$arity = 0);
+    }, $Pathname_split$17.$$arity = 0);
     
-    Opal.def(self, '$dirname', TMP_Pathname_dirname_18 = function $$dirname() {
+    Opal.def(self, '$dirname', $Pathname_dirname$18 = function $$dirname() {
       var self = this;
 
       return $$($nesting, 'Pathname').$new($$($nesting, 'File').$dirname(self.path))
-    }, TMP_Pathname_dirname_18.$$arity = 0);
+    }, $Pathname_dirname$18.$$arity = 0);
     
-    Opal.def(self, '$basename', TMP_Pathname_basename_19 = function $$basename() {
+    Opal.def(self, '$basename', $Pathname_basename$19 = function $$basename() {
       var self = this;
 
       return $$($nesting, 'Pathname').$new($$($nesting, 'File').$basename(self.path))
-    }, TMP_Pathname_basename_19.$$arity = 0);
+    }, $Pathname_basename$19.$$arity = 0);
     
-    Opal.def(self, '$directory?', TMP_Pathname_directory$q_20 = function() {
+    Opal.def(self, '$directory?', $Pathname_directory$ques$20 = function() {
       var self = this;
 
       return $$($nesting, 'File')['$directory?'](self.path)
-    }, TMP_Pathname_directory$q_20.$$arity = 0);
+    }, $Pathname_directory$ques$20.$$arity = 0);
     
-    Opal.def(self, '$extname', TMP_Pathname_extname_21 = function $$extname() {
+    Opal.def(self, '$extname', $Pathname_extname$21 = function $$extname() {
       var self = this;
 
       return $$($nesting, 'File').$extname(self.path)
-    }, TMP_Pathname_extname_21.$$arity = 0);
+    }, $Pathname_extname$21.$$arity = 0);
     
-    Opal.def(self, '$<=>', TMP_Pathname_$lt$eq$gt_22 = function(other) {
+    Opal.def(self, '$<=>', $Pathname_$lt_eq_gt$22 = function(other) {
       var self = this;
 
       return self.$path()['$<=>'](other.$path())
-    }, TMP_Pathname_$lt$eq$gt_22.$$arity = 1);
+    }, $Pathname_$lt_eq_gt$22.$$arity = 1);
     Opal.alias(self, "eql?", "==");
     Opal.alias(self, "===", "==");
     Opal.alias(self, "to_str", "to_path");
     Opal.alias(self, "to_s", "to_path");
     Opal.const_set($nesting[0], 'SAME_PATHS', (function() {if ($truthy($$$($$($nesting, 'File'), 'FNM_SYSCASE')['$nonzero?']())) {
-      return $send(self, 'proc', [], (TMP_Pathname_23 = function(a, b){var self = TMP_Pathname_23.$$s || this;
+      return $send(self, 'proc', [], ($Pathname$23 = function(a, b){var self = $Pathname$23.$$s || this;
 
       
         
@@ -430,9 +430,9 @@ Opal.modules["pathname"] = function(Opal) {
         if (b == null) {
           b = nil;
         };
-        return a.$casecmp(b)['$=='](0);}, TMP_Pathname_23.$$s = self, TMP_Pathname_23.$$arity = 2, TMP_Pathname_23))
+        return a.$casecmp(b)['$=='](0);}, $Pathname$23.$$s = self, $Pathname$23.$$arity = 2, $Pathname$23))
     } else {
-      return $send(self, 'proc', [], (TMP_Pathname_24 = function(a, b){var self = TMP_Pathname_24.$$s || this;
+      return $send(self, 'proc', [], ($Pathname$24 = function(a, b){var self = $Pathname$24.$$s || this;
 
       
         
@@ -443,10 +443,10 @@ Opal.modules["pathname"] = function(Opal) {
         if (b == null) {
           b = nil;
         };
-        return a['$=='](b);}, TMP_Pathname_24.$$s = self, TMP_Pathname_24.$$arity = 2, TMP_Pathname_24))
+        return a['$=='](b);}, $Pathname$24.$$s = self, $Pathname$24.$$arity = 2, $Pathname$24))
     }; return nil; })());
     
-    Opal.def(self, '$relative_path_from', TMP_Pathname_relative_path_from_25 = function $$relative_path_from(base_directory) {
+    Opal.def(self, '$relative_path_from', $Pathname_relative_path_from$25 = function $$relative_path_from(base_directory) {
       var $a, $b, $c, self = this, dest_directory = nil, dest_prefix = nil, dest_names = nil, r = nil, basename = nil, base_prefix = nil, base_names = nil, relpath_names = nil;
 
       
@@ -486,31 +486,31 @@ Opal.modules["pathname"] = function(Opal) {
       } else {
         return $$($nesting, 'Pathname').$new($send($$($nesting, 'File'), 'join', Opal.to_a(relpath_names)))
       };
-    }, TMP_Pathname_relative_path_from_25.$$arity = 1);
-    return (Opal.def(self, '$entries', TMP_Pathname_entries_26 = function $$entries() {
-      var TMP_27, self = this;
+    }, $Pathname_relative_path_from$25.$$arity = 1);
+    return (Opal.def(self, '$entries', $Pathname_entries$26 = function $$entries() {
+      var $$27, self = this;
 
-      return $send($$($nesting, 'Dir').$entries(self.path), 'map', [], (TMP_27 = function(f){var self = TMP_27.$$s || this;
+      return $send($$($nesting, 'Dir').$entries(self.path), 'map', [], ($$27 = function(f){var self = $$27.$$s || this;
 
       
         
         if (f == null) {
           f = nil;
         };
-        return self.$class().$new(f);}, TMP_27.$$s = self, TMP_27.$$arity = 1, TMP_27))
-    }, TMP_Pathname_entries_26.$$arity = 0), nil) && 'entries';
+        return self.$class().$new(f);}, $$27.$$s = self, $$27.$$arity = 1, $$27))
+    }, $Pathname_entries$26.$$arity = 0), nil) && 'entries';
   })($nesting[0], null, $nesting);
   return (function($base, $parent_nesting) {
     function $Kernel() {};
     var self = $Kernel = $module($base, 'Kernel', $Kernel);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Kernel_Pathname_28;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Kernel_Pathname$28;
 
     
-    Opal.def(self, '$Pathname', TMP_Kernel_Pathname_28 = function $$Pathname(path) {
+    Opal.def(self, '$Pathname', $Kernel_Pathname$28 = function $$Pathname(path) {
       var self = this;
 
       return $$($nesting, 'Pathname').$new(path)
-    }, TMP_Kernel_Pathname_28.$$arity = 1)
+    }, $Kernel_Pathname$28.$$arity = 1)
   })($nesting[0], $nesting);
 };

@@ -19,19 +19,19 @@ Opal.modules["stringio"] = function(Opal) {
     function $StringIO(){};
     var self = $StringIO = $klass($base, $super, 'StringIO', $StringIO);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_StringIO_open_1, TMP_StringIO_initialize_2, TMP_StringIO_eof$q_3, TMP_StringIO_seek_4, TMP_StringIO_tell_5, TMP_StringIO_rewind_6, TMP_StringIO_each_byte_7, TMP_StringIO_each_char_8, TMP_StringIO_each_9, TMP_StringIO_write_10, TMP_StringIO_read_11, TMP_StringIO_close_12, TMP_StringIO_close_read_13, TMP_StringIO_close_write_14, TMP_StringIO_closed$q_15, TMP_StringIO_closed_read$q_16, TMP_StringIO_closed_write$q_17, TMP_StringIO_check_writable_18, TMP_StringIO_check_readable_19;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $StringIO_open$1, $StringIO_initialize$2, $StringIO_eof$ques$3, $StringIO_seek$4, $StringIO_tell$5, $StringIO_rewind$6, $StringIO_each_byte$7, $StringIO_each_char$8, $StringIO_each$9, $StringIO_write$10, $StringIO_read$11, $StringIO_close$12, $StringIO_close_read$13, $StringIO_close_write$14, $StringIO_closed$ques$15, $StringIO_closed_read$ques$16, $StringIO_closed_write$ques$17, $StringIO_check_writable$18, $StringIO_check_readable$19;
 
     def.position = def.string = def.closed = nil;
     
     self.$include($$$($$($nesting, 'IO'), 'Readable'));
     self.$include($$$($$($nesting, 'IO'), 'Writable'));
-    Opal.defs(self, '$open', TMP_StringIO_open_1 = function $$open(string, mode) {
-      var $iter = TMP_StringIO_open_1.$$p, block = $iter || nil, self = this, io = nil, res = nil;
+    Opal.defs(self, '$open', $StringIO_open$1 = function $$open(string, mode) {
+      var $iter = $StringIO_open$1.$$p, block = $iter || nil, self = this, io = nil, res = nil;
 
-      if ($iter) TMP_StringIO_open_1.$$p = null;
+      if ($iter) $StringIO_open$1.$$p = null;
       
       
-      if ($iter) TMP_StringIO_open_1.$$p = null;;
+      if ($iter) $StringIO_open$1.$$p = null;;
       
       if (string == null) {
         string = "";
@@ -44,10 +44,10 @@ Opal.modules["stringio"] = function(Opal) {
       res = block.$call(io);
       io.$close();
       return res;
-    }, TMP_StringIO_open_1.$$arity = -1);
+    }, $StringIO_open$1.$$arity = -1);
     self.$attr_accessor("string");
     
-    Opal.def(self, '$initialize', TMP_StringIO_initialize_2 = function $$initialize(string, mode) {
+    Opal.def(self, '$initialize', $StringIO_initialize$2 = function $$initialize(string, mode) {
       var $a, self = this;
 
       
@@ -68,18 +68,18 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return nil
       };
-    }, TMP_StringIO_initialize_2.$$arity = -1);
+    }, $StringIO_initialize$2.$$arity = -1);
     
-    Opal.def(self, '$eof?', TMP_StringIO_eof$q_3 = function() {
+    Opal.def(self, '$eof?', $StringIO_eof$ques$3 = function() {
       var self = this;
 
       
       self.$check_readable();
       return self.position['$=='](self.string.$length());
-    }, TMP_StringIO_eof$q_3.$$arity = 0);
+    }, $StringIO_eof$ques$3.$$arity = 0);
     Opal.alias(self, "eof", "eof?");
     
-    Opal.def(self, '$seek', TMP_StringIO_seek_4 = function $$seek(pos, whence) {
+    Opal.def(self, '$seek', $StringIO_seek$4 = function $$seek(pos, whence) {
       var self = this, $case = nil;
 
       
@@ -105,29 +105,29 @@ Opal.modules["stringio"] = function(Opal) {
         self.position = $rb_minus(self.position, pos)
       }};
       return 0;
-    }, TMP_StringIO_seek_4.$$arity = -2);
+    }, $StringIO_seek$4.$$arity = -2);
     
-    Opal.def(self, '$tell', TMP_StringIO_tell_5 = function $$tell() {
+    Opal.def(self, '$tell', $StringIO_tell$5 = function $$tell() {
       var self = this;
 
       return self.position
-    }, TMP_StringIO_tell_5.$$arity = 0);
+    }, $StringIO_tell$5.$$arity = 0);
     Opal.alias(self, "pos", "tell");
     Opal.alias(self, "pos=", "seek");
     
-    Opal.def(self, '$rewind', TMP_StringIO_rewind_6 = function $$rewind() {
+    Opal.def(self, '$rewind', $StringIO_rewind$6 = function $$rewind() {
       var self = this;
 
       return self.$seek(0)
-    }, TMP_StringIO_rewind_6.$$arity = 0);
+    }, $StringIO_rewind$6.$$arity = 0);
     
-    Opal.def(self, '$each_byte', TMP_StringIO_each_byte_7 = function $$each_byte() {
-      var $iter = TMP_StringIO_each_byte_7.$$p, block = $iter || nil, $a, self = this, i = nil;
+    Opal.def(self, '$each_byte', $StringIO_each_byte$7 = function $$each_byte() {
+      var $iter = $StringIO_each_byte$7.$$p, block = $iter || nil, $a, self = this, i = nil;
 
-      if ($iter) TMP_StringIO_each_byte_7.$$p = null;
+      if ($iter) $StringIO_each_byte$7.$$p = null;
       
       
-      if ($iter) TMP_StringIO_each_byte_7.$$p = null;;
+      if ($iter) $StringIO_each_byte$7.$$p = null;;
       if ($truthy(block)) {
       } else {
         return self.$enum_for("each_byte")
@@ -140,15 +140,15 @@ Opal.modules["stringio"] = function(Opal) {
         i = $rb_plus(i, 1);
       };
       return self;
-    }, TMP_StringIO_each_byte_7.$$arity = 0);
+    }, $StringIO_each_byte$7.$$arity = 0);
     
-    Opal.def(self, '$each_char', TMP_StringIO_each_char_8 = function $$each_char() {
-      var $iter = TMP_StringIO_each_char_8.$$p, block = $iter || nil, $a, self = this, i = nil;
+    Opal.def(self, '$each_char', $StringIO_each_char$8 = function $$each_char() {
+      var $iter = $StringIO_each_char$8.$$p, block = $iter || nil, $a, self = this, i = nil;
 
-      if ($iter) TMP_StringIO_each_char_8.$$p = null;
+      if ($iter) $StringIO_each_char$8.$$p = null;
       
       
-      if ($iter) TMP_StringIO_each_char_8.$$p = null;;
+      if ($iter) $StringIO_each_char$8.$$p = null;;
       if ($truthy(block)) {
       } else {
         return self.$enum_for("each_char")
@@ -161,13 +161,13 @@ Opal.modules["stringio"] = function(Opal) {
         i = $rb_plus(i, 1);
       };
       return self;
-    }, TMP_StringIO_each_char_8.$$arity = 0);
+    }, $StringIO_each_char$8.$$arity = 0);
     
-    Opal.def(self, '$each', TMP_StringIO_each_9 = function $$each(separator) {
-      var $iter = TMP_StringIO_each_9.$$p, $yield = $iter || nil, self = this, chomp_lines = nil;
+    Opal.def(self, '$each', $StringIO_each$9 = function $$each(separator) {
+      var $iter = $StringIO_each$9.$$p, $yield = $iter || nil, self = this, chomp_lines = nil;
       if ($gvars["/"] == null) $gvars["/"] = nil;
 
-      if ($iter) TMP_StringIO_each_9.$$p = null;
+      if ($iter) $StringIO_each$9.$$p = null;
       
       
       if (separator == null) {
@@ -208,10 +208,10 @@ Opal.modules["stringio"] = function(Opal) {
       self.position = stringLength;
     ;
       return self;
-    }, TMP_StringIO_each_9.$$arity = -1);
+    }, $StringIO_each$9.$$arity = -1);
     Opal.alias(self, "each_line", "each");
     
-    Opal.def(self, '$write', TMP_StringIO_write_10 = function $$write(string) {
+    Opal.def(self, '$write', $StringIO_write$10 = function $$write(string) {
       var self = this, before = nil, after = nil;
 
       
@@ -228,9 +228,9 @@ Opal.modules["stringio"] = function(Opal) {
         self.string = $rb_plus($rb_plus(before, string), after);
         return (self.position = $rb_plus(self.position, string.$length()));
       };
-    }, TMP_StringIO_write_10.$$arity = 1);
+    }, $StringIO_write$10.$$arity = 1);
     
-    Opal.def(self, '$read', TMP_StringIO_read_11 = function $$read(length, outbuf) {
+    Opal.def(self, '$read', $StringIO_read$11 = function $$read(length, outbuf) {
       var self = this, string = nil, str = nil;
 
       
@@ -261,15 +261,15 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return string
       };
-    }, TMP_StringIO_read_11.$$arity = -1);
+    }, $StringIO_read$11.$$arity = -1);
     
-    Opal.def(self, '$close', TMP_StringIO_close_12 = function $$close() {
+    Opal.def(self, '$close', $StringIO_close$12 = function $$close() {
       var self = this;
 
       return (self.closed = "both")
-    }, TMP_StringIO_close_12.$$arity = 0);
+    }, $StringIO_close$12.$$arity = 0);
     
-    Opal.def(self, '$close_read', TMP_StringIO_close_read_13 = function $$close_read() {
+    Opal.def(self, '$close_read', $StringIO_close_read$13 = function $$close_read() {
       var self = this;
 
       if (self.closed['$==']("write")) {
@@ -277,9 +277,9 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return (self.closed = "read")
       }
-    }, TMP_StringIO_close_read_13.$$arity = 0);
+    }, $StringIO_close_read$13.$$arity = 0);
     
-    Opal.def(self, '$close_write', TMP_StringIO_close_write_14 = function $$close_write() {
+    Opal.def(self, '$close_write', $StringIO_close_write$14 = function $$close_write() {
       var self = this;
 
       if (self.closed['$==']("read")) {
@@ -287,27 +287,27 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return (self.closed = "write")
       }
-    }, TMP_StringIO_close_write_14.$$arity = 0);
+    }, $StringIO_close_write$14.$$arity = 0);
     
-    Opal.def(self, '$closed?', TMP_StringIO_closed$q_15 = function() {
+    Opal.def(self, '$closed?', $StringIO_closed$ques$15 = function() {
       var self = this;
 
       return self.closed['$==']("both")
-    }, TMP_StringIO_closed$q_15.$$arity = 0);
+    }, $StringIO_closed$ques$15.$$arity = 0);
     
-    Opal.def(self, '$closed_read?', TMP_StringIO_closed_read$q_16 = function() {
+    Opal.def(self, '$closed_read?', $StringIO_closed_read$ques$16 = function() {
       var $a, self = this;
 
       return ($truthy($a = self.closed['$==']("read")) ? $a : self.closed['$==']("both"))
-    }, TMP_StringIO_closed_read$q_16.$$arity = 0);
+    }, $StringIO_closed_read$ques$16.$$arity = 0);
     
-    Opal.def(self, '$closed_write?', TMP_StringIO_closed_write$q_17 = function() {
+    Opal.def(self, '$closed_write?', $StringIO_closed_write$ques$17 = function() {
       var $a, self = this;
 
       return ($truthy($a = self.closed['$==']("write")) ? $a : self.closed['$==']("both"))
-    }, TMP_StringIO_closed_write$q_17.$$arity = 0);
+    }, $StringIO_closed_write$ques$17.$$arity = 0);
     
-    Opal.def(self, '$check_writable', TMP_StringIO_check_writable_18 = function $$check_writable() {
+    Opal.def(self, '$check_writable', $StringIO_check_writable$18 = function $$check_writable() {
       var self = this;
 
       if ($truthy(self['$closed_write?']())) {
@@ -315,8 +315,8 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return nil
       }
-    }, TMP_StringIO_check_writable_18.$$arity = 0);
-    return (Opal.def(self, '$check_readable', TMP_StringIO_check_readable_19 = function $$check_readable() {
+    }, $StringIO_check_writable$18.$$arity = 0);
+    return (Opal.def(self, '$check_readable', $StringIO_check_readable$19 = function $$check_readable() {
       var self = this;
 
       if ($truthy(self['$closed_read?']())) {
@@ -324,6 +324,6 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return nil
       }
-    }, TMP_StringIO_check_readable_19.$$arity = 0), nil) && 'check_readable';
+    }, $StringIO_check_readable$19.$$arity = 0), nil) && 'check_readable';
   })($nesting[0], $$($nesting, 'IO'), $nesting)
 };

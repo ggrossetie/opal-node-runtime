@@ -19,19 +19,19 @@ Opal.modules["stringio"] = function(Opal) {
     function $StringIO(){};
     var self = $StringIO = $klass($base, $super, 'StringIO', $StringIO);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_StringIO_open_1, TMP_StringIO_initialize_2, TMP_StringIO_eof$q_3, TMP_StringIO_seek_4, TMP_StringIO_tell_5, TMP_StringIO_rewind_6, TMP_StringIO_each_byte_7, TMP_StringIO_each_char_8, TMP_StringIO_each_9, TMP_StringIO_write_10, TMP_StringIO_read_11, TMP_StringIO_close_12, TMP_StringIO_close_read_13, TMP_StringIO_close_write_14, TMP_StringIO_closed$q_15, TMP_StringIO_closed_read$q_16, TMP_StringIO_closed_write$q_17, TMP_StringIO_check_writable_18, TMP_StringIO_check_readable_19;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $StringIO_open$1, $StringIO_initialize$2, $StringIO_eof$ques$3, $StringIO_seek$4, $StringIO_tell$5, $StringIO_rewind$6, $StringIO_each_byte$7, $StringIO_each_char$8, $StringIO_each$9, $StringIO_write$10, $StringIO_read$11, $StringIO_close$12, $StringIO_close_read$13, $StringIO_close_write$14, $StringIO_closed$ques$15, $StringIO_closed_read$ques$16, $StringIO_closed_write$ques$17, $StringIO_check_writable$18, $StringIO_check_readable$19;
 
     def.position = def.string = def.closed = nil;
     
     self.$include($$$($$($nesting, 'IO'), 'Readable'));
     self.$include($$$($$($nesting, 'IO'), 'Writable'));
-    Opal.defs(self, '$open', TMP_StringIO_open_1 = function $$open(string, mode) {
-      var $iter = TMP_StringIO_open_1.$$p, block = $iter || nil, self = this, io = nil, res = nil;
+    Opal.defs(self, '$open', $StringIO_open$1 = function $$open(string, mode) {
+      var $iter = $StringIO_open$1.$$p, block = $iter || nil, self = this, io = nil, res = nil;
 
-      if ($iter) TMP_StringIO_open_1.$$p = null;
+      if ($iter) $StringIO_open$1.$$p = null;
       
       
-      if ($iter) TMP_StringIO_open_1.$$p = null;;
+      if ($iter) $StringIO_open$1.$$p = null;;
       
       if (string == null) {
         string = "";
@@ -44,10 +44,10 @@ Opal.modules["stringio"] = function(Opal) {
       res = block.$call(io);
       io.$close();
       return res;
-    }, TMP_StringIO_open_1.$$arity = -1);
+    }, $StringIO_open$1.$$arity = -1);
     self.$attr_accessor("string");
     
-    Opal.def(self, '$initialize', TMP_StringIO_initialize_2 = function $$initialize(string, mode) {
+    Opal.def(self, '$initialize', $StringIO_initialize$2 = function $$initialize(string, mode) {
       var $a, self = this;
 
       
@@ -68,18 +68,18 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return nil
       };
-    }, TMP_StringIO_initialize_2.$$arity = -1);
+    }, $StringIO_initialize$2.$$arity = -1);
     
-    Opal.def(self, '$eof?', TMP_StringIO_eof$q_3 = function() {
+    Opal.def(self, '$eof?', $StringIO_eof$ques$3 = function() {
       var self = this;
 
       
       self.$check_readable();
       return self.position['$=='](self.string.$length());
-    }, TMP_StringIO_eof$q_3.$$arity = 0);
+    }, $StringIO_eof$ques$3.$$arity = 0);
     Opal.alias(self, "eof", "eof?");
     
-    Opal.def(self, '$seek', TMP_StringIO_seek_4 = function $$seek(pos, whence) {
+    Opal.def(self, '$seek', $StringIO_seek$4 = function $$seek(pos, whence) {
       var self = this, $case = nil;
 
       
@@ -105,29 +105,29 @@ Opal.modules["stringio"] = function(Opal) {
         self.position = $rb_minus(self.position, pos)
       }};
       return 0;
-    }, TMP_StringIO_seek_4.$$arity = -2);
+    }, $StringIO_seek$4.$$arity = -2);
     
-    Opal.def(self, '$tell', TMP_StringIO_tell_5 = function $$tell() {
+    Opal.def(self, '$tell', $StringIO_tell$5 = function $$tell() {
       var self = this;
 
       return self.position
-    }, TMP_StringIO_tell_5.$$arity = 0);
+    }, $StringIO_tell$5.$$arity = 0);
     Opal.alias(self, "pos", "tell");
     Opal.alias(self, "pos=", "seek");
     
-    Opal.def(self, '$rewind', TMP_StringIO_rewind_6 = function $$rewind() {
+    Opal.def(self, '$rewind', $StringIO_rewind$6 = function $$rewind() {
       var self = this;
 
       return self.$seek(0)
-    }, TMP_StringIO_rewind_6.$$arity = 0);
+    }, $StringIO_rewind$6.$$arity = 0);
     
-    Opal.def(self, '$each_byte', TMP_StringIO_each_byte_7 = function $$each_byte() {
-      var $iter = TMP_StringIO_each_byte_7.$$p, block = $iter || nil, $a, self = this, i = nil;
+    Opal.def(self, '$each_byte', $StringIO_each_byte$7 = function $$each_byte() {
+      var $iter = $StringIO_each_byte$7.$$p, block = $iter || nil, $a, self = this, i = nil;
 
-      if ($iter) TMP_StringIO_each_byte_7.$$p = null;
+      if ($iter) $StringIO_each_byte$7.$$p = null;
       
       
-      if ($iter) TMP_StringIO_each_byte_7.$$p = null;;
+      if ($iter) $StringIO_each_byte$7.$$p = null;;
       if ($truthy(block)) {
       } else {
         return self.$enum_for("each_byte")
@@ -140,15 +140,15 @@ Opal.modules["stringio"] = function(Opal) {
         i = $rb_plus(i, 1);
       };
       return self;
-    }, TMP_StringIO_each_byte_7.$$arity = 0);
+    }, $StringIO_each_byte$7.$$arity = 0);
     
-    Opal.def(self, '$each_char', TMP_StringIO_each_char_8 = function $$each_char() {
-      var $iter = TMP_StringIO_each_char_8.$$p, block = $iter || nil, $a, self = this, i = nil;
+    Opal.def(self, '$each_char', $StringIO_each_char$8 = function $$each_char() {
+      var $iter = $StringIO_each_char$8.$$p, block = $iter || nil, $a, self = this, i = nil;
 
-      if ($iter) TMP_StringIO_each_char_8.$$p = null;
+      if ($iter) $StringIO_each_char$8.$$p = null;
       
       
-      if ($iter) TMP_StringIO_each_char_8.$$p = null;;
+      if ($iter) $StringIO_each_char$8.$$p = null;;
       if ($truthy(block)) {
       } else {
         return self.$enum_for("each_char")
@@ -161,13 +161,13 @@ Opal.modules["stringio"] = function(Opal) {
         i = $rb_plus(i, 1);
       };
       return self;
-    }, TMP_StringIO_each_char_8.$$arity = 0);
+    }, $StringIO_each_char$8.$$arity = 0);
     
-    Opal.def(self, '$each', TMP_StringIO_each_9 = function $$each(separator) {
-      var $iter = TMP_StringIO_each_9.$$p, $yield = $iter || nil, self = this, chomp_lines = nil;
+    Opal.def(self, '$each', $StringIO_each$9 = function $$each(separator) {
+      var $iter = $StringIO_each$9.$$p, $yield = $iter || nil, self = this, chomp_lines = nil;
       if ($gvars["/"] == null) $gvars["/"] = nil;
 
-      if ($iter) TMP_StringIO_each_9.$$p = null;
+      if ($iter) $StringIO_each$9.$$p = null;
       
       
       if (separator == null) {
@@ -208,10 +208,10 @@ Opal.modules["stringio"] = function(Opal) {
       self.position = stringLength;
     ;
       return self;
-    }, TMP_StringIO_each_9.$$arity = -1);
+    }, $StringIO_each$9.$$arity = -1);
     Opal.alias(self, "each_line", "each");
     
-    Opal.def(self, '$write', TMP_StringIO_write_10 = function $$write(string) {
+    Opal.def(self, '$write', $StringIO_write$10 = function $$write(string) {
       var self = this, before = nil, after = nil;
 
       
@@ -228,9 +228,9 @@ Opal.modules["stringio"] = function(Opal) {
         self.string = $rb_plus($rb_plus(before, string), after);
         return (self.position = $rb_plus(self.position, string.$length()));
       };
-    }, TMP_StringIO_write_10.$$arity = 1);
+    }, $StringIO_write$10.$$arity = 1);
     
-    Opal.def(self, '$read', TMP_StringIO_read_11 = function $$read(length, outbuf) {
+    Opal.def(self, '$read', $StringIO_read$11 = function $$read(length, outbuf) {
       var self = this, string = nil, str = nil;
 
       
@@ -261,15 +261,15 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return string
       };
-    }, TMP_StringIO_read_11.$$arity = -1);
+    }, $StringIO_read$11.$$arity = -1);
     
-    Opal.def(self, '$close', TMP_StringIO_close_12 = function $$close() {
+    Opal.def(self, '$close', $StringIO_close$12 = function $$close() {
       var self = this;
 
       return (self.closed = "both")
-    }, TMP_StringIO_close_12.$$arity = 0);
+    }, $StringIO_close$12.$$arity = 0);
     
-    Opal.def(self, '$close_read', TMP_StringIO_close_read_13 = function $$close_read() {
+    Opal.def(self, '$close_read', $StringIO_close_read$13 = function $$close_read() {
       var self = this;
 
       if (self.closed['$==']("write")) {
@@ -277,9 +277,9 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return (self.closed = "read")
       }
-    }, TMP_StringIO_close_read_13.$$arity = 0);
+    }, $StringIO_close_read$13.$$arity = 0);
     
-    Opal.def(self, '$close_write', TMP_StringIO_close_write_14 = function $$close_write() {
+    Opal.def(self, '$close_write', $StringIO_close_write$14 = function $$close_write() {
       var self = this;
 
       if (self.closed['$==']("read")) {
@@ -287,27 +287,27 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return (self.closed = "write")
       }
-    }, TMP_StringIO_close_write_14.$$arity = 0);
+    }, $StringIO_close_write$14.$$arity = 0);
     
-    Opal.def(self, '$closed?', TMP_StringIO_closed$q_15 = function() {
+    Opal.def(self, '$closed?', $StringIO_closed$ques$15 = function() {
       var self = this;
 
       return self.closed['$==']("both")
-    }, TMP_StringIO_closed$q_15.$$arity = 0);
+    }, $StringIO_closed$ques$15.$$arity = 0);
     
-    Opal.def(self, '$closed_read?', TMP_StringIO_closed_read$q_16 = function() {
+    Opal.def(self, '$closed_read?', $StringIO_closed_read$ques$16 = function() {
       var $a, self = this;
 
       return ($truthy($a = self.closed['$==']("read")) ? $a : self.closed['$==']("both"))
-    }, TMP_StringIO_closed_read$q_16.$$arity = 0);
+    }, $StringIO_closed_read$ques$16.$$arity = 0);
     
-    Opal.def(self, '$closed_write?', TMP_StringIO_closed_write$q_17 = function() {
+    Opal.def(self, '$closed_write?', $StringIO_closed_write$ques$17 = function() {
       var $a, self = this;
 
       return ($truthy($a = self.closed['$==']("write")) ? $a : self.closed['$==']("both"))
-    }, TMP_StringIO_closed_write$q_17.$$arity = 0);
+    }, $StringIO_closed_write$ques$17.$$arity = 0);
     
-    Opal.def(self, '$check_writable', TMP_StringIO_check_writable_18 = function $$check_writable() {
+    Opal.def(self, '$check_writable', $StringIO_check_writable$18 = function $$check_writable() {
       var self = this;
 
       if ($truthy(self['$closed_write?']())) {
@@ -315,8 +315,8 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return nil
       }
-    }, TMP_StringIO_check_writable_18.$$arity = 0);
-    return (Opal.def(self, '$check_readable', TMP_StringIO_check_readable_19 = function $$check_readable() {
+    }, $StringIO_check_writable$18.$$arity = 0);
+    return (Opal.def(self, '$check_readable', $StringIO_check_readable$19 = function $$check_readable() {
       var self = this;
 
       if ($truthy(self['$closed_read?']())) {
@@ -324,8 +324,615 @@ Opal.modules["stringio"] = function(Opal) {
       } else {
         return nil
       }
-    }, TMP_StringIO_check_readable_19.$$arity = 0), nil) && 'check_readable';
+    }, $StringIO_check_readable$19.$$arity = 0), nil) && 'check_readable';
   })($nesting[0], $$($nesting, 'IO'), $nesting)
+};
+
+/* Generated by Opal 0.11.99.dev */
+Opal.modules["corelib/pack_unpack/format_string_parser"] = function(Opal) {
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module;
+
+  Opal.add_stubs(['$raise']);
+  return (function($base, $parent_nesting) {
+    function $PackUnpack() {};
+    var self = $PackUnpack = $module($base, 'PackUnpack', $PackUnpack);
+
+    var def = self.prototype, $nesting = [self].concat($parent_nesting);
+
+    
+    var directives = [
+      // Integer
+      'C',
+      'S',
+      'L',
+      'Q',
+      'J',
+
+      'c',
+      's',
+      'l',
+      'q',
+      'j',
+
+      'n',
+      'N',
+      'v',
+      'V',
+
+      'U',
+      'w',
+
+      // Float
+      'D',
+      'd',
+      'F',
+      'f',
+      'E',
+      'e',
+      'G',
+      'g',
+
+      // String
+      'A',
+      'a',
+      'Z',
+      'B',
+      'b',
+      'H',
+      'h',
+      'u',
+      'M',
+      'm',
+
+      'P',
+      'p',
+
+      // Misc
+      '@',
+      'X',
+      'x'
+    ];
+
+    var modifiers = [
+      '!', // ignored
+      '_', // ignored
+      '>', // big endian
+      '<'  // little endian
+    ];
+
+    self.eachDirectiveAndCount = function(format, callback) {
+      var currentDirective,
+          currentCount,
+          currentModifiers,
+          countSpecified;
+
+      function reset() {
+        currentDirective = null;
+        currentCount = 0;
+        currentModifiers = [];
+        countSpecified = false;
+      }
+
+      reset();
+
+      function yieldAndReset() {
+        if (currentDirective == null) {
+          reset();
+          return;
+        }
+
+        var directiveSupportsModifiers = /[sSiIlLqQjJ]/.test(currentDirective);
+
+        if (!directiveSupportsModifiers && currentModifiers.length > 0) {
+          self.$raise($$($nesting, 'ArgumentError'), "" + "'" + (currentModifiers[0]) + "' allowed only after types sSiIlLqQjJ")
+        }
+
+        if (currentModifiers.indexOf('<') !== -1 && currentModifiers.indexOf('>') !== -1) {
+          self.$raise($$($nesting, 'RangeError'), "Can't use both '<' and '>'")
+        }
+
+        if (!countSpecified) {
+          currentCount = 1;
+        }
+
+        if (currentModifiers.indexOf('>') !== -1) {
+          currentDirective = currentDirective + '>';
+        }
+
+        callback(currentDirective, currentCount);
+
+        reset();
+      }
+
+      for (var i = 0; i < format.length; i++) {
+        var currentChar = format[i];
+
+        if (directives.indexOf(currentChar) !== -1) {
+          // Directive char always resets current state
+          yieldAndReset();
+          currentDirective = currentChar;
+        } else if (currentDirective) {
+          if (/\d/.test(currentChar)) {
+            // Count can be represented as a sequence of digits
+            currentCount = currentCount * 10 + parseInt(currentChar, 10);
+            countSpecified = true;
+          } else if (currentChar === '*' && countSpecified === false) {
+            // Count can be represented by a star character
+            currentCount = Infinity;
+            countSpecified = true;
+          } else if (modifiers.indexOf(currentChar) !== -1 && countSpecified === false) {
+            // Directives can be specified only after directive and before count
+            currentModifiers.push(currentChar);
+          } else {
+            yieldAndReset();
+          }
+        }
+      }
+
+      yieldAndReset();
+    }
+  
+  })($nesting[0], $nesting)
+};
+
+/* Generated by Opal 0.11.99.dev */
+Opal.modules["corelib/array/pack"] = function(Opal) {
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass;
+
+  Opal.add_stubs(['$require', '$coerce_to', '$raise', '$delete', '$gsub', '$coerce_to!', '$inspect']);
+  
+  self.$require("corelib/pack_unpack/format_string_parser");
+  return (function($base, $super, $parent_nesting) {
+    function $Array(){};
+    var self = $Array = $klass($base, $super, 'Array', $Array);
+
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Array_pack$1;
+
+    
+    
+    // Format Parser
+    var eachDirectiveAndCount = Opal.PackUnpack.eachDirectiveAndCount;
+
+    function identityFunction(value) { return value; }
+
+    function utf8BytesToUtf16LEString(bytes) {
+      var str = String.fromCharCode.apply(null, bytes), out = "", i = 0, len = str.length, c, char2, char3;
+      while (i < len) {
+        c = str.charCodeAt(i++);
+        switch (c >> 4) {
+          case 0:
+          case 1:
+          case 2:
+          case 3:
+          case 4:
+          case 5:
+          case 6:
+          case 7:
+            // 0xxxxxxx
+            out += str.charAt(i - 1);
+            break;
+          case 12:
+          case 13:
+            // 110x xxxx 10xx xxxx
+            char2 = str.charCodeAt(i++);
+            out += String.fromCharCode(((c & 0x1F) << 6) | (char2 & 0x3F));
+            break;
+          case 14:
+            // 1110 xxxx10xx xxxx10xx xxxx
+            char2 = str.charCodeAt(i++);
+            char3 = str.charCodeAt(i++);
+            out += String.fromCharCode(((c & 0x0F) << 12) | ((char2 & 0x3F) << 6) | ((char3 & 0x3F) << 0));
+            break;
+        }
+      }
+      return out;
+    }
+
+    function asciiBytesToUtf16LEString(bytes) {
+      return String.fromCharCode.apply(null, bytes);
+    }
+
+    function asciiStringFromUnsignedInt(bytes, callback) {
+      return function(data) {
+        var buffer = callback(data);
+
+        return buffer.map(function(item) {
+          var result = [];
+
+          for (var i = 0; i < bytes; i++) {
+            var bit = item & 255;
+            result.push(bit);
+            item = item >> 8;
+          };
+
+          return asciiBytesToUtf16LEString(result);
+        });
+      }
+    }
+
+    function asciiStringFromSignedInt(bytes, callback) {
+      return function(data) {
+        var buffer = callback(data),
+            bits = bytes * 8,
+            limit = Math.pow(2, bits);
+
+        return buffer.map(function(item) {
+          if (item < 0) {
+            item += limit;
+          }
+
+          var result = [];
+
+          for (var i = 0; i < bytes; i++) {
+            var bit = item & 255;
+            result.push(bit);
+            item = item >> 8;
+          };
+
+          return asciiBytesToUtf16LEString(result);
+        });
+      }
+    }
+
+    function toInt(callback) {
+      return function(data) {
+        var buffer = callback(data);
+
+        return buffer.map(function(item) {
+          return $$($nesting, 'Opal').$coerce_to(item, $$($nesting, 'Integer'), "to_int")
+        });
+      }
+    }
+
+    function ToStr(callback) {
+      return function(data) {
+        var buffer = callback(data);
+
+        return buffer.map(function(item) {
+          return $$($nesting, 'Opal').$coerce_to(item, $$($nesting, 'String'), "to_str")
+        });
+      }
+    }
+
+    function fromCodePoint(callback) {
+      return function(data) {
+        var buffer = callback(data);
+        return buffer.map(function(item) {
+          try {
+            return String.fromCodePoint(item);
+          } catch (error) {
+            if (error instanceof RangeError) {
+              self.$raise($$($nesting, 'RangeError'), "value out of range");
+            }
+            throw error;
+          }
+        });
+      }
+    }
+
+    function joinChars(callback) {
+      return function(data) {
+        var buffer = callback(data);
+        return buffer.join('');
+      }
+    }
+
+    var handlers = {
+      // Integer
+      'C': joinChars(asciiStringFromUnsignedInt(1, toInt(identityFunction))),
+      'S': joinChars(asciiStringFromUnsignedInt(2, toInt(identityFunction))),
+      'L': joinChars(asciiStringFromUnsignedInt(4, toInt(identityFunction))),
+      'Q': joinChars(asciiStringFromUnsignedInt(8, toInt(identityFunction))),
+      'J': null,
+
+      'S>': null,
+      'L>': null,
+      'Q>': null,
+
+      'c': joinChars(asciiStringFromSignedInt(1, toInt(identityFunction))),
+      's': joinChars(asciiStringFromSignedInt(2, toInt(identityFunction))),
+      'l': joinChars(asciiStringFromSignedInt(4, toInt(identityFunction))),
+      'q': joinChars(asciiStringFromSignedInt(8, toInt(identityFunction))),
+      'j': null,
+
+      's>': null,
+      'l>': null,
+      'q>': null,
+
+      'n': null,
+      'N': null,
+      'v': null,
+      'V': null,
+
+      'U': joinChars(fromCodePoint(toInt(identityFunction))),
+      'w': null,
+
+      // Float
+      'D': null,
+      'd': null,
+      'F': null,
+      'f': null,
+      'E': null,
+      'e': null,
+      'G': null,
+      'g': null,
+
+      // String
+      'A': joinChars(identityFunction),
+      'a': joinChars(identityFunction),
+      'Z': null,
+      'B': null,
+      'b': null,
+      'H': null,
+      'h': null,
+      'u': null,
+      'M': null,
+      'm': null,
+
+      'P': null,
+      'p': null
+    };
+
+    function readNTimesFromBufferAndMerge(callback) {
+      return function(buffer, count) {
+        var chunk = [], chunkData;
+
+        if (count === Infinity) {
+          while (buffer.length > 0) {
+            chunkData = callback(buffer);
+            buffer = chunkData.rest;
+            chunk = chunk.concat(chunkData.chunk);
+          }
+        } else {
+          if (buffer.length < count) {
+            self.$raise($$($nesting, 'ArgumentError'), "too few arguments");
+          }
+          for (var i = 0; i < count; i++) {
+            chunkData = callback(buffer);
+            buffer = chunkData.rest;
+            chunk = chunk.concat(chunkData.chunk);
+          }
+        }
+
+        return { chunk: chunk, rest: buffer };
+      }
+    }
+
+    function readItem(buffer) {
+      var chunk = buffer.slice(0, 1);
+      buffer = buffer.slice(1, buffer.length);
+      return { chunk: chunk, rest: buffer };
+    }
+
+    function readNCharsFromTheFirstItemAndMergeWithFallback(fallback, callback) {
+      return function(buffer, count) {
+        var chunk = [], source = buffer[0];
+
+        if (source === nil) {
+          source = '';
+        } else if (source === undefined) {
+          self.$raise($$($nesting, 'ArgumentError'), "too few arguments");
+        } else {
+          source = $$($nesting, 'Opal').$coerce_to(source, $$($nesting, 'String'), "to_str");
+        }
+
+        buffer = buffer.slice(1, buffer.length);
+
+        function infiniteReeder() {
+          var chunkData = callback(source);
+          source = chunkData.rest;
+          var subChunk = chunkData.chunk;
+
+          if (subChunk.length === 1 && subChunk[0] === nil) {
+            subChunk = []
+          }
+
+          chunk = chunk.concat(subChunk);
+        }
+
+        function finiteReeder() {
+          var chunkData = callback(source);
+          source = chunkData.rest;
+          var subChunk = chunkData.chunk;
+
+          if (subChunk.length === 0) {
+            subChunk = [fallback];
+          }
+
+          if (subChunk.length === 1 && subChunk[0] === nil) {
+            subChunk = [fallback];
+          }
+
+          chunk = chunk.concat(subChunk);
+        }
+
+        if (count === Infinity) {
+          while (source.length > 0) {
+            infiniteReeder();
+          }
+        } else {
+          for (var i = 0; i < count; i++) {
+            finiteReeder();
+          }
+        }
+
+        return { chunk: chunk, rest: buffer };
+      }
+    }
+
+    var readChunk = {
+      // Integer
+      'C': readNTimesFromBufferAndMerge(readItem),
+      'S': readNTimesFromBufferAndMerge(readItem),
+      'L': readNTimesFromBufferAndMerge(readItem),
+      'Q': readNTimesFromBufferAndMerge(readItem),
+      'J': null,
+
+      'S>': null,
+      'L>': null,
+      'Q>': null,
+
+      'c': readNTimesFromBufferAndMerge(readItem),
+      's': readNTimesFromBufferAndMerge(readItem),
+      'l': readNTimesFromBufferAndMerge(readItem),
+      'q': readNTimesFromBufferAndMerge(readItem),
+      'j': null,
+
+      's>': null,
+      'l>': null,
+      'q>': null,
+
+      'n': null,
+      'N': null,
+      'v': null,
+      'V': null,
+
+      'U': readNTimesFromBufferAndMerge(readItem),
+      'w': null,
+
+      // Float
+      'D': null,
+      'd': null,
+      'F': null,
+      'f': null,
+      'E': null,
+      'e': null,
+      'G': null,
+      'g': null,
+
+      // String
+      'A': readNCharsFromTheFirstItemAndMergeWithFallback(" ", readItem),
+      'a': readNCharsFromTheFirstItemAndMergeWithFallback("\x00", readItem),
+      'Z': null,
+      'B': null,
+      'b': null,
+      'H': null,
+      'h': null,
+      'u': null,
+      'M': null,
+      'm': null,
+
+      'P': null,
+      'p': null
+    };
+
+    var autocompletion = {
+      // Integer
+      'C': false,
+      'S': false,
+      'L': false,
+      'Q': false,
+      'J': null,
+
+      'S>': null,
+      'L>': null,
+      'Q>': null,
+
+      'c': false,
+      's': false,
+      'l': false,
+      'q': false,
+      'j': null,
+
+      's>': null,
+      'l>': null,
+      'q>': null,
+
+      'n': null,
+      'N': null,
+      'v': null,
+      'V': null,
+
+      'U': false,
+      'w': null,
+
+      // Float
+      'D': null,
+      'd': null,
+      'F': null,
+      'f': null,
+      'E': null,
+      'e': null,
+      'G': null,
+      'g': null,
+
+      // String
+      'A': false,
+      'a': false,
+      'Z': null,
+      'B': null,
+      'b': null,
+      'H': null,
+      'h': null,
+      'u': false,
+      'M': null,
+      'm': null,
+
+      'P': null,
+      'p': null
+    };
+  ;
+    return (Opal.def(self, '$pack', $Array_pack$1 = function $$pack(format) {
+      var self = this;
+
+      
+      format = $$($nesting, 'Opal')['$coerce_to!'](format, $$($nesting, 'String'), "to_str").$gsub(/\s/, "").$delete("\u0000");
+      
+      var output = '';
+
+      var buffer = self.slice();
+
+      function autocomplete(array, size) {
+        while (array.length < size) {
+          array.push(nil);
+        }
+
+        return array;
+      }
+
+      function processChunk(directive, count) {
+        var chunk,
+            chunkReader = readChunk[directive];
+
+        if (chunkReader == null) {
+          self.$raise("" + "Unsupported pack directive " + ((directive).$inspect()) + " (no chunk reader defined)")
+        }
+
+        var chunkData = chunkReader(buffer, count);
+        chunk = chunkData.chunk;
+        buffer = chunkData.rest;
+
+        var handler = handlers[directive];
+
+        if (handler == null) {
+          self.$raise("" + "Unsupported pack directive " + ((directive).$inspect()) + " (no handler defined)")
+        }
+
+        return handler(chunk);
+      }
+
+      eachDirectiveAndCount(format, function(directive, count) {
+        var part = processChunk(directive, count);
+
+        if (count !== Infinity) {
+          var shouldAutocomplete = autocompletion[directive]
+
+          if (shouldAutocomplete == null) {
+            self.$raise("" + "Unsupported pack directive " + ((directive).$inspect()) + " (no autocompletion rule defined)")
+          }
+
+          if (shouldAutocomplete) {
+            autocomplete(part, count);
+          }
+        }
+
+        output = output.concat(part);
+      });
+
+      return output;
+    ;
+    }, $Array_pack$1.$$arity = 1), nil) && 'pack';
+  })($nesting[0], null, $nesting);
 };
 
 /* Generated by Opal 0.11.99.dev */
@@ -338,14 +945,15 @@ Opal.modules["open-uri"] = function(Opal) {
   }
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $truthy = Opal.truthy, $send = Opal.send, $hash2 = Opal.hash2, $klass = Opal.klass;
 
-  Opal.add_stubs(['$require', '$private', '$respond_to?', '$=~', '$open_uri', '$to_proc', '$open_uri_original_open', '$module_function', '$open_loop', '$rewind', '$close_io', '$close!', '$closed?', '$close', '$request', '$==', '$build_response', '$raise', '$new', '$<<', '$io', '$status=', '$-', '$meta_add_field', '$attr_reader', '$+', '$length', '$===', '$init', '$extend', '$instance_eval', '$status', '$base_uri', '$base_uri=', '$each', '$metas', '$meta_add_field2', '$attr_accessor', '$charset', '$find_encoding', '$set_encoding', '$force_encoding', '$string', '$find', '$downcase', '$[]=', '$join', '$meta_setup_encoding', '$[]', '$utc', '$at', '$content_type_parse', '$scheme', '$open', '$read']);
+  Opal.add_stubs(['$require', '$private', '$respond_to?', '$=~', '$open_uri', '$to_proc', '$open_uri_original_open', '$module_function', '$open_loop', '$rewind', '$close_io', '$close!', '$closed?', '$close', '$request', '$==', '$build_response', '$raise', '$new', '$<<', '$pack', '$data', '$io', '$status=', '$-', '$meta_add_field', '$attr_reader', '$+', '$length', '$===', '$init', '$extend', '$instance_eval', '$status', '$base_uri', '$base_uri=', '$each', '$metas', '$meta_add_field2', '$attr_accessor', '$charset', '$find_encoding', '$set_encoding', '$force_encoding', '$string', '$find', '$downcase', '$[]=', '$join', '$meta_setup_encoding', '$[]', '$utc', '$at', '$content_type_parse', '$scheme', '$open', '$read']);
   
   self.$require("stringio");
+  self.$require("corelib/array/pack");
   (function($base, $parent_nesting) {
     function $Kernel() {};
     var self = $Kernel = $module($base, 'Kernel', $Kernel);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Kernel_open_1;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Kernel_open$1;
 
     
     self.$private();
@@ -356,13 +964,13 @@ Opal.modules["open-uri"] = function(Opal) {
       return Opal.alias(self, "open_uri_original_open", "open")
     })(Opal.get_singleton_class(self), $nesting);
     
-    Opal.def(self, '$open', TMP_Kernel_open_1 = function $$open(name, $a) {
-      var $iter = TMP_Kernel_open_1.$$p, block = $iter || nil, $post_args, rest, $b, self = this;
+    Opal.def(self, '$open', $Kernel_open$1 = function $$open(name, $a) {
+      var $iter = $Kernel_open$1.$$p, block = $iter || nil, $post_args, rest, $b, self = this;
 
-      if ($iter) TMP_Kernel_open_1.$$p = null;
+      if ($iter) $Kernel_open$1.$$p = null;
       
       
-      if ($iter) TMP_Kernel_open_1.$$p = null;;
+      if ($iter) $Kernel_open$1.$$p = null;;
       
       $post_args = Opal.slice.call(arguments, 1, arguments.length);
       
@@ -372,20 +980,20 @@ Opal.modules["open-uri"] = function(Opal) {
       } else {
         return $send(self, 'open_uri_original_open', [name].concat(Opal.to_a(rest)), block.$to_proc())
       };
-    }, TMP_Kernel_open_1.$$arity = -2);
+    }, $Kernel_open$1.$$arity = -2);
     self.$module_function("open");
   })($nesting[0], $nesting);
   return (function($base, $parent_nesting) {
     function $OpenURI() {};
     var self = $OpenURI = $module($base, 'OpenURI', $OpenURI);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_OpenURI_open_uri_2, TMP_OpenURI_close_io_3, TMP_OpenURI_open_loop_4, TMP_OpenURI_build_response_5, TMP_OpenURI_request_6;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $OpenURI_open_uri$2, $OpenURI_close_io$3, $OpenURI_open_loop$4, $OpenURI_build_response$5, $OpenURI_data$6, $OpenURI_request$7;
 
     
-    Opal.defs(self, '$open_uri', TMP_OpenURI_open_uri_2 = function $$open_uri(name, $a) {
-      var $post_args, rest, $iter = TMP_OpenURI_open_uri_2.$$p, $yield = $iter || nil, self = this, io = nil;
+    Opal.defs(self, '$open_uri', $OpenURI_open_uri$2 = function $$open_uri(name, $a) {
+      var $post_args, rest, $iter = $OpenURI_open_uri$2.$$p, $yield = $iter || nil, self = this, io = nil;
 
-      if ($iter) TMP_OpenURI_open_uri_2.$$p = null;
+      if ($iter) $OpenURI_open_uri$2.$$p = null;
       
       
       $post_args = Opal.slice.call(arguments, 1, arguments.length);
@@ -403,8 +1011,8 @@ Opal.modules["open-uri"] = function(Opal) {
       } else {
         return io
       };
-    }, TMP_OpenURI_open_uri_2.$$arity = -2);
-    Opal.defs(self, '$close_io', TMP_OpenURI_close_io_3 = function $$close_io(io) {
+    }, $OpenURI_open_uri$2.$$arity = -2);
+    Opal.defs(self, '$close_io', $OpenURI_close_io$3 = function $$close_io(io) {
       var self = this;
 
       if ($truthy(io['$respond_to?']("close!"))) {
@@ -414,8 +1022,8 @@ Opal.modules["open-uri"] = function(Opal) {
       } else {
         return io.$close()
       }
-    }, TMP_OpenURI_close_io_3.$$arity = 1);
-    Opal.defs(self, '$open_loop', TMP_OpenURI_open_loop_4 = function $$open_loop(uri, options) {
+    }, $OpenURI_close_io$3.$$arity = 1);
+    Opal.defs(self, '$open_loop', $OpenURI_open_loop$4 = function $$open_loop(uri, options) {
       var $a, $b, self = this, req = nil, data = nil, status = nil, status_text = nil;
 
       
@@ -424,17 +1032,17 @@ Opal.modules["open-uri"] = function(Opal) {
       status = req.status;
       status_text = req.statusText && req.statusText.errno ? req.statusText.errno : req.statusText;
       if ($truthy(($truthy($a = status['$=='](200)) ? $a : (($b = status['$=='](0)) ? data : status['$=='](0))))) {
-        return self.$build_response(req, data, status, status_text)
+        return self.$build_response(req, status, status_text)
       } else {
         return self.$raise($$$($$($nesting, 'OpenURI'), 'HTTPError').$new("" + (status) + " " + (status_text), ""))
       };
-    }, TMP_OpenURI_open_loop_4.$$arity = 2);
-    Opal.defs(self, '$build_response', TMP_OpenURI_build_response_5 = function $$build_response(req, data, status, status_text) {
+    }, $OpenURI_open_loop$4.$$arity = 2);
+    Opal.defs(self, '$build_response', $OpenURI_build_response$5 = function $$build_response(req, status, status_text) {
       var self = this, buf = nil, io = nil, $writer = nil, last_modified = nil;
 
       
       buf = $$($nesting, 'Buffer').$new();
-      buf['$<<'](data);
+      buf['$<<'](self.$data(req).$pack("c*"));
       io = buf.$io();
       
       $writer = ["" + (status) + " " + (status_text)];
@@ -445,65 +1053,82 @@ Opal.modules["open-uri"] = function(Opal) {
       if ($truthy(last_modified)) {
         io.$meta_add_field("last-modified", last_modified)};
       return io;
-    }, TMP_OpenURI_build_response_5.$$arity = 4);
-    Opal.defs(self, '$request', TMP_OpenURI_request_6 = function $$request(uri) {
+    }, $OpenURI_build_response$5.$$arity = 3);
+    Opal.defs(self, '$data', $OpenURI_data$6 = function $$data(req) {
+      var self = this;
+
+      
+      var binStr = req.responseText;
+      var byteArray = [];
+      for (var i = 0, len = binStr.length; i < len; ++i) {
+        var c = binStr.charCodeAt(i);
+        var byteCode = c & 0xff; // byte at offset i
+        byteArray.push(byteCode);
+      }
+      return byteArray;
+    
+    }, $OpenURI_data$6.$$arity = 1);
+    Opal.defs(self, '$request', $OpenURI_request$7 = function $$request(uri) {
       var self = this;
 
       
       try {
         var xhr = new XMLHttpRequest();
         xhr.open('GET', uri, false);
+        // We cannot use xhr.responseType = "arraybuffer" because XMLHttpRequest is used in synchronous mode.
+        // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/responseType#Synchronous_XHR_restrictions
+        xhr.overrideMimeType('text/plain; charset=x-user-defined');
         xhr.send();
         return xhr;
       } catch (error) {
         self.$raise($$$($$($nesting, 'OpenURI'), 'HTTPError').$new(error.message, ""))
       }
     
-    }, TMP_OpenURI_request_6.$$arity = 1);
+    }, $OpenURI_request$7.$$arity = 1);
     (function($base, $super, $parent_nesting) {
       function $HTTPError(){};
       var self = $HTTPError = $klass($base, $super, 'HTTPError', $HTTPError);
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_HTTPError_initialize_7;
+      var def = self.prototype, $nesting = [self].concat($parent_nesting), $HTTPError_initialize$8;
 
       
       
-      Opal.def(self, '$initialize', TMP_HTTPError_initialize_7 = function $$initialize(message, io) {
-        var $iter = TMP_HTTPError_initialize_7.$$p, $yield = $iter || nil, self = this;
+      Opal.def(self, '$initialize', $HTTPError_initialize$8 = function $$initialize(message, io) {
+        var $iter = $HTTPError_initialize$8.$$p, $yield = $iter || nil, self = this;
 
-        if ($iter) TMP_HTTPError_initialize_7.$$p = null;
+        if ($iter) $HTTPError_initialize$8.$$p = null;
         
-        $send(self, Opal.find_super_dispatcher(self, 'initialize', TMP_HTTPError_initialize_7, false), [message, io], null);
+        $send(self, Opal.find_super_dispatcher(self, 'initialize', $HTTPError_initialize$8, false), [message, io], null);
         return (self.io = io);
-      }, TMP_HTTPError_initialize_7.$$arity = 2);
+      }, $HTTPError_initialize$8.$$arity = 2);
       return self.$attr_reader("io");
     })($nesting[0], $$($nesting, 'StandardError'), $nesting);
     (function($base, $super, $parent_nesting) {
       function $Buffer(){};
       var self = $Buffer = $klass($base, $super, 'Buffer', $Buffer);
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Buffer_initialize_8, TMP_Buffer_$lt$lt_9, TMP_Buffer_io_10;
+      var def = self.prototype, $nesting = [self].concat($parent_nesting), $Buffer_initialize$9, $Buffer_$lt$lt$10, $Buffer_io$11;
 
       def.io = def.size = nil;
       
       
-      Opal.def(self, '$initialize', TMP_Buffer_initialize_8 = function $$initialize() {
+      Opal.def(self, '$initialize', $Buffer_initialize$9 = function $$initialize() {
         var self = this;
 
         
         self.io = $$($nesting, 'StringIO').$new();
         return (self.size = 0);
-      }, TMP_Buffer_initialize_8.$$arity = 0);
+      }, $Buffer_initialize$9.$$arity = 0);
       self.$attr_reader("size");
       
-      Opal.def(self, '$<<', TMP_Buffer_$lt$lt_9 = function(str) {
+      Opal.def(self, '$<<', $Buffer_$lt$lt$10 = function(str) {
         var self = this;
 
         
         self.io['$<<'](str);
         return (self.size = $rb_plus(self.size, str.$length()));
-      }, TMP_Buffer_$lt$lt_9.$$arity = 1);
-      return (Opal.def(self, '$io', TMP_Buffer_io_10 = function $$io() {
+      }, $Buffer_$lt$lt$10.$$arity = 1);
+      return (Opal.def(self, '$io', $Buffer_io$11 = function $$io() {
         var self = this;
 
         
@@ -512,17 +1137,17 @@ Opal.modules["open-uri"] = function(Opal) {
           $$($nesting, 'Meta').$init(self.io)
         };
         return self.io;
-      }, TMP_Buffer_io_10.$$arity = 0), nil) && 'io';
+      }, $Buffer_io$11.$$arity = 0), nil) && 'io';
     })($nesting[0], null, $nesting);
     (function($base, $parent_nesting) {
       function $Meta() {};
       var self = $Meta = $module($base, 'Meta', $Meta);
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Meta_init_11, TMP_Meta_meta_setup_encoding_14, TMP_Meta_set_encoding_15, TMP_Meta_find_encoding_16, TMP_Meta_meta_add_field2_17, TMP_Meta_meta_add_field_18, TMP_Meta_last_modified_19, TMP_Meta_content_type_parse_20, TMP_Meta_charset_21, TMP_Meta_content_type_22;
+      var def = self.prototype, $nesting = [self].concat($parent_nesting), $Meta_init$12, $Meta_meta_setup_encoding$15, $Meta_set_encoding$16, $Meta_find_encoding$17, $Meta_meta_add_field2$18, $Meta_meta_add_field$19, $Meta_last_modified$20, $Meta_content_type_parse$21, $Meta_charset$22, $Meta_content_type$23;
 
       
-      Opal.defs($$($nesting, 'Meta'), '$init', TMP_Meta_init_11 = function $$init(obj, src) {
-        var TMP_12, TMP_13, self = this, $writer = nil;
+      Opal.defs($$($nesting, 'Meta'), '$init', $Meta_init$12 = function $$init(obj, src) {
+        var $$13, $$14, self = this, $writer = nil;
 
         
         
@@ -530,12 +1155,12 @@ Opal.modules["open-uri"] = function(Opal) {
           src = nil;
         };
         obj.$extend($$($nesting, 'Meta'));
-        $send(obj, 'instance_eval', [], (TMP_12 = function(){var self = TMP_12.$$s || this;
+        $send(obj, 'instance_eval', [], ($$13 = function(){var self = $$13.$$s || this;
 
         
           self.base_uri = nil;
           self.meta = $hash2([], {});
-          return (self.metas = $hash2([], {}));}, TMP_12.$$s = self, TMP_12.$$arity = 0, TMP_12));
+          return (self.metas = $hash2([], {}));}, $$13.$$s = self, $$13.$$arity = 0, $$13));
         if ($truthy(src)) {
           
           
@@ -546,7 +1171,7 @@ Opal.modules["open-uri"] = function(Opal) {
           $writer = [src.$base_uri()];
           $send(obj, 'base_uri=', Opal.to_a($writer));
           $writer[$rb_minus($writer["length"], 1)];;
-          return $send(src.$metas(), 'each', [], (TMP_13 = function(name, values){var self = TMP_13.$$s || this;
+          return $send(src.$metas(), 'each', [], ($$14 = function(name, values){var self = $$14.$$s || this;
 
           
             
@@ -557,26 +1182,26 @@ Opal.modules["open-uri"] = function(Opal) {
             if (values == null) {
               values = nil;
             };
-            return obj.$meta_add_field2(name, values);}, TMP_13.$$s = self, TMP_13.$$arity = 2, TMP_13));
+            return obj.$meta_add_field2(name, values);}, $$14.$$s = self, $$14.$$arity = 2, $$14));
         } else {
           return nil
         };
-      }, TMP_Meta_init_11.$$arity = -2);
+      }, $Meta_init$12.$$arity = -2);
       self.$attr_accessor("status");
       self.$attr_accessor("base_uri");
       self.$attr_reader("meta");
       self.$attr_reader("metas");
       
-      Opal.def(self, '$meta_setup_encoding', TMP_Meta_meta_setup_encoding_14 = function $$meta_setup_encoding() {
+      Opal.def(self, '$meta_setup_encoding', $Meta_meta_setup_encoding$15 = function $$meta_setup_encoding() {
         var self = this, charset = nil, enc = nil;
 
         
         charset = self.$charset();
         enc = self.$find_encoding(charset);
         return self.$set_encoding(enc);
-      }, TMP_Meta_meta_setup_encoding_14.$$arity = 0);
+      }, $Meta_meta_setup_encoding$15.$$arity = 0);
       
-      Opal.def(self, '$set_encoding', TMP_Meta_set_encoding_15 = function $$set_encoding(enc) {
+      Opal.def(self, '$set_encoding', $Meta_set_encoding$16 = function $$set_encoding(enc) {
         var self = this;
 
         if ($truthy(self['$respond_to?']("force_encoding"))) {
@@ -586,9 +1211,9 @@ Opal.modules["open-uri"] = function(Opal) {
         } else {
           return self.$set_encoding(enc)
         }
-      }, TMP_Meta_set_encoding_15.$$arity = 1);
+      }, $Meta_set_encoding$16.$$arity = 1);
       
-      Opal.def(self, '$find_encoding', TMP_Meta_find_encoding_16 = function $$find_encoding(charset) {
+      Opal.def(self, '$find_encoding', $Meta_find_encoding$17 = function $$find_encoding(charset) {
         var self = this, enc = nil;
 
         
@@ -609,9 +1234,9 @@ Opal.modules["open-uri"] = function(Opal) {
           enc = $$$($$($nesting, 'Encoding'), 'ASCII_8BIT')
         };
         return enc;
-      }, TMP_Meta_find_encoding_16.$$arity = 1);
+      }, $Meta_find_encoding$17.$$arity = 1);
       
-      Opal.def(self, '$meta_add_field2', TMP_Meta_meta_add_field2_17 = function $$meta_add_field2(name, values) {
+      Opal.def(self, '$meta_add_field2', $Meta_meta_add_field2$18 = function $$meta_add_field2(name, values) {
         var self = this, $writer = nil;
         if (self.metas == null) self.metas = nil;
         if (self.meta == null) self.meta = nil;
@@ -631,15 +1256,15 @@ Opal.modules["open-uri"] = function(Opal) {
         } else {
           return nil
         };
-      }, TMP_Meta_meta_add_field2_17.$$arity = 2);
+      }, $Meta_meta_add_field2$18.$$arity = 2);
       
-      Opal.def(self, '$meta_add_field', TMP_Meta_meta_add_field_18 = function $$meta_add_field(name, value) {
+      Opal.def(self, '$meta_add_field', $Meta_meta_add_field$19 = function $$meta_add_field(name, value) {
         var self = this;
 
         return self.$meta_add_field2(name, [value])
-      }, TMP_Meta_meta_add_field_18.$$arity = 2);
+      }, $Meta_meta_add_field$19.$$arity = 2);
       
-      Opal.def(self, '$last_modified', TMP_Meta_last_modified_19 = function $$last_modified() {
+      Opal.def(self, '$last_modified', $Meta_last_modified$20 = function $$last_modified() {
         var self = this, vs = nil;
         if (self.metas == null) self.metas = nil;
 
@@ -648,18 +1273,18 @@ Opal.modules["open-uri"] = function(Opal) {
         } else {
           return nil
         }
-      }, TMP_Meta_last_modified_19.$$arity = 0);
+      }, $Meta_last_modified$20.$$arity = 0);
       
-      Opal.def(self, '$content_type_parse', TMP_Meta_content_type_parse_20 = function $$content_type_parse() {
+      Opal.def(self, '$content_type_parse', $Meta_content_type_parse$21 = function $$content_type_parse() {
         var self = this, content_type = nil;
         if (self.metas == null) self.metas = nil;
 
         
         content_type = self.metas['$[]']("content-type");
         return content_type.$join(", ");
-      }, TMP_Meta_content_type_parse_20.$$arity = 0);
+      }, $Meta_content_type_parse$21.$$arity = 0);
       
-      Opal.def(self, '$charset', TMP_Meta_charset_21 = function $$charset() {
+      Opal.def(self, '$charset', $Meta_charset$22 = function $$charset() {
         var $a, $b, $c, self = this, type = nil;
         if (self.base_uri == null) self.base_uri = nil;
 
@@ -670,47 +1295,47 @@ Opal.modules["open-uri"] = function(Opal) {
         } else {
           return nil
         };
-      }, TMP_Meta_charset_21.$$arity = 0);
+      }, $Meta_charset$22.$$arity = 0);
       
-      Opal.def(self, '$content_type', TMP_Meta_content_type_22 = function $$content_type() {
+      Opal.def(self, '$content_type', $Meta_content_type$23 = function $$content_type() {
         var $a, self = this, type = nil;
 
         
         type = self.$content_type_parse();
         return ($truthy($a = type) ? $a : "application/octet-stream");
-      }, TMP_Meta_content_type_22.$$arity = 0);
+      }, $Meta_content_type$23.$$arity = 0);
     })($nesting[0], $nesting);
     (function($base, $parent_nesting) {
       function $OpenRead() {};
       var self = $OpenRead = $module($base, 'OpenRead', $OpenRead);
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_OpenRead_open_23, TMP_OpenRead_read_24;
+      var def = self.prototype, $nesting = [self].concat($parent_nesting), $OpenRead_open$24, $OpenRead_read$25;
 
       
       
-      Opal.def(self, '$open', TMP_OpenRead_open_23 = function $$open($a) {
-        var $iter = TMP_OpenRead_open_23.$$p, block = $iter || nil, $post_args, rest, self = this;
+      Opal.def(self, '$open', $OpenRead_open$24 = function $$open($a) {
+        var $iter = $OpenRead_open$24.$$p, block = $iter || nil, $post_args, rest, self = this;
 
-        if ($iter) TMP_OpenRead_open_23.$$p = null;
+        if ($iter) $OpenRead_open$24.$$p = null;
         
         
-        if ($iter) TMP_OpenRead_open_23.$$p = null;;
+        if ($iter) $OpenRead_open$24.$$p = null;;
         
         $post_args = Opal.slice.call(arguments, 0, arguments.length);
         
         rest = $post_args;;
         return $send($$($nesting, 'OpenURI'), 'open_uri', [self].concat(Opal.to_a(rest)), block.$to_proc());
-      }, TMP_OpenRead_open_23.$$arity = -1);
+      }, $OpenRead_open$24.$$arity = -1);
       
-      Opal.def(self, '$read', TMP_OpenRead_read_24 = function $$read(options) {
-        var TMP_25, self = this;
+      Opal.def(self, '$read', $OpenRead_read$25 = function $$read(options) {
+        var $$26, self = this;
 
         
         
         if (options == null) {
           options = $hash2([], {});
         };
-        return $send(self, 'open', [options], (TMP_25 = function(f){var self = TMP_25.$$s || this, str = nil;
+        return $send(self, 'open', [options], ($$26 = function(f){var self = $$26.$$s || this, str = nil;
 
         
           
@@ -719,8 +1344,8 @@ Opal.modules["open-uri"] = function(Opal) {
           };
           str = f.$read();
           $$($nesting, 'Meta').$init(str, f);
-          return str;}, TMP_25.$$s = self, TMP_25.$$arity = 1, TMP_25));
-      }, TMP_OpenRead_read_24.$$arity = -1);
+          return str;}, $$26.$$s = self, $$26.$$arity = 1, $$26));
+      }, $OpenRead_read$25.$$arity = -1);
     })($nesting[0], $nesting);
   })($nesting[0], $nesting);
 };

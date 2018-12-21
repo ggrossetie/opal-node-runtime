@@ -7,7 +7,7 @@ Opal.modules["base64"] = function(Opal) {
     function $Base64() {};
     var self = $Base64 = $module($base, 'Base64', $Base64);
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), TMP_Base64_decode64_1, TMP_Base64_encode64_2, TMP_Base64_strict_decode64_3, TMP_Base64_strict_encode64_4, TMP_Base64_urlsafe_decode64_5, TMP_Base64_urlsafe_encode64_6;
+    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Base64_decode64$1, $Base64_encode64$2, $Base64_strict_decode64$3, $Base64_strict_encode64$4, $Base64_urlsafe_decode64$5, $Base64_urlsafe_encode64$6;
 
     
     
@@ -65,32 +65,32 @@ Opal.modules["base64"] = function(Opal) {
       /* jshint ignore:end */
     };
   ;
-    Opal.defs(self, '$decode64', TMP_Base64_decode64_1 = function $$decode64(string) {
+    Opal.defs(self, '$decode64', $Base64_decode64$1 = function $$decode64(string) {
       var self = this;
 
       return decode(string.replace(/\r?\n/g, ''));
-    }, TMP_Base64_decode64_1.$$arity = 1);
-    Opal.defs(self, '$encode64', TMP_Base64_encode64_2 = function $$encode64(string) {
+    }, $Base64_decode64$1.$$arity = 1);
+    Opal.defs(self, '$encode64', $Base64_encode64$2 = function $$encode64(string) {
       var self = this;
 
       return encode(string).replace(/(.{60})/g, "$1\n").replace(/([^\n])$/g, "$1\n");
-    }, TMP_Base64_encode64_2.$$arity = 1);
-    Opal.defs(self, '$strict_decode64', TMP_Base64_strict_decode64_3 = function $$strict_decode64(string) {
+    }, $Base64_encode64$2.$$arity = 1);
+    Opal.defs(self, '$strict_decode64', $Base64_strict_decode64$3 = function $$strict_decode64(string) {
       var self = this;
 
       return decode(string);
-    }, TMP_Base64_strict_decode64_3.$$arity = 1);
-    Opal.defs(self, '$strict_encode64', TMP_Base64_strict_encode64_4 = function $$strict_encode64(string) {
+    }, $Base64_strict_decode64$3.$$arity = 1);
+    Opal.defs(self, '$strict_encode64', $Base64_strict_encode64$4 = function $$strict_encode64(string) {
       var self = this;
 
       return encode(string);
-    }, TMP_Base64_strict_encode64_4.$$arity = 1);
-    Opal.defs(self, '$urlsafe_decode64', TMP_Base64_urlsafe_decode64_5 = function $$urlsafe_decode64(string) {
+    }, $Base64_strict_encode64$4.$$arity = 1);
+    Opal.defs(self, '$urlsafe_decode64', $Base64_urlsafe_decode64$5 = function $$urlsafe_decode64(string) {
       var self = this;
 
       return decode(string.replace(/\-/g, '+').replace(/_/g, '/'));
-    }, TMP_Base64_urlsafe_decode64_5.$$arity = 1);
-    Opal.defs(self, '$urlsafe_encode64', TMP_Base64_urlsafe_encode64_6 = function $$urlsafe_encode64(string, $kwargs) {
+    }, $Base64_urlsafe_decode64$5.$$arity = 1);
+    Opal.defs(self, '$urlsafe_encode64', $Base64_urlsafe_encode64$6 = function $$urlsafe_encode64(string, $kwargs) {
       var padding, self = this, str = nil;
 
       
@@ -111,6 +111,6 @@ Opal.modules["base64"] = function(Opal) {
         str = str.$delete("=")
       };
       return str;
-    }, TMP_Base64_urlsafe_encode64_6.$$arity = -2);
+    }, $Base64_urlsafe_encode64$6.$$arity = -2);
   })($nesting[0], $nesting)
 };
