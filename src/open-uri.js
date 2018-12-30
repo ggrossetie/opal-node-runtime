@@ -1048,7 +1048,7 @@ Opal.modules["open-uri"] = function(Opal) {
       $writer = ["" + (status) + " " + (status_text)];
       $send(io, 'status=', Opal.to_a($writer));
       $writer[$rb_minus($writer["length"], 1)];;
-      io.$meta_add_field("content-type", req.getResponseHeader("Content-Type"));
+      io.$meta_add_field("content-type", req.getResponseHeader("Content-Type") || '');
       last_modified = req.getResponseHeader("Last-Modified");
       if ($truthy(last_modified)) {
         io.$meta_add_field("last-modified", last_modified)};

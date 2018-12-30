@@ -60,7 +60,7 @@ Opal.modules["nodejs/kernel"] = function(Opal) {
 Opal.modules["nodejs/file"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $gvars = Opal.gvars;
 
-  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$to_str', '$pwd', '$delete', '$match?', '$sub', '$attr_reader', '$to_a', '$each_line', '$to_enum', '$read', '$chomp']);
+  Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$to_str', '$pwd', '$include?', '$delete', '$match?', '$sub', '$attr_reader', '$to_a', '$each_line', '$to_enum', '$read', '$chomp']);
   
   
   var warnings = {}, errno_code, errno_codes = [
@@ -117,7 +117,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     if (self.__fs__ == null) self.__fs__ = nil;
     if (self.__path__ == null) self.__path__ = nil;
 
-    def.eof = def.path = def.fd = nil;
+    def.eof = def.path = def.binary_flag = def.fd = nil;
     
     self.$include($$$($$$('::', 'IO'), 'Writable'));
     self.$include($$$($$$('::', 'IO'), 'Readable'));
@@ -296,6 +296,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       if (flags == null) {
         flags = "r";
       };
+      self.binary_flag = flags['$include?']("b");
       flags = flags.$delete("b");
       encoding_option_rx = /:(.*)/;
       if ($truthy(encoding_option_rx['$match?'](flags))) {
@@ -315,7 +316,11 @@ Opal.modules["nodejs/file"] = function(Opal) {
         return ""
       } else {
         
-        res = executeIOAction(function(){return __fs__.readFileSync(self.path).toString()});
+        res = executeIOAction(function(){return __fs__.readFileSync(self.path).toString((function() {if ($truthy(self.binary_flag)) {
+          return "binary"
+        } else {
+          return "utf8"
+        }; return nil; })())});
         self.eof = true;
         self.lineno = res.$size();
         return res;
