@@ -4,10 +4,9 @@ Opal.modules["base64"] = function(Opal) {
 
   Opal.add_stubs(['$raise', '$delete']);
   return (function($base, $parent_nesting) {
-    function $Base64() {};
-    var self = $Base64 = $module($base, 'Base64', $Base64);
+    var self = $module($base, 'Base64');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Base64_decode64$1, $Base64_encode64$2, $Base64_strict_decode64$3, $Base64_strict_encode64$4, $Base64_urlsafe_decode64$5, $Base64_urlsafe_encode64$6;
+    var $nesting = [self].concat($parent_nesting), $Base64_decode64$1, $Base64_encode64$2, $Base64_strict_decode64$3, $Base64_strict_encode64$4, $Base64_urlsafe_decode64$5, $Base64_urlsafe_encode64$6;
 
     
     

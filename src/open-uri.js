@@ -16,12 +16,11 @@ Opal.modules["stringio"] = function(Opal) {
 
   Opal.add_stubs(['$include', '$new', '$call', '$close', '$attr_accessor', '$length', '$include?', '$!', '$check_readable', '$==', '$===', '$>=', '$raise', '$>', '$+', '$-', '$seek', '$enum_for', '$eof?', '$ord', '$[]', '$to_str', '$chomp', '$check_writable', '$String', '$write', '$closed_write?', '$closed_read?']);
   return (function($base, $super, $parent_nesting) {
-    function $StringIO(){};
-    var self = $StringIO = $klass($base, $super, 'StringIO', $StringIO);
+    var self = $klass($base, $super, 'StringIO');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), $StringIO_open$1, $StringIO_initialize$2, $StringIO_eof$ques$3, $StringIO_seek$4, $StringIO_tell$5, $StringIO_rewind$6, $StringIO_each_byte$7, $StringIO_each_char$8, $StringIO_each$9, $StringIO_write$10, $StringIO_read$11, $StringIO_close$12, $StringIO_close_read$13, $StringIO_close_write$14, $StringIO_closed$ques$15, $StringIO_closed_read$ques$16, $StringIO_closed_write$ques$17, $StringIO_check_writable$18, $StringIO_check_readable$19;
+    var $nesting = [self].concat($parent_nesting), $StringIO_open$1, $StringIO_initialize$2, $StringIO_eof$ques$3, $StringIO_seek$4, $StringIO_tell$5, $StringIO_rewind$6, $StringIO_each_byte$7, $StringIO_each_char$8, $StringIO_each$9, $StringIO_write$10, $StringIO_read$11, $StringIO_close$12, $StringIO_close_read$13, $StringIO_close_write$14, $StringIO_closed$ques$15, $StringIO_closed_read$ques$16, $StringIO_closed_write$ques$17, $StringIO_check_writable$18, $StringIO_check_readable$19;
 
-    def.position = def.string = def.closed = nil;
+    self.$$prototype.position = self.$$prototype.string = self.$$prototype.closed = nil;
     
     self.$include($$$($$($nesting, 'IO'), 'Readable'));
     self.$include($$$($$($nesting, 'IO'), 'Writable'));
@@ -334,10 +333,9 @@ Opal.modules["corelib/pack_unpack/format_string_parser"] = function(Opal) {
 
   Opal.add_stubs(['$raise']);
   return (function($base, $parent_nesting) {
-    function $PackUnpack() {};
-    var self = $PackUnpack = $module($base, 'PackUnpack', $PackUnpack);
+    var self = $module($base, 'PackUnpack');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting);
+    var $nesting = [self].concat($parent_nesting);
 
     
     var directives = [
@@ -483,10 +481,9 @@ Opal.modules["corelib/array/pack"] = function(Opal) {
   
   self.$require("corelib/pack_unpack/format_string_parser");
   return (function($base, $super, $parent_nesting) {
-    function $Array(){};
-    var self = $Array = $klass($base, $super, 'Array', $Array);
+    var self = $klass($base, $super, 'Array');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Array_pack$1;
+    var $nesting = [self].concat($parent_nesting), $Array_pack$1;
 
     
     
@@ -950,16 +947,15 @@ Opal.modules["open-uri"] = function(Opal) {
   self.$require("stringio");
   self.$require("corelib/array/pack");
   (function($base, $parent_nesting) {
-    function $Kernel() {};
-    var self = $Kernel = $module($base, 'Kernel', $Kernel);
+    var self = $module($base, 'Kernel');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), $Kernel_open$1;
+    var $nesting = [self].concat($parent_nesting), $Kernel_open$1;
 
     
     self.$private();
     Opal.alias(self, "open_uri_original_open", "open");
     (function(self, $parent_nesting) {
-      var def = self.prototype, $nesting = [self].concat($parent_nesting);
+      var $nesting = [self].concat($parent_nesting);
 
       return Opal.alias(self, "open_uri_original_open", "open")
     })(Opal.get_singleton_class(self), $nesting);
@@ -984,10 +980,9 @@ Opal.modules["open-uri"] = function(Opal) {
     self.$module_function("open");
   })($nesting[0], $nesting);
   return (function($base, $parent_nesting) {
-    function $OpenURI() {};
-    var self = $OpenURI = $module($base, 'OpenURI', $OpenURI);
+    var self = $module($base, 'OpenURI');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), $OpenURI_open_uri$2, $OpenURI_close_io$3, $OpenURI_open_loop$4, $OpenURI_build_response$5, $OpenURI_data$6, $OpenURI_request$7;
+    var $nesting = [self].concat($parent_nesting), $OpenURI_open_uri$2, $OpenURI_close_io$3, $OpenURI_open_loop$4, $OpenURI_build_response$5, $OpenURI_data$6, $OpenURI_request$7;
 
     
     Opal.defs(self, '$open_uri', $OpenURI_open_uri$2 = function $$open_uri(name, $a) {
@@ -1086,10 +1081,9 @@ Opal.modules["open-uri"] = function(Opal) {
     
     }, $OpenURI_request$7.$$arity = 1);
     (function($base, $super, $parent_nesting) {
-      function $HTTPError(){};
-      var self = $HTTPError = $klass($base, $super, 'HTTPError', $HTTPError);
+      var self = $klass($base, $super, 'HTTPError');
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), $HTTPError_initialize$8;
+      var $nesting = [self].concat($parent_nesting), $HTTPError_initialize$8;
 
       
       
@@ -1104,12 +1098,11 @@ Opal.modules["open-uri"] = function(Opal) {
       return self.$attr_reader("io");
     })($nesting[0], $$($nesting, 'StandardError'), $nesting);
     (function($base, $super, $parent_nesting) {
-      function $Buffer(){};
-      var self = $Buffer = $klass($base, $super, 'Buffer', $Buffer);
+      var self = $klass($base, $super, 'Buffer');
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), $Buffer_initialize$9, $Buffer_$lt$lt$10, $Buffer_io$11;
+      var $nesting = [self].concat($parent_nesting), $Buffer_initialize$9, $Buffer_$lt$lt$10, $Buffer_io$11;
 
-      def.io = def.size = nil;
+      self.$$prototype.io = self.$$prototype.size = nil;
       
       
       Opal.def(self, '$initialize', $Buffer_initialize$9 = function $$initialize() {
@@ -1140,10 +1133,9 @@ Opal.modules["open-uri"] = function(Opal) {
       }, $Buffer_io$11.$$arity = 0), nil) && 'io';
     })($nesting[0], null, $nesting);
     (function($base, $parent_nesting) {
-      function $Meta() {};
-      var self = $Meta = $module($base, 'Meta', $Meta);
+      var self = $module($base, 'Meta');
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), $Meta_init$12, $Meta_meta_setup_encoding$15, $Meta_set_encoding$16, $Meta_find_encoding$17, $Meta_meta_add_field2$18, $Meta_meta_add_field$19, $Meta_last_modified$20, $Meta_content_type_parse$21, $Meta_charset$22, $Meta_content_type$23;
+      var $nesting = [self].concat($parent_nesting), $Meta_init$12, $Meta_meta_setup_encoding$15, $Meta_set_encoding$16, $Meta_find_encoding$17, $Meta_meta_add_field2$18, $Meta_meta_add_field$19, $Meta_last_modified$20, $Meta_content_type_parse$21, $Meta_charset$22, $Meta_content_type$23;
 
       
       Opal.defs($$($nesting, 'Meta'), '$init', $Meta_init$12 = function $$init(obj, src) {
@@ -1306,10 +1298,9 @@ Opal.modules["open-uri"] = function(Opal) {
       }, $Meta_content_type$23.$$arity = 0);
     })($nesting[0], $nesting);
     (function($base, $parent_nesting) {
-      function $OpenRead() {};
-      var self = $OpenRead = $module($base, 'OpenRead', $OpenRead);
+      var self = $module($base, 'OpenRead');
 
-      var def = self.prototype, $nesting = [self].concat($parent_nesting), $OpenRead_open$24, $OpenRead_read$25;
+      var $nesting = [self].concat($parent_nesting), $OpenRead_open$24, $OpenRead_read$25;
 
       
       

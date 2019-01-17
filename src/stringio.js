@@ -16,12 +16,11 @@ Opal.modules["stringio"] = function(Opal) {
 
   Opal.add_stubs(['$include', '$new', '$call', '$close', '$attr_accessor', '$length', '$include?', '$!', '$check_readable', '$==', '$===', '$>=', '$raise', '$>', '$+', '$-', '$seek', '$enum_for', '$eof?', '$ord', '$[]', '$to_str', '$chomp', '$check_writable', '$String', '$write', '$closed_write?', '$closed_read?']);
   return (function($base, $super, $parent_nesting) {
-    function $StringIO(){};
-    var self = $StringIO = $klass($base, $super, 'StringIO', $StringIO);
+    var self = $klass($base, $super, 'StringIO');
 
-    var def = self.prototype, $nesting = [self].concat($parent_nesting), $StringIO_open$1, $StringIO_initialize$2, $StringIO_eof$ques$3, $StringIO_seek$4, $StringIO_tell$5, $StringIO_rewind$6, $StringIO_each_byte$7, $StringIO_each_char$8, $StringIO_each$9, $StringIO_write$10, $StringIO_read$11, $StringIO_close$12, $StringIO_close_read$13, $StringIO_close_write$14, $StringIO_closed$ques$15, $StringIO_closed_read$ques$16, $StringIO_closed_write$ques$17, $StringIO_check_writable$18, $StringIO_check_readable$19;
+    var $nesting = [self].concat($parent_nesting), $StringIO_open$1, $StringIO_initialize$2, $StringIO_eof$ques$3, $StringIO_seek$4, $StringIO_tell$5, $StringIO_rewind$6, $StringIO_each_byte$7, $StringIO_each_char$8, $StringIO_each$9, $StringIO_write$10, $StringIO_read$11, $StringIO_close$12, $StringIO_close_read$13, $StringIO_close_write$14, $StringIO_closed$ques$15, $StringIO_closed_read$ques$16, $StringIO_closed_write$ques$17, $StringIO_check_writable$18, $StringIO_check_readable$19;
 
-    def.position = def.string = def.closed = nil;
+    self.$$prototype.position = self.$$prototype.string = self.$$prototype.closed = nil;
     
     self.$include($$$($$($nesting, 'IO'), 'Readable'));
     self.$include($$$($$($nesting, 'IO'), 'Writable'));
