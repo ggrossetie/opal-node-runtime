@@ -1,0 +1,13 @@
+= Opal Runtime for Asciidoctor.js
+
+ifdef::env-github[]
+image:https://img.shields.io/travis/Mogztter/asciidoctor-opal-node-runtime/master.svg[Travis build status, link=https://travis-ci.org/Mogztter/asciidoctor-opal-node-runtime]
+image:http://img.shields.io/npm/v/asciidoctor-opal-runtime.svg[npm version, link=https://www.npmjs.org/package/asciidoctor-opal-runtime]
+endif::[]
+
+== Usage
+
+```javascript
+var Opal = require('opal-runtime').Opal;
+// Now let's have fun with Opal!
+```
