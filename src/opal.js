@@ -3884,12 +3884,12 @@ Opal.modules["corelib/kernel"] = function(Opal) {
   }
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $truthy = Opal.truthy, $gvars = Opal.gvars, $hash2 = Opal.hash2, $send = Opal.send, $klass = Opal.klass;
 
-  Opal.add_stubs(['$raise', '$new', '$inspect', '$!', '$=~', '$==', '$object_id', '$class', '$coerce_to?', '$<<', '$allocate', '$copy_instance_variables', '$copy_singleton_methods', '$initialize_clone', '$initialize_copy', '$define_method', '$singleton_class', '$to_proc', '$initialize_dup', '$for', '$empty?', '$pop', '$call', '$coerce_to', '$append_features', '$extend_object', '$extended', '$length', '$respond_to?', '$[]', '$nil?', '$to_a', '$to_int', '$fetch', '$Integer', '$Float', '$to_ary', '$to_str', '$to_s', '$__id__', '$instance_variable_name!', '$coerce_to!', '$===', '$enum_for', '$result', '$any?', '$print', '$format', '$puts', '$each', '$<=', '$exception', '$is_a?', '$rand', '$respond_to_missing?', '$try_convert!', '$expand_path', '$join', '$start_with?', '$new_seed', '$srand', '$sym', '$arg', '$open', '$include']);
+  Opal.add_stubs(['$raise', '$new', '$inspect', '$!', '$=~', '$==', '$object_id', '$class', '$coerce_to?', '$<<', '$allocate', '$copy_instance_variables', '$copy_singleton_methods', '$initialize_clone', '$initialize_copy', '$define_method', '$singleton_class', '$to_proc', '$initialize_dup', '$for', '$empty?', '$pop', '$call', '$coerce_to', '$append_features', '$extend_object', '$extended', '$__id__', '$to_s', '$instance_variable_name!', '$respond_to?', '$to_int', '$coerce_to!', '$Integer', '$nil?', '$===', '$enum_for', '$result', '$any?', '$print', '$format', '$puts', '$each', '$<=', '$length', '$[]', '$exception', '$is_a?', '$rand', '$respond_to_missing?', '$try_convert!', '$expand_path', '$join', '$start_with?', '$new_seed', '$srand', '$sym', '$arg', '$open', '$include']);
   
   (function($base, $parent_nesting) {
     var self = $module($base, 'Kernel');
 
-    var $nesting = [self].concat($parent_nesting), $Kernel_method_missing$1, $Kernel_$eq_tilde$2, $Kernel_$excl_tilde$3, $Kernel_$eq_eq_eq$4, $Kernel_$lt_eq_gt$5, $Kernel_method$6, $Kernel_methods$7, $Kernel_public_methods$8, $Kernel_Array$9, $Kernel_at_exit$10, $Kernel_caller$11, $Kernel_class$12, $Kernel_copy_instance_variables$13, $Kernel_copy_singleton_methods$14, $Kernel_clone$15, $Kernel_initialize_clone$16, $Kernel_define_singleton_method$17, $Kernel_dup$18, $Kernel_initialize_dup$19, $Kernel_enum_for$20, $Kernel_equal$ques$21, $Kernel_exit$22, $Kernel_extend$23, $Kernel_format$24, $Kernel_hash$25, $Kernel_initialize_copy$26, $Kernel_inspect$27, $Kernel_instance_of$ques$28, $Kernel_instance_variable_defined$ques$29, $Kernel_instance_variable_get$30, $Kernel_instance_variable_set$31, $Kernel_remove_instance_variable$32, $Kernel_instance_variables$33, $Kernel_Integer$34, $Kernel_Float$35, $Kernel_Hash$36, $Kernel_is_a$ques$37, $Kernel_itself$38, $Kernel_lambda$39, $Kernel_load$40, $Kernel_loop$41, $Kernel_nil$ques$43, $Kernel_printf$44, $Kernel_proc$45, $Kernel_puts$46, $Kernel_p$47, $Kernel_print$49, $Kernel_warn$50, $Kernel_raise$51, $Kernel_rand$52, $Kernel_respond_to$ques$53, $Kernel_respond_to_missing$ques$54, $Kernel_require$55, $Kernel_require_relative$56, $Kernel_require_tree$57, $Kernel_singleton_class$58, $Kernel_sleep$59, $Kernel_srand$60, $Kernel_String$61, $Kernel_tap$62, $Kernel_to_proc$63, $Kernel_to_s$64, $Kernel_catch$65, $Kernel_throw$66, $Kernel_open$67, $Kernel_yield_self$68;
+    var $nesting = [self].concat($parent_nesting), $Kernel_method_missing$1, $Kernel_$eq_tilde$2, $Kernel_$excl_tilde$3, $Kernel_$eq_eq_eq$4, $Kernel_$lt_eq_gt$5, $Kernel_method$6, $Kernel_methods$7, $Kernel_public_methods$8, $Kernel_Array$9, $Kernel_at_exit$10, $Kernel_caller$11, $Kernel_class$12, $Kernel_copy_instance_variables$13, $Kernel_copy_singleton_methods$14, $Kernel_clone$15, $Kernel_initialize_clone$16, $Kernel_define_singleton_method$17, $Kernel_dup$18, $Kernel_initialize_dup$19, $Kernel_enum_for$20, $Kernel_equal$ques$21, $Kernel_exit$22, $Kernel_extend$23, $Kernel_hash$24, $Kernel_initialize_copy$25, $Kernel_inspect$26, $Kernel_instance_of$ques$27, $Kernel_instance_variable_defined$ques$28, $Kernel_instance_variable_get$29, $Kernel_instance_variable_set$30, $Kernel_remove_instance_variable$31, $Kernel_instance_variables$32, $Kernel_Integer$33, $Kernel_Float$34, $Kernel_Hash$35, $Kernel_is_a$ques$36, $Kernel_itself$37, $Kernel_lambda$38, $Kernel_load$39, $Kernel_loop$40, $Kernel_nil$ques$42, $Kernel_printf$43, $Kernel_proc$44, $Kernel_puts$45, $Kernel_p$46, $Kernel_print$48, $Kernel_warn$49, $Kernel_raise$50, $Kernel_rand$51, $Kernel_respond_to$ques$52, $Kernel_respond_to_missing$ques$53, $Kernel_require$54, $Kernel_require_relative$55, $Kernel_require_tree$56, $Kernel_singleton_class$57, $Kernel_sleep$58, $Kernel_srand$59, $Kernel_String$60, $Kernel_tap$61, $Kernel_to_proc$62, $Kernel_to_s$63, $Kernel_catch$64, $Kernel_throw$65, $Kernel_open$66, $Kernel_yield_self$67;
 
     
     
@@ -4228,576 +4228,25 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       return self;
     }, $Kernel_extend$23.$$arity = -1);
     
-    Opal.def(self, '$format', $Kernel_format$24 = function $$format(format_string, $a) {
-      var $post_args, args, $b, self = this, ary = nil;
-      if ($gvars.DEBUG == null) $gvars.DEBUG = nil;
-
-      
-      
-      $post_args = Opal.slice.call(arguments, 1, arguments.length);
-      
-      args = $post_args;;
-      if ($truthy((($b = args.$length()['$=='](1)) ? args['$[]'](0)['$respond_to?']("to_ary") : args.$length()['$=='](1)))) {
-        
-        ary = $$($nesting, 'Opal')['$coerce_to?'](args['$[]'](0), $$($nesting, 'Array'), "to_ary");
-        if ($truthy(ary['$nil?']())) {
-        } else {
-          args = ary.$to_a()
-        };};
-      
-      var result = '',
-          //used for slicing:
-          begin_slice = 0,
-          end_slice,
-          //used for iterating over the format string:
-          i,
-          len = format_string.length,
-          //used for processing field values:
-          arg,
-          str,
-          //used for processing %g and %G fields:
-          exponent,
-          //used for keeping track of width and precision:
-          width,
-          precision,
-          //used for holding temporary values:
-          tmp_num,
-          //used for processing %{} and %<> fileds:
-          hash_parameter_key,
-          closing_brace_char,
-          //used for processing %b, %B, %o, %x, and %X fields:
-          base_number,
-          base_prefix,
-          base_neg_zero_regex,
-          base_neg_zero_digit,
-          //used for processing arguments:
-          next_arg,
-          seq_arg_num = 1,
-          pos_arg_num = 0,
-          //used for keeping track of flags:
-          flags,
-          FNONE  = 0,
-          FSHARP = 1,
-          FMINUS = 2,
-          FPLUS  = 4,
-          FZERO  = 8,
-          FSPACE = 16,
-          FWIDTH = 32,
-          FPREC  = 64,
-          FPREC0 = 128;
-
-      function CHECK_FOR_FLAGS() {
-        if (flags&FWIDTH) { self.$raise($$($nesting, 'ArgumentError'), "flag after width") }
-        if (flags&FPREC0) { self.$raise($$($nesting, 'ArgumentError'), "flag after precision") }
-      }
-
-      function CHECK_FOR_WIDTH() {
-        if (flags&FWIDTH) { self.$raise($$($nesting, 'ArgumentError'), "width given twice") }
-        if (flags&FPREC0) { self.$raise($$($nesting, 'ArgumentError'), "width after precision") }
-      }
-
-      function GET_NTH_ARG(num) {
-        if (num >= args.length) { self.$raise($$($nesting, 'ArgumentError'), "too few arguments") }
-        return args[num];
-      }
-
-      function GET_NEXT_ARG() {
-        switch (pos_arg_num) {
-        case -1: self.$raise($$($nesting, 'ArgumentError'), "" + "unnumbered(" + (seq_arg_num) + ") mixed with numbered")
-        case -2: self.$raise($$($nesting, 'ArgumentError'), "" + "unnumbered(" + (seq_arg_num) + ") mixed with named")
-        }
-        pos_arg_num = seq_arg_num++;
-        return GET_NTH_ARG(pos_arg_num - 1);
-      }
-
-      function GET_POS_ARG(num) {
-        if (pos_arg_num > 0) {
-          self.$raise($$($nesting, 'ArgumentError'), "" + "numbered(" + (num) + ") after unnumbered(" + (pos_arg_num) + ")")
-        }
-        if (pos_arg_num === -2) {
-          self.$raise($$($nesting, 'ArgumentError'), "" + "numbered(" + (num) + ") after named")
-        }
-        if (num < 1) {
-          self.$raise($$($nesting, 'ArgumentError'), "" + "invalid index - " + (num) + "$")
-        }
-        pos_arg_num = -1;
-        return GET_NTH_ARG(num - 1);
-      }
-
-      function GET_ARG() {
-        return (next_arg === undefined ? GET_NEXT_ARG() : next_arg);
-      }
-
-      function READ_NUM(label) {
-        var num, str = '';
-        for (;; i++) {
-          if (i === len) {
-            self.$raise($$($nesting, 'ArgumentError'), "malformed format string - %*[0-9]")
-          }
-          if (format_string.charCodeAt(i) < 48 || format_string.charCodeAt(i) > 57) {
-            i--;
-            num = parseInt(str, 10) || 0;
-            if (num > 2147483647) {
-              self.$raise($$($nesting, 'ArgumentError'), "" + (label) + " too big")
-            }
-            return num;
-          }
-          str += format_string.charAt(i);
-        }
-      }
-
-      function READ_NUM_AFTER_ASTER(label) {
-        var arg, num = READ_NUM(label);
-        if (format_string.charAt(i + 1) === '$') {
-          i++;
-          arg = GET_POS_ARG(num);
-        } else {
-          arg = GET_NEXT_ARG();
-        }
-        return (arg).$to_int();
-      }
-
-      for (i = format_string.indexOf('%'); i !== -1; i = format_string.indexOf('%', i)) {
-        str = undefined;
-
-        flags = FNONE;
-        width = -1;
-        precision = -1;
-        next_arg = undefined;
-
-        end_slice = i;
-
-        i++;
-
-        switch (format_string.charAt(i)) {
-        case '%':
-          begin_slice = i;
-        case '':
-        case '\n':
-        case '\0':
-          i++;
-          continue;
-        }
-
-        format_sequence: for (; i < len; i++) {
-          switch (format_string.charAt(i)) {
-
-          case ' ':
-            CHECK_FOR_FLAGS();
-            flags |= FSPACE;
-            continue format_sequence;
-
-          case '#':
-            CHECK_FOR_FLAGS();
-            flags |= FSHARP;
-            continue format_sequence;
-
-          case '+':
-            CHECK_FOR_FLAGS();
-            flags |= FPLUS;
-            continue format_sequence;
-
-          case '-':
-            CHECK_FOR_FLAGS();
-            flags |= FMINUS;
-            continue format_sequence;
-
-          case '0':
-            CHECK_FOR_FLAGS();
-            flags |= FZERO;
-            continue format_sequence;
-
-          case '1':
-          case '2':
-          case '3':
-          case '4':
-          case '5':
-          case '6':
-          case '7':
-          case '8':
-          case '9':
-            tmp_num = READ_NUM('width');
-            if (format_string.charAt(i + 1) === '$') {
-              if (i + 2 === len) {
-                str = '%';
-                i++;
-                break format_sequence;
-              }
-              if (next_arg !== undefined) {
-                self.$raise($$($nesting, 'ArgumentError'), "" + "value given twice - %" + (tmp_num) + "$")
-              }
-              next_arg = GET_POS_ARG(tmp_num);
-              i++;
-            } else {
-              CHECK_FOR_WIDTH();
-              flags |= FWIDTH;
-              width = tmp_num;
-            }
-            continue format_sequence;
-
-          case '<':
-          case '\{':
-            closing_brace_char = (format_string.charAt(i) === '<' ? '>' : '\}');
-            hash_parameter_key = '';
-
-            i++;
-
-            for (;; i++) {
-              if (i === len) {
-                self.$raise($$($nesting, 'ArgumentError'), "malformed name - unmatched parenthesis")
-              }
-              if (format_string.charAt(i) === closing_brace_char) {
-
-                if (pos_arg_num > 0) {
-                  self.$raise($$($nesting, 'ArgumentError'), "" + "named " + (hash_parameter_key) + " after unnumbered(" + (pos_arg_num) + ")")
-                }
-                if (pos_arg_num === -1) {
-                  self.$raise($$($nesting, 'ArgumentError'), "" + "named " + (hash_parameter_key) + " after numbered")
-                }
-                pos_arg_num = -2;
-
-                if (args[0] === undefined || !args[0].$$is_hash) {
-                  self.$raise($$($nesting, 'ArgumentError'), "one hash required")
-                }
-
-                next_arg = (args[0]).$fetch(hash_parameter_key);
-
-                if (closing_brace_char === '>') {
-                  continue format_sequence;
-                } else {
-                  str = next_arg.toString();
-                  if (precision !== -1) { str = str.slice(0, precision); }
-                  if (flags&FMINUS) {
-                    while (str.length < width) { str = str + ' '; }
-                  } else {
-                    while (str.length < width) { str = ' ' + str; }
-                  }
-                  break format_sequence;
-                }
-              }
-              hash_parameter_key += format_string.charAt(i);
-            }
-
-          case '*':
-            i++;
-            CHECK_FOR_WIDTH();
-            flags |= FWIDTH;
-            width = READ_NUM_AFTER_ASTER('width');
-            if (width < 0) {
-              flags |= FMINUS;
-              width = -width;
-            }
-            continue format_sequence;
-
-          case '.':
-            if (flags&FPREC0) {
-              self.$raise($$($nesting, 'ArgumentError'), "precision given twice")
-            }
-            flags |= FPREC|FPREC0;
-            precision = 0;
-            i++;
-            if (format_string.charAt(i) === '*') {
-              i++;
-              precision = READ_NUM_AFTER_ASTER('precision');
-              if (precision < 0) {
-                flags &= ~FPREC;
-              }
-              continue format_sequence;
-            }
-            precision = READ_NUM('precision');
-            continue format_sequence;
-
-          case 'd':
-          case 'i':
-          case 'u':
-            arg = self.$Integer(GET_ARG());
-            if (arg >= 0) {
-              str = arg.toString();
-              while (str.length < precision) { str = '0' + str; }
-              if (flags&FMINUS) {
-                if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                while (str.length < width) { str = str + ' '; }
-              } else {
-                if (flags&FZERO && precision === -1) {
-                  while (str.length < width - ((flags&FPLUS || flags&FSPACE) ? 1 : 0)) { str = '0' + str; }
-                  if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                } else {
-                  if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                  while (str.length < width) { str = ' ' + str; }
-                }
-              }
-            } else {
-              str = (-arg).toString();
-              while (str.length < precision) { str = '0' + str; }
-              if (flags&FMINUS) {
-                str = '-' + str;
-                while (str.length < width) { str = str + ' '; }
-              } else {
-                if (flags&FZERO && precision === -1) {
-                  while (str.length < width - 1) { str = '0' + str; }
-                  str = '-' + str;
-                } else {
-                  str = '-' + str;
-                  while (str.length < width) { str = ' ' + str; }
-                }
-              }
-            }
-            break format_sequence;
-
-          case 'b':
-          case 'B':
-          case 'o':
-          case 'x':
-          case 'X':
-            switch (format_string.charAt(i)) {
-            case 'b':
-            case 'B':
-              base_number = 2;
-              base_prefix = '0b';
-              base_neg_zero_regex = /^1+/;
-              base_neg_zero_digit = '1';
-              break;
-            case 'o':
-              base_number = 8;
-              base_prefix = '0';
-              base_neg_zero_regex = /^3?7+/;
-              base_neg_zero_digit = '7';
-              break;
-            case 'x':
-            case 'X':
-              base_number = 16;
-              base_prefix = '0x';
-              base_neg_zero_regex = /^f+/;
-              base_neg_zero_digit = 'f';
-              break;
-            }
-            arg = self.$Integer(GET_ARG());
-            if (arg >= 0) {
-              str = arg.toString(base_number);
-              while (str.length < precision) { str = '0' + str; }
-              if (flags&FMINUS) {
-                if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                if (flags&FSHARP && arg !== 0) { str = base_prefix + str; }
-                while (str.length < width) { str = str + ' '; }
-              } else {
-                if (flags&FZERO && precision === -1) {
-                  while (str.length < width - ((flags&FPLUS || flags&FSPACE) ? 1 : 0) - ((flags&FSHARP && arg !== 0) ? base_prefix.length : 0)) { str = '0' + str; }
-                  if (flags&FSHARP && arg !== 0) { str = base_prefix + str; }
-                  if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                } else {
-                  if (flags&FSHARP && arg !== 0) { str = base_prefix + str; }
-                  if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                  while (str.length < width) { str = ' ' + str; }
-                }
-              }
-            } else {
-              if (flags&FPLUS || flags&FSPACE) {
-                str = (-arg).toString(base_number);
-                while (str.length < precision) { str = '0' + str; }
-                if (flags&FMINUS) {
-                  if (flags&FSHARP) { str = base_prefix + str; }
-                  str = '-' + str;
-                  while (str.length < width) { str = str + ' '; }
-                } else {
-                  if (flags&FZERO && precision === -1) {
-                    while (str.length < width - 1 - (flags&FSHARP ? 2 : 0)) { str = '0' + str; }
-                    if (flags&FSHARP) { str = base_prefix + str; }
-                    str = '-' + str;
-                  } else {
-                    if (flags&FSHARP) { str = base_prefix + str; }
-                    str = '-' + str;
-                    while (str.length < width) { str = ' ' + str; }
-                  }
-                }
-              } else {
-                str = (arg >>> 0).toString(base_number).replace(base_neg_zero_regex, base_neg_zero_digit);
-                while (str.length < precision - 2) { str = base_neg_zero_digit + str; }
-                if (flags&FMINUS) {
-                  str = '..' + str;
-                  if (flags&FSHARP) { str = base_prefix + str; }
-                  while (str.length < width) { str = str + ' '; }
-                } else {
-                  if (flags&FZERO && precision === -1) {
-                    while (str.length < width - 2 - (flags&FSHARP ? base_prefix.length : 0)) { str = base_neg_zero_digit + str; }
-                    str = '..' + str;
-                    if (flags&FSHARP) { str = base_prefix + str; }
-                  } else {
-                    str = '..' + str;
-                    if (flags&FSHARP) { str = base_prefix + str; }
-                    while (str.length < width) { str = ' ' + str; }
-                  }
-                }
-              }
-            }
-            if (format_string.charAt(i) === format_string.charAt(i).toUpperCase()) {
-              str = str.toUpperCase();
-            }
-            break format_sequence;
-
-          case 'f':
-          case 'e':
-          case 'E':
-          case 'g':
-          case 'G':
-            arg = self.$Float(GET_ARG());
-            if (arg >= 0 || isNaN(arg)) {
-              if (arg === Infinity) {
-                str = 'Inf';
-              } else {
-                switch (format_string.charAt(i)) {
-                case 'f':
-                  str = arg.toFixed(precision === -1 ? 6 : precision);
-                  break;
-                case 'e':
-                case 'E':
-                  str = arg.toExponential(precision === -1 ? 6 : precision);
-                  break;
-                case 'g':
-                case 'G':
-                  str = arg.toExponential();
-                  exponent = parseInt(str.split('e')[1], 10);
-                  if (!(exponent < -4 || exponent >= (precision === -1 ? 6 : precision))) {
-                    str = arg.toPrecision(precision === -1 ? (flags&FSHARP ? 6 : undefined) : precision);
-                  }
-                  break;
-                }
-              }
-              if (flags&FMINUS) {
-                if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                while (str.length < width) { str = str + ' '; }
-              } else {
-                if (flags&FZERO && arg !== Infinity && !isNaN(arg)) {
-                  while (str.length < width - ((flags&FPLUS || flags&FSPACE) ? 1 : 0)) { str = '0' + str; }
-                  if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                } else {
-                  if (flags&FPLUS || flags&FSPACE) { str = (flags&FPLUS ? '+' : ' ') + str; }
-                  while (str.length < width) { str = ' ' + str; }
-                }
-              }
-            } else {
-              if (arg === -Infinity) {
-                str = 'Inf';
-              } else {
-                switch (format_string.charAt(i)) {
-                case 'f':
-                  str = (-arg).toFixed(precision === -1 ? 6 : precision);
-                  break;
-                case 'e':
-                case 'E':
-                  str = (-arg).toExponential(precision === -1 ? 6 : precision);
-                  break;
-                case 'g':
-                case 'G':
-                  str = (-arg).toExponential();
-                  exponent = parseInt(str.split('e')[1], 10);
-                  if (!(exponent < -4 || exponent >= (precision === -1 ? 6 : precision))) {
-                    str = (-arg).toPrecision(precision === -1 ? (flags&FSHARP ? 6 : undefined) : precision);
-                  }
-                  break;
-                }
-              }
-              if (flags&FMINUS) {
-                str = '-' + str;
-                while (str.length < width) { str = str + ' '; }
-              } else {
-                if (flags&FZERO && arg !== -Infinity) {
-                  while (str.length < width - 1) { str = '0' + str; }
-                  str = '-' + str;
-                } else {
-                  str = '-' + str;
-                  while (str.length < width) { str = ' ' + str; }
-                }
-              }
-            }
-            if (format_string.charAt(i) === format_string.charAt(i).toUpperCase() && arg !== Infinity && arg !== -Infinity && !isNaN(arg)) {
-              str = str.toUpperCase();
-            }
-            str = str.replace(/([eE][-+]?)([0-9])$/, '$10$2');
-            break format_sequence;
-
-          case 'a':
-          case 'A':
-            // Not implemented because there are no specs for this field type.
-            self.$raise($$($nesting, 'NotImplementedError'), "`A` and `a` format field types are not implemented in Opal yet")
-
-          case 'c':
-            arg = GET_ARG();
-            if ((arg)['$respond_to?']("to_ary")) { arg = (arg).$to_ary()[0]; }
-            if ((arg)['$respond_to?']("to_str")) {
-              str = (arg).$to_str();
-            } else {
-              str = String.fromCharCode($$($nesting, 'Opal').$coerce_to(arg, $$($nesting, 'Integer'), "to_int"));
-            }
-            if (str.length !== 1) {
-              self.$raise($$($nesting, 'ArgumentError'), "%c requires a character")
-            }
-            if (flags&FMINUS) {
-              while (str.length < width) { str = str + ' '; }
-            } else {
-              while (str.length < width) { str = ' ' + str; }
-            }
-            break format_sequence;
-
-          case 'p':
-            str = (GET_ARG()).$inspect();
-            if (precision !== -1) { str = str.slice(0, precision); }
-            if (flags&FMINUS) {
-              while (str.length < width) { str = str + ' '; }
-            } else {
-              while (str.length < width) { str = ' ' + str; }
-            }
-            break format_sequence;
-
-          case 's':
-            str = (GET_ARG()).$to_s();
-            if (precision !== -1) { str = str.slice(0, precision); }
-            if (flags&FMINUS) {
-              while (str.length < width) { str = str + ' '; }
-            } else {
-              while (str.length < width) { str = ' ' + str; }
-            }
-            break format_sequence;
-
-          default:
-            self.$raise($$($nesting, 'ArgumentError'), "" + "malformed format string - %" + (format_string.charAt(i)))
-          }
-        }
-
-        if (str === undefined) {
-          self.$raise($$($nesting, 'ArgumentError'), "malformed format string - %")
-        }
-
-        result += format_string.slice(begin_slice, end_slice) + str;
-        begin_slice = i + 1;
-      }
-
-      if ($gvars.DEBUG && pos_arg_num >= 0 && seq_arg_num < args.length) {
-        self.$raise($$($nesting, 'ArgumentError'), "too many arguments for format string")
-      }
-
-      return result + format_string.slice(begin_slice);
-    ;
-    }, $Kernel_format$24.$$arity = -2);
-    
-    Opal.def(self, '$hash', $Kernel_hash$25 = function $$hash() {
+    Opal.def(self, '$hash', $Kernel_hash$24 = function $$hash() {
       var self = this;
 
       return self.$__id__()
-    }, $Kernel_hash$25.$$arity = 0);
+    }, $Kernel_hash$24.$$arity = 0);
     
-    Opal.def(self, '$initialize_copy', $Kernel_initialize_copy$26 = function $$initialize_copy(other) {
+    Opal.def(self, '$initialize_copy', $Kernel_initialize_copy$25 = function $$initialize_copy(other) {
       var self = this;
 
       return nil
-    }, $Kernel_initialize_copy$26.$$arity = 1);
+    }, $Kernel_initialize_copy$25.$$arity = 1);
     
-    Opal.def(self, '$inspect', $Kernel_inspect$27 = function $$inspect() {
+    Opal.def(self, '$inspect', $Kernel_inspect$26 = function $$inspect() {
       var self = this;
 
       return self.$to_s()
-    }, $Kernel_inspect$27.$$arity = 0);
+    }, $Kernel_inspect$26.$$arity = 0);
     
-    Opal.def(self, '$instance_of?', $Kernel_instance_of$ques$28 = function(klass) {
+    Opal.def(self, '$instance_of?', $Kernel_instance_of$ques$27 = function(klass) {
       var self = this;
 
       
@@ -4807,17 +4256,17 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return self.$$class === klass;
     
-    }, $Kernel_instance_of$ques$28.$$arity = 1);
+    }, $Kernel_instance_of$ques$27.$$arity = 1);
     
-    Opal.def(self, '$instance_variable_defined?', $Kernel_instance_variable_defined$ques$29 = function(name) {
+    Opal.def(self, '$instance_variable_defined?', $Kernel_instance_variable_defined$ques$28 = function(name) {
       var self = this;
 
       
       name = $$($nesting, 'Opal')['$instance_variable_name!'](name);
       return Opal.hasOwnProperty.call(self, name.substr(1));;
-    }, $Kernel_instance_variable_defined$ques$29.$$arity = 1);
+    }, $Kernel_instance_variable_defined$ques$28.$$arity = 1);
     
-    Opal.def(self, '$instance_variable_get', $Kernel_instance_variable_get$30 = function $$instance_variable_get(name) {
+    Opal.def(self, '$instance_variable_get', $Kernel_instance_variable_get$29 = function $$instance_variable_get(name) {
       var self = this;
 
       
@@ -4827,17 +4276,17 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return ivar == null ? nil : ivar;
     ;
-    }, $Kernel_instance_variable_get$30.$$arity = 1);
+    }, $Kernel_instance_variable_get$29.$$arity = 1);
     
-    Opal.def(self, '$instance_variable_set', $Kernel_instance_variable_set$31 = function $$instance_variable_set(name, value) {
+    Opal.def(self, '$instance_variable_set', $Kernel_instance_variable_set$30 = function $$instance_variable_set(name, value) {
       var self = this;
 
       
       name = $$($nesting, 'Opal')['$instance_variable_name!'](name);
       return self[Opal.ivar(name.substr(1))] = value;;
-    }, $Kernel_instance_variable_set$31.$$arity = 2);
+    }, $Kernel_instance_variable_set$30.$$arity = 2);
     
-    Opal.def(self, '$remove_instance_variable', $Kernel_remove_instance_variable$32 = function $$remove_instance_variable(name) {
+    Opal.def(self, '$remove_instance_variable', $Kernel_remove_instance_variable$31 = function $$remove_instance_variable(name) {
       var self = this;
 
       
@@ -4852,9 +4301,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       }
     ;
       return self.$raise($$($nesting, 'NameError'), "" + "instance variable " + (name) + " not defined");
-    }, $Kernel_remove_instance_variable$32.$$arity = 1);
+    }, $Kernel_remove_instance_variable$31.$$arity = 1);
     
-    Opal.def(self, '$instance_variables', $Kernel_instance_variables$33 = function $$instance_variables() {
+    Opal.def(self, '$instance_variables', $Kernel_instance_variables$32 = function $$instance_variables() {
       var self = this;
 
       
@@ -4873,9 +4322,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return result;
     
-    }, $Kernel_instance_variables$33.$$arity = 0);
+    }, $Kernel_instance_variables$32.$$arity = 0);
     
-    Opal.def(self, '$Integer', $Kernel_Integer$34 = function $$Integer(value, base) {
+    Opal.def(self, '$Integer', $Kernel_Integer$33 = function $$Integer(value, base) {
       var self = this;
 
       
@@ -4965,9 +4414,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return i;
     ;
-    }, $Kernel_Integer$34.$$arity = -2);
+    }, $Kernel_Integer$33.$$arity = -2);
     
-    Opal.def(self, '$Float', $Kernel_Float$35 = function $$Float(value) {
+    Opal.def(self, '$Float', $Kernel_Float$34 = function $$Float(value) {
       var self = this;
 
       
@@ -4996,9 +4445,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return $$($nesting, 'Opal')['$coerce_to!'](value, $$($nesting, 'Float'), "to_f");
     
-    }, $Kernel_Float$35.$$arity = 1);
+    }, $Kernel_Float$34.$$arity = 1);
     
-    Opal.def(self, '$Hash', $Kernel_Hash$36 = function $$Hash(arg) {
+    Opal.def(self, '$Hash', $Kernel_Hash$35 = function $$Hash(arg) {
       var $a, self = this;
 
       
@@ -5007,9 +4456,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       if ($truthy($$($nesting, 'Hash')['$==='](arg))) {
         return arg};
       return $$($nesting, 'Opal')['$coerce_to!'](arg, $$($nesting, 'Hash'), "to_hash");
-    }, $Kernel_Hash$36.$$arity = 1);
+    }, $Kernel_Hash$35.$$arity = 1);
     
-    Opal.def(self, '$is_a?', $Kernel_is_a$ques$37 = function(klass) {
+    Opal.def(self, '$is_a?', $Kernel_is_a$ques$36 = function(klass) {
       var self = this;
 
       
@@ -5019,43 +4468,43 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return Opal.is_a(self, klass);
     
-    }, $Kernel_is_a$ques$37.$$arity = 1);
+    }, $Kernel_is_a$ques$36.$$arity = 1);
     
-    Opal.def(self, '$itself', $Kernel_itself$38 = function $$itself() {
+    Opal.def(self, '$itself', $Kernel_itself$37 = function $$itself() {
       var self = this;
 
       return self
-    }, $Kernel_itself$38.$$arity = 0);
+    }, $Kernel_itself$37.$$arity = 0);
     Opal.alias(self, "kind_of?", "is_a?");
     
-    Opal.def(self, '$lambda', $Kernel_lambda$39 = function $$lambda() {
-      var $iter = $Kernel_lambda$39.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$lambda', $Kernel_lambda$38 = function $$lambda() {
+      var $iter = $Kernel_lambda$38.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $Kernel_lambda$39.$$p = null;
+      if ($iter) $Kernel_lambda$38.$$p = null;
       
       
-      if ($iter) $Kernel_lambda$39.$$p = null;;
+      if ($iter) $Kernel_lambda$38.$$p = null;;
       return Opal.lambda(block);;
-    }, $Kernel_lambda$39.$$arity = 0);
+    }, $Kernel_lambda$38.$$arity = 0);
     
-    Opal.def(self, '$load', $Kernel_load$40 = function $$load(file) {
+    Opal.def(self, '$load', $Kernel_load$39 = function $$load(file) {
       var self = this;
 
       
       file = $$($nesting, 'Opal')['$coerce_to!'](file, $$($nesting, 'String'), "to_str");
       return Opal.load(file);
-    }, $Kernel_load$40.$$arity = 1);
+    }, $Kernel_load$39.$$arity = 1);
     
-    Opal.def(self, '$loop', $Kernel_loop$41 = function $$loop() {
-      var $$42, $a, $iter = $Kernel_loop$41.$$p, $yield = $iter || nil, self = this, e = nil;
+    Opal.def(self, '$loop', $Kernel_loop$40 = function $$loop() {
+      var $$41, $a, $iter = $Kernel_loop$40.$$p, $yield = $iter || nil, self = this, e = nil;
 
-      if ($iter) $Kernel_loop$41.$$p = null;
+      if ($iter) $Kernel_loop$40.$$p = null;
       
       if (($yield !== nil)) {
       } else {
-        return $send(self, 'enum_for', ["loop"], ($$42 = function(){var self = $$42.$$s || this;
+        return $send(self, 'enum_for', ["loop"], ($$41 = function(){var self = $$41.$$s || this;
 
-        return $$$($$($nesting, 'Float'), 'INFINITY')}, $$42.$$s = self, $$42.$$arity = 0, $$42))
+        return $$$($$($nesting, 'Float'), 'INFINITY')}, $$41.$$s = self, $$41.$$arity = 0, $$41))
       };
       while ($truthy(true)) {
         
@@ -5070,16 +4519,16 @@ Opal.modules["corelib/kernel"] = function(Opal) {
         };
       };
       return self;
-    }, $Kernel_loop$41.$$arity = 0);
+    }, $Kernel_loop$40.$$arity = 0);
     
-    Opal.def(self, '$nil?', $Kernel_nil$ques$43 = function() {
+    Opal.def(self, '$nil?', $Kernel_nil$ques$42 = function() {
       var self = this;
 
       return false
-    }, $Kernel_nil$ques$43.$$arity = 0);
+    }, $Kernel_nil$ques$42.$$arity = 0);
     Opal.alias(self, "object_id", "__id__");
     
-    Opal.def(self, '$printf', $Kernel_printf$44 = function $$printf($a) {
+    Opal.def(self, '$printf', $Kernel_printf$43 = function $$printf($a) {
       var $post_args, args, self = this;
 
       
@@ -5090,24 +4539,24 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       if ($truthy(args['$any?']())) {
         self.$print($send(self, 'format', Opal.to_a(args)))};
       return nil;
-    }, $Kernel_printf$44.$$arity = -1);
+    }, $Kernel_printf$43.$$arity = -1);
     
-    Opal.def(self, '$proc', $Kernel_proc$45 = function $$proc() {
-      var $iter = $Kernel_proc$45.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$proc', $Kernel_proc$44 = function $$proc() {
+      var $iter = $Kernel_proc$44.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $Kernel_proc$45.$$p = null;
+      if ($iter) $Kernel_proc$44.$$p = null;
       
       
-      if ($iter) $Kernel_proc$45.$$p = null;;
+      if ($iter) $Kernel_proc$44.$$p = null;;
       if ($truthy(block)) {
       } else {
         self.$raise($$($nesting, 'ArgumentError'), "tried to create Proc object without a block")
       };
       block.$$is_lambda = false;
       return block;
-    }, $Kernel_proc$45.$$arity = 0);
+    }, $Kernel_proc$44.$$arity = 0);
     
-    Opal.def(self, '$puts', $Kernel_puts$46 = function $$puts($a) {
+    Opal.def(self, '$puts', $Kernel_puts$45 = function $$puts($a) {
       var $post_args, strs, self = this;
       if ($gvars.stdout == null) $gvars.stdout = nil;
 
@@ -5117,17 +4566,17 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       
       strs = $post_args;;
       return $send($gvars.stdout, 'puts', Opal.to_a(strs));
-    }, $Kernel_puts$46.$$arity = -1);
+    }, $Kernel_puts$45.$$arity = -1);
     
-    Opal.def(self, '$p', $Kernel_p$47 = function $$p($a) {
-      var $post_args, args, $$48, self = this;
+    Opal.def(self, '$p', $Kernel_p$46 = function $$p($a) {
+      var $post_args, args, $$47, self = this;
 
       
       
       $post_args = Opal.slice.call(arguments, 0, arguments.length);
       
       args = $post_args;;
-      $send(args, 'each', [], ($$48 = function(obj){var self = $$48.$$s || this;
+      $send(args, 'each', [], ($$47 = function(obj){var self = $$47.$$s || this;
         if ($gvars.stdout == null) $gvars.stdout = nil;
 
       
@@ -5135,15 +4584,15 @@ Opal.modules["corelib/kernel"] = function(Opal) {
         if (obj == null) {
           obj = nil;
         };
-        return $gvars.stdout.$puts(obj.$inspect());}, $$48.$$s = self, $$48.$$arity = 1, $$48));
+        return $gvars.stdout.$puts(obj.$inspect());}, $$47.$$s = self, $$47.$$arity = 1, $$47));
       if ($truthy($rb_le(args.$length(), 1))) {
         return args['$[]'](0)
       } else {
         return args
       };
-    }, $Kernel_p$47.$$arity = -1);
+    }, $Kernel_p$46.$$arity = -1);
     
-    Opal.def(self, '$print', $Kernel_print$49 = function $$print($a) {
+    Opal.def(self, '$print', $Kernel_print$48 = function $$print($a) {
       var $post_args, strs, self = this;
       if ($gvars.stdout == null) $gvars.stdout = nil;
 
@@ -5153,9 +4602,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       
       strs = $post_args;;
       return $send($gvars.stdout, 'print', Opal.to_a(strs));
-    }, $Kernel_print$49.$$arity = -1);
+    }, $Kernel_print$48.$$arity = -1);
     
-    Opal.def(self, '$warn', $Kernel_warn$50 = function $$warn($a) {
+    Opal.def(self, '$warn', $Kernel_warn$49 = function $$warn($a) {
       var $post_args, strs, $b, self = this;
       if ($gvars.VERBOSE == null) $gvars.VERBOSE = nil;
       if ($gvars.stderr == null) $gvars.stderr = nil;
@@ -5170,9 +4619,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       } else {
         return $send($gvars.stderr, 'puts', Opal.to_a(strs))
       };
-    }, $Kernel_warn$50.$$arity = -1);
+    }, $Kernel_warn$49.$$arity = -1);
     
-    Opal.def(self, '$raise', $Kernel_raise$51 = function $$raise(exception, string, _backtrace) {
+    Opal.def(self, '$raise', $Kernel_raise$50 = function $$raise(exception, string, _backtrace) {
       var self = this;
       if ($gvars["!"] == null) $gvars["!"] = nil;
 
@@ -5215,10 +4664,10 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       throw exception;
     ;
-    }, $Kernel_raise$51.$$arity = -1);
+    }, $Kernel_raise$50.$$arity = -1);
     Opal.alias(self, "fail", "raise");
     
-    Opal.def(self, '$rand', $Kernel_rand$52 = function $$rand(max) {
+    Opal.def(self, '$rand', $Kernel_rand$51 = function $$rand(max) {
       var self = this;
 
       
@@ -5243,9 +4692,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       }
     ;
       return $$$($$($nesting, 'Random'), 'DEFAULT').$rand(max);
-    }, $Kernel_rand$52.$$arity = -1);
+    }, $Kernel_rand$51.$$arity = -1);
     
-    Opal.def(self, '$respond_to?', $Kernel_respond_to$ques$53 = function(name, include_all) {
+    Opal.def(self, '$respond_to?', $Kernel_respond_to$ques$52 = function(name, include_all) {
       var self = this;
 
       
@@ -5263,9 +4712,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       }
     ;
       return false;
-    }, $Kernel_respond_to$ques$53.$$arity = -2);
+    }, $Kernel_respond_to$ques$52.$$arity = -2);
     
-    Opal.def(self, '$respond_to_missing?', $Kernel_respond_to_missing$ques$54 = function(method_name, include_all) {
+    Opal.def(self, '$respond_to_missing?', $Kernel_respond_to_missing$ques$53 = function(method_name, include_all) {
       var self = this;
 
       
@@ -5274,26 +4723,26 @@ Opal.modules["corelib/kernel"] = function(Opal) {
         include_all = false;
       };
       return false;
-    }, $Kernel_respond_to_missing$ques$54.$$arity = -2);
+    }, $Kernel_respond_to_missing$ques$53.$$arity = -2);
     
-    Opal.def(self, '$require', $Kernel_require$55 = function $$require(file) {
+    Opal.def(self, '$require', $Kernel_require$54 = function $$require(file) {
       var self = this;
 
       
       file = $$($nesting, 'Opal')['$coerce_to!'](file, $$($nesting, 'String'), "to_str");
       return Opal.require(file);
-    }, $Kernel_require$55.$$arity = 1);
+    }, $Kernel_require$54.$$arity = 1);
     
-    Opal.def(self, '$require_relative', $Kernel_require_relative$56 = function $$require_relative(file) {
+    Opal.def(self, '$require_relative', $Kernel_require_relative$55 = function $$require_relative(file) {
       var self = this;
 
       
       $$($nesting, 'Opal')['$try_convert!'](file, $$($nesting, 'String'), "to_str");
       file = $$($nesting, 'File').$expand_path($$($nesting, 'File').$join(Opal.current_file, "..", file));
       return Opal.require(file);
-    }, $Kernel_require_relative$56.$$arity = 1);
+    }, $Kernel_require_relative$55.$$arity = 1);
     
-    Opal.def(self, '$require_tree', $Kernel_require_tree$57 = function $$require_tree(path) {
+    Opal.def(self, '$require_tree', $Kernel_require_tree$56 = function $$require_tree(path) {
       var self = this;
 
       
@@ -5310,17 +4759,17 @@ Opal.modules["corelib/kernel"] = function(Opal) {
 
       return result;
     
-    }, $Kernel_require_tree$57.$$arity = 1);
+    }, $Kernel_require_tree$56.$$arity = 1);
     Opal.alias(self, "send", "__send__");
     Opal.alias(self, "public_send", "__send__");
     
-    Opal.def(self, '$singleton_class', $Kernel_singleton_class$58 = function $$singleton_class() {
+    Opal.def(self, '$singleton_class', $Kernel_singleton_class$57 = function $$singleton_class() {
       var self = this;
 
       return Opal.get_singleton_class(self);
-    }, $Kernel_singleton_class$58.$$arity = 0);
+    }, $Kernel_singleton_class$57.$$arity = 0);
     
-    Opal.def(self, '$sleep', $Kernel_sleep$59 = function $$sleep(seconds) {
+    Opal.def(self, '$sleep', $Kernel_sleep$58 = function $$sleep(seconds) {
       var self = this;
 
       
@@ -5346,10 +4795,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       while (get_time() - t <= seconds * 1000);
       return seconds;
     ;
-    }, $Kernel_sleep$59.$$arity = -1);
-    Opal.alias(self, "sprintf", "format");
+    }, $Kernel_sleep$58.$$arity = -1);
     
-    Opal.def(self, '$srand', $Kernel_srand$60 = function $$srand(seed) {
+    Opal.def(self, '$srand', $Kernel_srand$59 = function $$srand(seed) {
       var self = this;
 
       
@@ -5358,41 +4806,41 @@ Opal.modules["corelib/kernel"] = function(Opal) {
         seed = $$($nesting, 'Random').$new_seed();
       };
       return $$($nesting, 'Random').$srand(seed);
-    }, $Kernel_srand$60.$$arity = -1);
+    }, $Kernel_srand$59.$$arity = -1);
     
-    Opal.def(self, '$String', $Kernel_String$61 = function $$String(str) {
+    Opal.def(self, '$String', $Kernel_String$60 = function $$String(str) {
       var $a, self = this;
 
       return ($truthy($a = $$($nesting, 'Opal')['$coerce_to?'](str, $$($nesting, 'String'), "to_str")) ? $a : $$($nesting, 'Opal')['$coerce_to!'](str, $$($nesting, 'String'), "to_s"))
-    }, $Kernel_String$61.$$arity = 1);
+    }, $Kernel_String$60.$$arity = 1);
     
-    Opal.def(self, '$tap', $Kernel_tap$62 = function $$tap() {
-      var $iter = $Kernel_tap$62.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$tap', $Kernel_tap$61 = function $$tap() {
+      var $iter = $Kernel_tap$61.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $Kernel_tap$62.$$p = null;
+      if ($iter) $Kernel_tap$61.$$p = null;
       
       
-      if ($iter) $Kernel_tap$62.$$p = null;;
+      if ($iter) $Kernel_tap$61.$$p = null;;
       Opal.yield1(block, self);
       return self;
-    }, $Kernel_tap$62.$$arity = 0);
+    }, $Kernel_tap$61.$$arity = 0);
     
-    Opal.def(self, '$to_proc', $Kernel_to_proc$63 = function $$to_proc() {
+    Opal.def(self, '$to_proc', $Kernel_to_proc$62 = function $$to_proc() {
       var self = this;
 
       return self
-    }, $Kernel_to_proc$63.$$arity = 0);
+    }, $Kernel_to_proc$62.$$arity = 0);
     
-    Opal.def(self, '$to_s', $Kernel_to_s$64 = function $$to_s() {
+    Opal.def(self, '$to_s', $Kernel_to_s$63 = function $$to_s() {
       var self = this;
 
       return "" + "#<" + (self.$class()) + ":0x" + (self.$__id__().$to_s(16)) + ">"
-    }, $Kernel_to_s$64.$$arity = 0);
+    }, $Kernel_to_s$63.$$arity = 0);
     
-    Opal.def(self, '$catch', $Kernel_catch$65 = function(sym) {
-      var $iter = $Kernel_catch$65.$$p, $yield = $iter || nil, self = this, e = nil;
+    Opal.def(self, '$catch', $Kernel_catch$64 = function(sym) {
+      var $iter = $Kernel_catch$64.$$p, $yield = $iter || nil, self = this, e = nil;
 
-      if ($iter) $Kernel_catch$65.$$p = null;
+      if ($iter) $Kernel_catch$64.$$p = null;
       try {
         return Opal.yieldX($yield, []);
       } catch ($err) {
@@ -5405,9 +4853,9 @@ Opal.modules["corelib/kernel"] = function(Opal) {
           } finally { Opal.pop_exception() }
         } else { throw $err; }
       }
-    }, $Kernel_catch$65.$$arity = 1);
+    }, $Kernel_catch$64.$$arity = 1);
     
-    Opal.def(self, '$throw', $Kernel_throw$66 = function($a) {
+    Opal.def(self, '$throw', $Kernel_throw$65 = function($a) {
       var $post_args, args, self = this;
 
       
@@ -5416,35 +4864,35 @@ Opal.modules["corelib/kernel"] = function(Opal) {
       
       args = $post_args;;
       return self.$raise($$($nesting, 'UncaughtThrowError'), args);
-    }, $Kernel_throw$66.$$arity = -1);
+    }, $Kernel_throw$65.$$arity = -1);
     
-    Opal.def(self, '$open', $Kernel_open$67 = function $$open($a) {
-      var $iter = $Kernel_open$67.$$p, block = $iter || nil, $post_args, args, self = this;
+    Opal.def(self, '$open', $Kernel_open$66 = function $$open($a) {
+      var $iter = $Kernel_open$66.$$p, block = $iter || nil, $post_args, args, self = this;
 
-      if ($iter) $Kernel_open$67.$$p = null;
+      if ($iter) $Kernel_open$66.$$p = null;
       
       
-      if ($iter) $Kernel_open$67.$$p = null;;
+      if ($iter) $Kernel_open$66.$$p = null;;
       
       $post_args = Opal.slice.call(arguments, 0, arguments.length);
       
       args = $post_args;;
       return $send($$($nesting, 'File'), 'open', Opal.to_a(args), block.$to_proc());
-    }, $Kernel_open$67.$$arity = -1);
+    }, $Kernel_open$66.$$arity = -1);
     
-    Opal.def(self, '$yield_self', $Kernel_yield_self$68 = function $$yield_self() {
-      var $$69, $iter = $Kernel_yield_self$68.$$p, $yield = $iter || nil, self = this;
+    Opal.def(self, '$yield_self', $Kernel_yield_self$67 = function $$yield_self() {
+      var $$68, $iter = $Kernel_yield_self$67.$$p, $yield = $iter || nil, self = this;
 
-      if ($iter) $Kernel_yield_self$68.$$p = null;
+      if ($iter) $Kernel_yield_self$67.$$p = null;
       
       if (($yield !== nil)) {
       } else {
-        return $send(self, 'enum_for', ["yield_self"], ($$69 = function(){var self = $$69.$$s || this;
+        return $send(self, 'enum_for', ["yield_self"], ($$68 = function(){var self = $$68.$$s || this;
 
-        return 1}, $$69.$$s = self, $$69.$$arity = 0, $$69))
+        return 1}, $$68.$$s = self, $$68.$$arity = 0, $$68))
       };
       return Opal.yield1($yield, self);;
-    }, $Kernel_yield_self$68.$$arity = 0);
+    }, $Kernel_yield_self$67.$$arity = 0);
   })($nesting[0], $nesting);
   return (function($base, $super, $parent_nesting) {
     var self = $klass($base, $super, 'Object');
@@ -7291,7 +6739,7 @@ Opal.modules["corelib/string"] = function(Opal) {
       else if (separator === "") {
         result = self.replace(/(\r?\n)+$/, '');
       }
-      else if (self.length > separator.length) {
+      else if (self.length >= separator.length) {
         var tail = self.substr(self.length - separator.length, separator.length);
 
         if (tail === separator) {
