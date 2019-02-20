@@ -23,7 +23,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha spec/*.spec.js",
-    "lint": "eslint src/index.js spec npm",
+    "lint": "standard src/index.js spec npm",
     "prepublishOnly": "node npm/prepublish.js",
     "postpublish": "node npm/postpublish.js"
   },
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "chai": "4.2.0",
-    "eslint": "5.10.0",
-    "mocha": "5.2.0"
+    "mocha": "5.2.0",
+    "standard": "12.0.1"
   }
 }
