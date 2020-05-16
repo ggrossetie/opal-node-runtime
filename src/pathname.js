@@ -6,7 +6,7 @@ Opal.modules["corelib/comparable"] = function(Opal) {
   function $rb_lt(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs < rhs : lhs['$<'](rhs);
   }
-  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $module = Opal.module, $truthy = Opal.truthy;
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $module = Opal.module, $truthy = Opal.truthy;
 
   Opal.add_stubs(['$>', '$<', '$===', '$raise', '$class', '$equal?', '$<=>']);
   return (function($base, $parent_nesting) {
@@ -137,7 +137,7 @@ Opal.modules["pathname"] = function(Opal) {
   function $rb_plus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs + rhs : lhs['$+'](rhs);
   }
-  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send, $module = Opal.module;
+  var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send, $module = Opal.module;
 
   Opal.add_stubs(['$require', '$include', '$quote', '$===', '$to_s', '$path', '$respond_to?', '$to_path', '$is_a?', '$nil?', '$raise', '$class', '$==', '$attr_reader', '$!', '$relative?', '$chop_basename', '$basename', '$=~', '$new', '$source', '$[]', '$rindex', '$sub', '$absolute?', '$expand_path', '$plus', '$unshift', '$length', '$!=', '$empty?', '$first', '$shift', '$+', '$join', '$dirname', '$pop', '$reverse_each', '$directory?', '$extname', '$<=>', '$nonzero?', '$proc', '$casecmp', '$cleanpath', '$inspect', '$include?', '$fill', '$map', '$entries']);
   
@@ -150,7 +150,7 @@ Opal.modules["pathname"] = function(Opal) {
     self.$$prototype.path = nil;
     
     self.$include($$($nesting, 'Comparable'));
-    Opal.const_set($nesting[0], 'SEPARATOR_PAT', new RegExp($$($nesting, 'Regexp').$quote($$$($$($nesting, 'File'), 'SEPARATOR'))));
+    Opal.const_set($nesting[0], 'SEPARATOR_PAT', Opal.regexp([$$($nesting, 'Regexp').$quote($$$($$($nesting, 'File'), 'SEPARATOR'))]));
     
     Opal.def(self, '$initialize', $Pathname_initialize$1 = function $$initialize(path) {
       var self = this;
@@ -314,7 +314,7 @@ Opal.modules["pathname"] = function(Opal) {
         basename_list2.$shift();
       };
       r1 = self.$chop_basename(prefix1);
-      if ($truthy(($truthy($a = r1['$!']()) ? new RegExp($$($nesting, 'SEPARATOR_PAT'))['$=~']($$($nesting, 'File').$basename(prefix1)) : $a))) {
+      if ($truthy(($truthy($a = r1['$!']()) ? Opal.regexp([$$($nesting, 'SEPARATOR_PAT')])['$=~']($$($nesting, 'File').$basename(prefix1)) : $a))) {
         while ($truthy(($truthy($b = basename_list2['$empty?']()['$!']()) ? basename_list2.$first()['$==']("..") : $b))) {
           
           index_list2.$shift();
