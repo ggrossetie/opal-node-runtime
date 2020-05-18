@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "glob": "7.1.6",
-    "unxhr": "1.0.1"
+    "unxhr": "1.0.4"
   },
   "devDependencies": {
     "chai": "4.2.0",
