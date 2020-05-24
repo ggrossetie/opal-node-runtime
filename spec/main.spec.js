@@ -23,7 +23,7 @@ for (const index in fundamentalObjects) {
   fundamentalToStringValues.push(fundamentalObject.toString())
 }
 
-const Opal = require('../src/index').Opal
+const Opal = require('../src/index.cjs').Opal
 
 describe('Opal Node Runtime', function () {
   describe('When loaded', function () {

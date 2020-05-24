@@ -1,7 +1,6 @@
-/* global Opal */
-require('./opal.js')
-require('./nodejs.js')
-require('./pathname.js')
-require('./stringio.js')
+import Opal from './opal.js'
+import './nodejs.js'
+import './pathname.js'
+import './stringio.js'
 
-module.exports.Opal = Opal
+export { Opal }
