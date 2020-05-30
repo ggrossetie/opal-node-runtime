@@ -23,15 +23,46 @@ if (process.env.SKIP_BUILD) {
 const files = ['nodejs.js', 'opal.js', 'pathname.js', 'stringio.js']
 for (const file of files) {
   console.log(`Copy ${opalDirectory}/build/${file} to src/${file}`)
-  fs.createReadStream(`${opalDirectory}/build/${file}`)
-    .pipe(fs.createWriteStream(`src/${file}`))
+  fs.copyFileSync(`${opalDirectory}/build/${file}`, `src/${file}`)
 }
 
-const sourceFile = `src/opal.js`
-const source = fs.readFileSync(sourceFile, 'utf8')
-if (!source.includes('export default Opal')) {
-  fs.writeFileSync(sourceFile, source + `
+const opalSourceFile = `src/opal.js`
+const opalSource = fs.readFileSync(opalSourceFile, 'utf8')
+if (!opalSource.includes('export default Opal')) {
+  const data = opalSource + `
+
 export default Opal
+`
+  fs.writeFileSync(opalSourceFile, data, 'utf8')
+}
+
+const nodejsSourceFile = `src/nodejs.js`
+const nodejsSource = fs.readFileSync(nodejsSourceFile, 'utf8')
+if (!nodejsSource.includes('import __fs__ from \'fs\';')) {
+  const data = nodejsSource
+    .replace(/self\.__xmlhttprequest__ = require\('unxhr'\);/g, 'self.__xmlhttprequest__ = __xmlhttprequest__;')
+    // path
+    .replace(/self\.__path__ = require\('path'\);/g, 'self.__path__ = __path__;')
+    .replace(/\s+var __path__ = self\.__path__;/g, '')
+    // fs
+    .replace(/self\.__fs__ = require\('fs'\);/g, 'self.__fs__ = __fs__;')
+    .replace(/\s+var __fs__ = self\.__fs__;/g, '')
+    // util
+    .replace(/self\.__util__ = require\('util'\);/g, 'self.__util__ = __util__;')
+    .replace(/\s+var __util__ = self\.__util__;/g, '')
+    // glob
+    .replace(/self\.__glob__ = require\('glob'\);/g, 'self.__glob__ = __glob__;')
+    .replace(/\s+var __glob__ = self\.__glob__;/g, '')
+    // os
+    .replace(/self\.__os__ = require\('os'\);/g, 'self.__os__ = __os__;')
+    .replace(/\s+var __os__ = self\.__os__;/g, '')
+  fs.writeFileSync(nodejsSourceFile, `import __fs__ from 'fs';
+import __path__ from 'path';
+import __util__ from 'util';
+import __glob__ from 'glob';
+import __os__ from 'os';
+import __xmlhttprequest__ from 'unxhr';
+
+${data}
 `)
 }
-
