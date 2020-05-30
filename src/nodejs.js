@@ -3,8 +3,8 @@ Opal.modules["nodejs/file"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass, $truthy = Opal.truthy, $gvars = Opal.gvars;
 
   Opal.add_stubs(['$raise', '$warn', '$const_get', '$new', '$const_defined?', '$const_set', '$include', '$size', '$respond_to?', '$path', '$join', '$call', '$exist?', '$realpath', '$!=', '$close', '$to_path', '$pwd', '$to_str', '$include?', '$delete', '$match?', '$sub', '$attr_reader', '$to_a', '$each_line', '$to_enum', '$read', '$chomp']);
-  
-  
+
+
   var warnings = {}, errno_code, errno_codes = [
     'EACCES',
     'EISDIR',
@@ -133,15 +133,15 @@ Opal.modules["nodejs/file"] = function(Opal) {
     if (self.__util__ == null) self.__util__ = nil;
 
     self.$$prototype.eof = self.$$prototype.binary_flag = self.$$prototype.path = self.$$prototype.fd = nil;
-    
+
     self.$include($$$($$$('::', 'IO'), 'Writable'));
     self.$include($$$($$$('::', 'IO'), 'Readable'));
-    self.__fs__ = require('fs');
-    self.__path__ = require('path');
-    self.__util__ = require('util');
-    var __fs__ = self.__fs__;
-    var __path__ = self.__path__;
-    var __util__ = self.__util__;
+    import __fs__ from 'fs';
+    import __path__ from 'path';
+    import __util__ from 'util';
+    self.__fs__ = __fs__;
+    self.__path__ = __path__;
+    self.__util__ = __util__;
     var __TextEncoder__ = typeof TextEncoder !== 'undefined' ? TextEncoder : __util__.TextEncoder;
     var __TextDecoder__ = typeof TextDecoder !== 'undefined' ? TextDecoder : __util__.TextDecoder;
     var __utf8TextDecoder__ = new __TextDecoder__('utf8');
@@ -156,14 +156,14 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$write', $File_write$2 = function $$write(path, data) {
       var self = this;
 
-      
+
       executeIOAction(function(){return __fs__.writeFileSync(path, data)});
       return data.$size();
     }, $File_write$2.$$arity = 2);
     Opal.defs(self, '$exist?', $File_exist$ques$3 = function(path) {
       var self = this;
 
-      
+
       if ($truthy(path['$respond_to?']("path"))) {
         path = path.$path()};
       return executeIOAction(function(){return __fs__.existsSync(path)});
@@ -172,26 +172,26 @@ Opal.modules["nodejs/file"] = function(Opal) {
       var $iter = $File_realpath$4.$$p, block = $iter || nil, self = this;
 
       if ($iter) $File_realpath$4.$$p = null;
-      
-      
+
+
       if ($iter) $File_realpath$4.$$p = null;;
-      
+
       if (dir_string == null) {
         dir_string = nil;
       };
-      
+
       if (cache == null) {
         cache = nil;
       };
       if ($truthy(dir_string)) {
         pathname = self.$join(dir_string, pathname)};
       if ((block !== nil)) {
-        
+
         __fs__.realpath(pathname, cache, function(error, realpath){
           if (error) Opal.IOError.$new(error.message)
           else block.$call(realpath)
         })
-        
+
       } else {
         return executeIOAction(function(){return __fs__.realpathSync(pathname, cache)})
       };
@@ -199,17 +199,17 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$join', $File_join$5 = function $$join($a) {
       var $post_args, paths, self = this;
 
-      
-      
+
+
       $post_args = Opal.slice.call(arguments, 0, arguments.length);
-      
+
       paths = $post_args;;
       return __path__.posix.join.apply(__path__, paths);
     }, $File_join$5.$$arity = -1);
     Opal.defs(self, '$directory?', $File_directory$ques$6 = function(path) {
       var self = this, result = nil, realpath = nil;
 
-      
+
       if ($truthy(self['$exist?'](path))) {
       } else {
         return false
@@ -217,7 +217,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       result = executeIOAction(function(){return !!__fs__.lstatSync(path).isDirectory()});
       if ($truthy(result)) {
       } else {
-        
+
         realpath = self.$realpath(path);
         if ($truthy(realpath['$!='](path))) {
           result = executeIOAction(function(){return !!__fs__.lstatSync(realpath).isDirectory()})};
@@ -227,7 +227,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$file?', $File_file$ques$7 = function(path) {
       var self = this, result = nil, realpath = nil;
 
-      
+
       if ($truthy(self['$exist?'](path))) {
       } else {
         return false
@@ -235,7 +235,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       result = executeIOAction(function(){return !!__fs__.lstatSync(path).isFile()});
       if ($truthy(result)) {
       } else {
-        
+
         realpath = self.$realpath(path);
         if ($truthy(realpath['$!='](path))) {
           result = executeIOAction(function(){return !!__fs__.lstatSync(realpath).isFile()})};
@@ -245,7 +245,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$readable?', $File_readable$ques$8 = function(path) {
       var self = this;
 
-      
+
       if ($truthy(self['$exist?'](path))) {
       } else {
         return false
@@ -261,14 +261,14 @@ Opal.modules["nodejs/file"] = function(Opal) {
       var $iter = $File_open$10.$$p, $yield = $iter || nil, self = this, file = nil;
 
       if ($iter) $File_open$10.$$p = null;
-      
-      
+
+
       if (mode == null) {
         mode = "r";
       };
       file = self.$new(path, mode);
       if (($yield !== nil)) {
-        
+
         return (function() { try {
         return Opal.yield1($yield, file);
         } finally {
@@ -281,7 +281,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$stat', $File_stat$11 = function $$stat(path) {
       var self = this;
 
-      
+
       if ($truthy(path['$respond_to?']("path"))) {
         path = path.$path()};
       return $$$($$($nesting, 'File'), 'Stat').$new(path);
@@ -299,8 +299,8 @@ Opal.modules["nodejs/file"] = function(Opal) {
     Opal.defs(self, '$absolute_path', $File_absolute_path$14 = function $$absolute_path(path, basedir) {
       var $a, self = this;
 
-      
-      
+
+
       if (basedir == null) {
         basedir = nil;
       };
@@ -312,12 +312,12 @@ Opal.modules["nodejs/file"] = function(Opal) {
       basedir = ($truthy($a = basedir) ? $a : $$($nesting, 'Dir').$pwd());
       return __path__.normalize(__path__.resolve(basedir.$to_str(), path.$to_str())).split(__path__.sep).join(__path__.posix.sep);
     }, $File_absolute_path$14.$$arity = -2);
-    
+
     Opal.def(self, '$initialize', $File_initialize$15 = function $$initialize(path, flags) {
       var self = this, encoding_option_rx = nil;
 
-      
-      
+
+
       if (flags == null) {
         flags = "r";
       };
@@ -325,7 +325,7 @@ Opal.modules["nodejs/file"] = function(Opal) {
       flags = flags.$delete("b");
       encoding_option_rx = /:(.*)/;
       if ($truthy(encoding_option_rx['$match?'](flags))) {
-        
+
         handle_unsupported_feature("Encoding option (:encoding) is unsupported by Node.js openSync method and will be removed.");
         flags = flags.$sub(encoding_option_rx, "");};
       self.path = path;
@@ -333,17 +333,17 @@ Opal.modules["nodejs/file"] = function(Opal) {
       return (self.fd = executeIOAction(function(){return __fs__.openSync(path, flags)}));
     }, $File_initialize$15.$$arity = -2);
     self.$attr_reader("path");
-    
+
     Opal.def(self, '$read', $File_read$16 = function $$read() {
       var self = this, res = nil;
 
       if ($truthy(self.eof)) {
         return ""
       } else {
-        
+
         if ($truthy(self.binary_flag)) {
-          
-          
+
+
           var buf = executeIOAction(function(){return __fs__.readFileSync(self.path)})
           var content
           if (is_utf8(buf)) {
@@ -362,28 +362,28 @@ Opal.modules["nodejs/file"] = function(Opal) {
         return res;
       }
     }, $File_read$16.$$arity = 0);
-    
+
     Opal.def(self, '$readlines', $File_readlines$17 = function $$readlines(separator) {
       var self = this;
       if ($gvars["/"] == null) $gvars["/"] = nil;
 
-      
-      
+
+
       if (separator == null) {
         separator = $gvars["/"];
       };
       return self.$each_line(separator).$to_a();
     }, $File_readlines$17.$$arity = -1);
-    
+
     Opal.def(self, '$each_line', $File_each_line$18 = function $$each_line(separator) {
       var $iter = $File_each_line$18.$$p, block = $iter || nil, self = this, lines = nil;
       if ($gvars["/"] == null) $gvars["/"] = nil;
 
       if ($iter) $File_each_line$18.$$p = null;
-      
-      
+
+
       if ($iter) $File_each_line$18.$$p = null;;
-      
+
       if (separator == null) {
         separator = $gvars["/"];
       };
@@ -394,9 +394,9 @@ Opal.modules["nodejs/file"] = function(Opal) {
           return [].$to_enum()
         }; return nil; })()};
       if ((block !== nil)) {
-        
+
         lines = $$($nesting, 'File').$read(self.path);
-        
+
         self.eof = false;
         self.lineno = 0;
         var chomped  = lines.$chomp(),
@@ -418,19 +418,19 @@ Opal.modules["nodejs/file"] = function(Opal) {
         return self.$read().$each_line(separator)
       };
     }, $File_each_line$18.$$arity = -1);
-    
+
     Opal.def(self, '$write', $File_write$19 = function $$write(string) {
       var self = this;
 
       return executeIOAction(function(){return __fs__.writeSync(self.fd, string)})
     }, $File_write$19.$$arity = 1);
-    
+
     Opal.def(self, '$flush', $File_flush$20 = function $$flush() {
       var self = this;
 
       return executeIOAction(function(){return __fs__.fsyncSync(self.fd)})
     }, $File_flush$20.$$arity = 0);
-    
+
     Opal.def(self, '$close', $File_close$21 = function $$close() {
       var self = this;
 
@@ -449,16 +449,16 @@ Opal.modules["nodejs/file"] = function(Opal) {
     if (self.__fs__ == null) self.__fs__ = nil;
 
     self.$$prototype.path = nil;
-    
-    self.__fs__ = require('fs');
-    var __fs__ = self.__fs__;
-    
+
+    import __fs__ from 'fs';
+    self.__fs__ = __fs__;
+
     Opal.def(self, '$initialize', $Stat_initialize$23 = function $$initialize(path) {
       var self = this;
 
       return (self.path = path)
     }, $Stat_initialize$23.$$arity = 1);
-    
+
     Opal.def(self, '$file?', $Stat_file$ques$24 = function() {
       var self = this;
 
@@ -486,75 +486,74 @@ Opal.modules["nodejs/dir"] = function(Opal) {
     if (self.__path__ == null) self.__path__ = nil;
     if (self.__os__ == null) self.__os__ = nil;
 
-    
-    self.__glob__ = require('glob');
-    self.__fs__ = require('fs');
-    self.__path__ = require('path');
-    self.__os__ = require('os');
-    var __glob__ = self.__glob__;
-    var __fs__ = self.__fs__;
-    var __path__ = self.__path__;
-    var __os__ = self.__os__;
+    import __glob__ from 'glob';
+    self.__glob__ = __glob__;
+    import __fs__ from 'fs';
+    self.__fs__ = __fs__;
+    import __path__ from 'path';
+    self.__path__ = __path__;
+    import __os__ from 'os';
+    self.__os__ = __os__;
     return (function(self, $parent_nesting) {
       var $nesting = [self].concat($parent_nesting), $$$1, $pwd$2, $home$3, $chdir$4, $mkdir$5, $entries$6, $glob$7;
 
-      
-      
+
+
       Opal.def(self, '$[]', $$$1 = function(glob) {
         var self = this;
 
         return __glob__.sync(glob)
       }, $$$1.$$arity = 1);
-      
+
       Opal.def(self, '$pwd', $pwd$2 = function $$pwd() {
         var self = this;
 
         return process.cwd().split(__path__.sep).join(__path__.posix.sep);
       }, $pwd$2.$$arity = 0);
-      
+
       Opal.def(self, '$home', $home$3 = function $$home() {
         var self = this;
 
         return __os__.homedir();
       }, $home$3.$$arity = 0);
-      
+
       Opal.def(self, '$chdir', $chdir$4 = function $$chdir(path) {
         var self = this;
 
         return process.chdir(path)
       }, $chdir$4.$$arity = 1);
-      
+
       Opal.def(self, '$mkdir', $mkdir$5 = function $$mkdir(path) {
         var self = this;
 
         return __fs__.mkdirSync(path)
       }, $mkdir$5.$$arity = 1);
-      
+
       Opal.def(self, '$entries', $entries$6 = function $$entries(dirname) {
         var self = this;
 
-        
+
         var result = [];
         var entries = __fs__.readdirSync(dirname);
         for (var i = 0, ii = entries.length; i < ii; i++) {
           result.push(entries[i]);
         }
         return result;
-      
+
       }, $entries$6.$$arity = 1);
-      
+
       Opal.def(self, '$glob', $glob$7 = function $$glob(pattern) {
         var $$8, self = this;
 
-        
+
         if ($truthy(pattern['$respond_to?']("each"))) {
         } else {
           pattern = [pattern]
         };
         return $send(pattern, 'flat_map', [], ($$8 = function(subpattern){var self = $$8.$$s == null ? this : $$8.$$s;
 
-        
-          
+
+
           if (subpattern == null) {
             subpattern = nil;
           };
@@ -576,8 +575,8 @@ Opal.modules["nodejs/io"] = function(Opal) {
   var $$5, $$6, self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass, $lambda = Opal.lambda, $send = Opal.send, $writer = nil;
 
   Opal.add_stubs(['$attr_reader', '$write', '$read', '$write_proc=', '$-', '$tty=']);
-  
-  
+
+
   function executeIOAction(action) {
     try {
       return action();
@@ -599,16 +598,16 @@ Opal.modules["nodejs/io"] = function(Opal) {
     var $nesting = [self].concat($parent_nesting), $IO_initialize$1, $IO_write$2, $IO_read$3, $IO_binread$4;
     if (self.__fs__ == null) self.__fs__ = nil;
 
-    
-    self.__fs__ = require('fs');
-    var __fs__ = self.__fs__;
+    import __fs__ from 'fs'
+    self.__fs__ = __fs__;
+
     self.$attr_reader("eof");
     self.$attr_reader("lineno");
-    
+
     Opal.def(self, '$initialize', $IO_initialize$1 = function $$initialize() {
       var self = this;
 
-      
+
       self.eof = false;
       return (self.lineno = 0);
     }, $IO_initialize$1.$$arity = 0);
@@ -628,33 +627,33 @@ Opal.modules["nodejs/io"] = function(Opal) {
       return executeIOAction(function(){return __fs__.readFileSync(path).toString('binary')})
     }, $IO_binread$4.$$arity = 1), nil) && 'binread';
   })($nesting[0], null, $nesting);
-  
+
   $writer = [$lambda(($$5 = function(string){var self = $$5.$$s == null ? this : $$5.$$s;
 
-  
-    
+
+
     if (string == null) {
       string = nil;
     };
     return process.stdout.write(string);;}, $$5.$$s = self, $$5.$$arity = 1, $$5))];
   $send($$($nesting, 'STDOUT'), 'write_proc=', Opal.to_a($writer));
   $writer[$rb_minus($writer["length"], 1)];;
-  
+
   $writer = [$lambda(($$6 = function(string){var self = $$6.$$s == null ? this : $$6.$$s;
 
-  
-    
+
+
     if (string == null) {
       string = nil;
     };
     return process.stderr.write(string);;}, $$6.$$s = self, $$6.$$arity = 1, $$6))];
   $send($$($nesting, 'STDERR'), 'write_proc=', Opal.to_a($writer));
   $writer[$rb_minus($writer["length"], 1)];;
-  
+
   $writer = [true];
   $send($$($nesting, 'STDOUT'), 'tty=', Opal.to_a($writer));
   $writer[$rb_minus($writer["length"], 1)];;
-  
+
   $writer = [true];
   $send($$($nesting, 'STDERR'), 'tty=', Opal.to_a($writer));
   return $writer[$rb_minus($writer["length"], 1)];;
@@ -670,24 +669,25 @@ Opal.modules["nodejs/open-uri"] = function(Opal) {
     var $nesting = [self].concat($parent_nesting), $OpenURI_request$1, $OpenURI_data$2;
     if (self.__xmlhttprequest__ == null) self.__xmlhttprequest__ = nil;
 
-    
-    self.__xmlhttprequest__ = require('unxhr');
+    import __xmlhttprequest__ from 'unxhr';
+    self.__xmlhttprequest__ = __xmlhttprequest__;
+
     var __XMLHttpRequest__ = self.__xmlhttprequest__.XMLHttpRequest;
     Opal.defs(self, '$request', $OpenURI_request$1 = function $$request(uri) {
       var self = this;
 
-      
+
       var xhr = new __XMLHttpRequest__();
       xhr.open('GET', uri, false);
       xhr.responseType = 'arraybuffer';
       xhr.send();
       return xhr;
-    
+
     }, $OpenURI_request$1.$$arity = 1);
     Opal.defs(self, '$data', $OpenURI_data$2 = function $$data(req) {
       var self = this;
 
-      
+
       var arrayBuffer = req.response;
       var byteArray = new Uint8Array(arrayBuffer);
       var result = []
@@ -695,7 +695,7 @@ Opal.modules["nodejs/open-uri"] = function(Opal) {
         result.push(byteArray[i]);
       }
       return result;
-    
+
     }, $OpenURI_data$2.$$arity = 1);
   })($nesting[0], $nesting)
 };
@@ -716,8 +716,8 @@ Opal.modules["corelib/comparable"] = function(Opal) {
 
     var $nesting = [self].concat($parent_nesting), $Comparable_$eq_eq$1, $Comparable_$gt$2, $Comparable_$gt_eq$3, $Comparable_$lt$4, $Comparable_$lt_eq$5, $Comparable_between$ques$6, $Comparable_clamp$7, $case = nil;
 
-    
-    
+
+
     function normalize(what) {
       if (Opal.is_a(what, Opal.Integer)) { return what; }
 
@@ -734,14 +734,14 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       self.$raise($$($nesting, 'ArgumentError'), "" + "comparison of " + ((lhs).$class()) + " with " + (class_name) + " failed")
     }
   ;
-    
+
     Opal.def(self, '$==', $Comparable_$eq_eq$1 = function(other) {
       var self = this, cmp = nil;
 
-      
+
       if ($truthy(self['$equal?'](other))) {
         return true};
-      
+
       if (self["$<=>"] == Opal.Kernel["$<=>"]) {
         return false;
       }
@@ -758,66 +758,66 @@ Opal.modules["corelib/comparable"] = function(Opal) {
       };
       return normalize(cmp) == 0;;
     }, $Comparable_$eq_eq$1.$$arity = 1);
-    
+
     Opal.def(self, '$>', $Comparable_$gt$2 = function(other) {
       var self = this, cmp = nil;
 
-      
+
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
         fail_comparison(self, other)
       };
       return normalize(cmp) > 0;;
     }, $Comparable_$gt$2.$$arity = 1);
-    
+
     Opal.def(self, '$>=', $Comparable_$gt_eq$3 = function(other) {
       var self = this, cmp = nil;
 
-      
+
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
         fail_comparison(self, other)
       };
       return normalize(cmp) >= 0;;
     }, $Comparable_$gt_eq$3.$$arity = 1);
-    
+
     Opal.def(self, '$<', $Comparable_$lt$4 = function(other) {
       var self = this, cmp = nil;
 
-      
+
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
         fail_comparison(self, other)
       };
       return normalize(cmp) < 0;;
     }, $Comparable_$lt$4.$$arity = 1);
-    
+
     Opal.def(self, '$<=', $Comparable_$lt_eq$5 = function(other) {
       var self = this, cmp = nil;
 
-      
+
       if ($truthy((cmp = self['$<=>'](other)))) {
       } else {
         fail_comparison(self, other)
       };
       return normalize(cmp) <= 0;;
     }, $Comparable_$lt_eq$5.$$arity = 1);
-    
+
     Opal.def(self, '$between?', $Comparable_between$ques$6 = function(min, max) {
       var self = this;
 
-      
+
       if ($rb_lt(self, min)) {
         return false};
       if ($rb_gt(self, max)) {
         return false};
       return true;
     }, $Comparable_between$ques$6.$$arity = 2);
-    
+
     Opal.def(self, '$clamp', $Comparable_clamp$7 = function $$clamp(min, max) {
       var self = this, cmp = nil;
 
-      
+
       cmp = min['$<=>'](max);
       if ($truthy(cmp)) {
       } else {
@@ -842,7 +842,7 @@ Opal.modules["pathname"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass, $truthy = Opal.truthy, $send = Opal.send, $module = Opal.module;
 
   Opal.add_stubs(['$require', '$include', '$quote', '$===', '$to_s', '$path', '$respond_to?', '$to_path', '$is_a?', '$nil?', '$raise', '$class', '$==', '$attr_reader', '$!', '$relative?', '$chop_basename', '$basename', '$=~', '$new', '$source', '$[]', '$rindex', '$sub', '$absolute?', '$expand_path', '$plus', '$unshift', '$length', '$!=', '$empty?', '$first', '$shift', '$+', '$join', '$dirname', '$pop', '$reverse_each', '$directory?', '$extname', '$<=>', '$nonzero?', '$proc', '$casecmp', '$cleanpath', '$inspect', '$include?', '$fill', '$map', '$entries']);
-  
+
   self.$require("corelib/comparable");
   (function($base, $super, $parent_nesting) {
     var self = $klass($base, $super, 'Pathname');
@@ -850,14 +850,14 @@ Opal.modules["pathname"] = function(Opal) {
     var $nesting = [self].concat($parent_nesting), $Pathname_initialize$1, $Pathname_$eq_eq$2, $Pathname_absolute$ques$3, $Pathname_relative$ques$4, $Pathname_chop_basename$5, $Pathname_root$ques$6, $Pathname_parent$7, $Pathname_sub$8, $Pathname_cleanpath$9, $Pathname_to_path$10, $Pathname_hash$11, $Pathname_expand_path$12, $Pathname_$plus$13, $Pathname_plus$14, $Pathname_join$15, $Pathname_split$17, $Pathname_dirname$18, $Pathname_basename$19, $Pathname_directory$ques$20, $Pathname_extname$21, $Pathname_$lt_eq_gt$22, $Pathname$23, $Pathname$24, $Pathname_relative_path_from$25, $Pathname_entries$26;
 
     self.$$prototype.path = nil;
-    
+
     self.$include($$($nesting, 'Comparable'));
     Opal.const_set($nesting[0], 'SEPARATOR_PAT', Opal.regexp([$$($nesting, 'Regexp').$quote($$$($$($nesting, 'File'), 'SEPARATOR'))]));
-    
+
     Opal.def(self, '$initialize', $Pathname_initialize$1 = function $$initialize(path) {
       var self = this;
 
-      
+
       if ($truthy($$($nesting, 'Pathname')['$==='](path))) {
         self.path = path.$path().$to_s()
       } else if ($truthy(path['$respond_to?']("to_path"))) {
@@ -876,34 +876,34 @@ Opal.modules["pathname"] = function(Opal) {
       };
     }, $Pathname_initialize$1.$$arity = 1);
     self.$attr_reader("path");
-    
+
     Opal.def(self, '$==', $Pathname_$eq_eq$2 = function(other) {
       var self = this;
 
       return other.$path()['$=='](self.path)
     }, $Pathname_$eq_eq$2.$$arity = 1);
-    
+
     Opal.def(self, '$absolute?', $Pathname_absolute$ques$3 = function() {
       var self = this;
 
       return self['$relative?']()['$!']()
     }, $Pathname_absolute$ques$3.$$arity = 0);
-    
+
     Opal.def(self, '$relative?', $Pathname_relative$ques$4 = function() {
       var $a, $b, $c, self = this, path = nil, r = nil;
 
-      
+
       path = self.path;
       while ($truthy((r = self.$chop_basename(path)))) {
         $c = r, $b = Opal.to_ary($c), (path = ($b[0] == null ? nil : $b[0])), $c
       };
       return path['$==']("");
     }, $Pathname_relative$ques$4.$$arity = 0);
-    
+
     Opal.def(self, '$chop_basename', $Pathname_chop_basename$5 = function $$chop_basename(path) {
       var self = this, base = nil;
 
-      
+
       base = $$($nesting, 'File').$basename(path);
       if ($truthy($$($nesting, 'Regexp').$new("" + "^" + ($$$($$($nesting, 'Pathname'), 'SEPARATOR_PAT').$source()) + "?$")['$=~'](base))) {
         return nil
@@ -911,17 +911,17 @@ Opal.modules["pathname"] = function(Opal) {
         return [path['$[]'](0, path.$rindex(base)), base]
       };
     }, $Pathname_chop_basename$5.$$arity = 1);
-    
+
     Opal.def(self, '$root?', $Pathname_root$ques$6 = function() {
       var self = this;
 
       return self.path['$==']("/")
     }, $Pathname_root$ques$6.$$arity = 0);
-    
+
     Opal.def(self, '$parent', $Pathname_parent$7 = function $$parent() {
       var self = this, new_path = nil;
 
-      
+
       new_path = self.path.$sub(/\/([^\/]+\/?$)/, "");
       if (new_path['$==']("")) {
         new_path = (function() {if ($truthy(self['$absolute?']())) {
@@ -931,62 +931,62 @@ Opal.modules["pathname"] = function(Opal) {
         }; return nil; })()};
       return $$($nesting, 'Pathname').$new(new_path);
     }, $Pathname_parent$7.$$arity = 0);
-    
+
     Opal.def(self, '$sub', $Pathname_sub$8 = function $$sub($a) {
       var $post_args, args, self = this;
 
-      
-      
+
+
       $post_args = Opal.slice.call(arguments, 0, arguments.length);
-      
+
       args = $post_args;;
       return $$($nesting, 'Pathname').$new($send(self.path, 'sub', Opal.to_a(args)));
     }, $Pathname_sub$8.$$arity = -1);
-    
+
     Opal.def(self, '$cleanpath', $Pathname_cleanpath$9 = function $$cleanpath() {
       var self = this;
 
       return Opal.normalize(self.path)
     }, $Pathname_cleanpath$9.$$arity = 0);
-    
+
     Opal.def(self, '$to_path', $Pathname_to_path$10 = function $$to_path() {
       var self = this;
 
       return self.path
     }, $Pathname_to_path$10.$$arity = 0);
-    
+
     Opal.def(self, '$hash', $Pathname_hash$11 = function $$hash() {
       var self = this;
 
       return self.path
     }, $Pathname_hash$11.$$arity = 0);
-    
+
     Opal.def(self, '$expand_path', $Pathname_expand_path$12 = function $$expand_path() {
       var self = this;
 
       return $$($nesting, 'Pathname').$new($$($nesting, 'File').$expand_path(self.path))
     }, $Pathname_expand_path$12.$$arity = 0);
-    
+
     Opal.def(self, '$+', $Pathname_$plus$13 = function(other) {
       var self = this;
 
-      
+
       if ($truthy($$($nesting, 'Pathname')['$==='](other))) {
       } else {
         other = $$($nesting, 'Pathname').$new(other)
       };
       return $$($nesting, 'Pathname').$new(self.$plus(self.path, other.$to_s()));
     }, $Pathname_$plus$13.$$arity = 1);
-    
+
     Opal.def(self, '$plus', $Pathname_plus$14 = function $$plus(path1, path2) {
       var $a, $b, $c, self = this, prefix2 = nil, index_list2 = nil, basename_list2 = nil, r2 = nil, basename2 = nil, prefix1 = nil, r1 = nil, basename1 = nil, suffix2 = nil;
 
-      
+
       prefix2 = path2;
       index_list2 = [];
       basename_list2 = [];
       while ($truthy((r2 = self.$chop_basename(prefix2)))) {
-        
+
         $c = r2, $b = Opal.to_ary($c), (prefix2 = ($b[0] == null ? nil : $b[0])), (basename2 = ($b[1] == null ? nil : $b[1])), $c;
         index_list2.$unshift(prefix2.$length());
         basename_list2.$unshift(basename2);
@@ -995,9 +995,9 @@ Opal.modules["pathname"] = function(Opal) {
         return path2};
       prefix1 = path1;
       while ($truthy(true)) {
-        
+
         while ($truthy(($truthy($c = basename_list2['$empty?']()['$!']()) ? basename_list2.$first()['$=='](".") : $c))) {
-          
+
           index_list2.$shift();
           basename_list2.$shift();
         };
@@ -1009,7 +1009,7 @@ Opal.modules["pathname"] = function(Opal) {
         if (basename1['$=='](".")) {
           continue;};
         if ($truthy(($truthy($b = ($truthy($c = basename1['$==']("..")) ? $c : basename_list2['$empty?']())) ? $b : basename_list2.$first()['$!=']("..")))) {
-          
+
           prefix1 = $rb_plus(prefix1, basename1);
           break;;};
         index_list2.$shift();
@@ -1018,12 +1018,12 @@ Opal.modules["pathname"] = function(Opal) {
       r1 = self.$chop_basename(prefix1);
       if ($truthy(($truthy($a = r1['$!']()) ? Opal.regexp([$$($nesting, 'SEPARATOR_PAT')])['$=~']($$($nesting, 'File').$basename(prefix1)) : $a))) {
         while ($truthy(($truthy($b = basename_list2['$empty?']()['$!']()) ? basename_list2.$first()['$==']("..") : $b))) {
-          
+
           index_list2.$shift();
           basename_list2.$shift();
         }};
       if ($truthy(basename_list2['$empty?']()['$!']())) {
-        
+
         suffix2 = path2['$[]'](Opal.Range.$new(index_list2.$first(), -1, false));
         if ($truthy(r1)) {
           return $$($nesting, 'File').$join(prefix1, suffix2)
@@ -1036,15 +1036,15 @@ Opal.modules["pathname"] = function(Opal) {
         return $$($nesting, 'File').$dirname(prefix1)
       };
     }, $Pathname_plus$14.$$arity = 2);
-    
+
     Opal.def(self, '$join', $Pathname_join$15 = function $$join($a) {try {
 
       var $post_args, args, $$16, self = this, result = nil;
 
-      
-      
+
+
       $post_args = Opal.slice.call(arguments, 0, arguments.length);
-      
+
       args = $post_args;;
       if ($truthy(args['$empty?']())) {
         return self};
@@ -1057,8 +1057,8 @@ Opal.modules["pathname"] = function(Opal) {
         return result};
       $send(args, 'reverse_each', [], ($$16 = function(arg){var self = $$16.$$s == null ? this : $$16.$$s;
 
-      
-        
+
+
         if (arg == null) {
           arg = nil;
         };
@@ -1075,37 +1075,37 @@ Opal.modules["pathname"] = function(Opal) {
       return $rb_plus(self, result);
       } catch ($returner) { if ($returner === Opal.returner) { return $returner.$v } throw $returner; }
     }, $Pathname_join$15.$$arity = -1);
-    
+
     Opal.def(self, '$split', $Pathname_split$17 = function $$split() {
       var self = this;
 
       return [self.$dirname(), self.$basename()]
     }, $Pathname_split$17.$$arity = 0);
-    
+
     Opal.def(self, '$dirname', $Pathname_dirname$18 = function $$dirname() {
       var self = this;
 
       return $$($nesting, 'Pathname').$new($$($nesting, 'File').$dirname(self.path))
     }, $Pathname_dirname$18.$$arity = 0);
-    
+
     Opal.def(self, '$basename', $Pathname_basename$19 = function $$basename() {
       var self = this;
 
       return $$($nesting, 'Pathname').$new($$($nesting, 'File').$basename(self.path))
     }, $Pathname_basename$19.$$arity = 0);
-    
+
     Opal.def(self, '$directory?', $Pathname_directory$ques$20 = function() {
       var self = this;
 
       return $$($nesting, 'File')['$directory?'](self.path)
     }, $Pathname_directory$ques$20.$$arity = 0);
-    
+
     Opal.def(self, '$extname', $Pathname_extname$21 = function $$extname() {
       var self = this;
 
       return $$($nesting, 'File').$extname(self.path)
     }, $Pathname_extname$21.$$arity = 0);
-    
+
     Opal.def(self, '$<=>', $Pathname_$lt_eq_gt$22 = function(other) {
       var self = this;
 
@@ -1118,12 +1118,12 @@ Opal.modules["pathname"] = function(Opal) {
     Opal.const_set($nesting[0], 'SAME_PATHS', (function() {if ($truthy($$$($$($nesting, 'File'), 'FNM_SYSCASE')['$nonzero?']())) {
       return $send(self, 'proc', [], ($Pathname$23 = function(a, b){var self = $Pathname$23.$$s == null ? this : $Pathname$23.$$s;
 
-      
-        
+
+
         if (a == null) {
           a = nil;
         };
-        
+
         if (b == null) {
           b = nil;
         };
@@ -1131,28 +1131,28 @@ Opal.modules["pathname"] = function(Opal) {
     } else {
       return $send(self, 'proc', [], ($Pathname$24 = function(a, b){var self = $Pathname$24.$$s == null ? this : $Pathname$24.$$s;
 
-      
-        
+
+
         if (a == null) {
           a = nil;
         };
-        
+
         if (b == null) {
           b = nil;
         };
         return a['$=='](b);}, $Pathname$24.$$s = self, $Pathname$24.$$arity = 2, $Pathname$24))
     }; return nil; })());
-    
+
     Opal.def(self, '$relative_path_from', $Pathname_relative_path_from$25 = function $$relative_path_from(base_directory) {
       var $a, $b, $c, self = this, dest_directory = nil, dest_prefix = nil, dest_names = nil, r = nil, basename = nil, base_prefix = nil, base_names = nil, relpath_names = nil;
 
-      
+
       dest_directory = self.$cleanpath().$to_s();
       base_directory = base_directory.$cleanpath().$to_s();
       dest_prefix = dest_directory;
       dest_names = [];
       while ($truthy((r = self.$chop_basename(dest_prefix)))) {
-        
+
         $c = r, $b = Opal.to_ary($c), (dest_prefix = ($b[0] == null ? nil : $b[0])), (basename = ($b[1] == null ? nil : $b[1])), $c;
         if ($truthy(basename['$!=']("."))) {
           dest_names.$unshift(basename)};
@@ -1160,7 +1160,7 @@ Opal.modules["pathname"] = function(Opal) {
       base_prefix = base_directory;
       base_names = [];
       while ($truthy((r = self.$chop_basename(base_prefix)))) {
-        
+
         $c = r, $b = Opal.to_ary($c), (base_prefix = ($b[0] == null ? nil : $b[0])), (basename = ($b[1] == null ? nil : $b[1])), $c;
         if ($truthy(basename['$!=']("."))) {
           base_names.$unshift(basename)};
@@ -1170,7 +1170,7 @@ Opal.modules["pathname"] = function(Opal) {
         self.$raise($$($nesting, 'ArgumentError'), "" + "different prefix: " + (dest_prefix.$inspect()) + " and " + (base_directory.$inspect()))
       };
       while ($truthy(($truthy($b = ($truthy($c = dest_names['$empty?']()['$!']()) ? base_names['$empty?']()['$!']() : $c)) ? $$($nesting, 'SAME_PATHS')['$[]'](dest_names.$first(), base_names.$first()) : $b))) {
-        
+
         dest_names.$shift();
         base_names.$shift();
       };
@@ -1189,8 +1189,8 @@ Opal.modules["pathname"] = function(Opal) {
 
       return $send($$($nesting, 'Dir').$entries(self.path), 'map', [], ($$27 = function(f){var self = $$27.$$s == null ? this : $$27.$$s;
 
-      
-        
+
+
         if (f == null) {
           f = nil;
         };
@@ -1202,7 +1202,7 @@ Opal.modules["pathname"] = function(Opal) {
 
     var $nesting = [self].concat($parent_nesting), $Kernel_Pathname$28;
 
-    
+
     Opal.def(self, '$Pathname', $Kernel_Pathname$28 = function $$Pathname(path) {
       var self = this;
 
@@ -1216,7 +1216,7 @@ Opal.modules["nodejs/pathname"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $klass = Opal.klass;
 
   Opal.add_stubs(['$require', '$include', '$to_str', '$!', '$absolute?']);
-  
+
   self.$require("pathname");
   return (function($base, $super, $parent_nesting) {
     var self = $klass($base, $super, 'Pathname');
@@ -1225,17 +1225,17 @@ Opal.modules["nodejs/pathname"] = function(Opal) {
     if (self.__path__ == null) self.__path__ = nil;
 
     self.$$prototype.path = nil;
-    
+
     self.$include($$($nesting, 'Comparable'));
-    self.__path__ = require('path');
-    var __path__ = self.__path__;
-    
+    import __path__ from 'path';
+    self.__path__ = __path__;
+
     Opal.def(self, '$absolute?', $Pathname_absolute$ques$1 = function() {
       var self = this;
 
       return __path__.isAbsolute(self.path.$to_str())
     }, $Pathname_absolute$ques$1.$$arity = 0);
-    
+
     Opal.def(self, '$relative?', $Pathname_relative$ques$2 = function() {
       var self = this;
 
@@ -1254,25 +1254,25 @@ Opal.modules["nodejs/env"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$;
 
   Opal.add_stubs(['$new', '$to_s']);
-  
+
   Opal.const_set($nesting[0], 'ENV', $$($nesting, 'Object').$new());
   return (function(self, $parent_nesting) {
     var $nesting = [self].concat($parent_nesting), $$$1, $$$eq$2, $key$ques$3, $empty$ques$4, $keys$5, $delete$6, $to_s$7;
 
-    
-    
+
+
     Opal.def(self, '$[]', $$$1 = function(name) {
       var self = this;
 
       return process.env[name] || nil
     }, $$$1.$$arity = 1);
-    
+
     Opal.def(self, '$[]=', $$$eq$2 = function(name, value) {
       var self = this;
 
       return process.env[name.$to_s()] = value.$to_s()
     }, $$$eq$2.$$arity = 2);
-    
+
     Opal.def(self, '$key?', $key$ques$3 = function(name) {
       var self = this;
 
@@ -1281,27 +1281,27 @@ Opal.modules["nodejs/env"] = function(Opal) {
     Opal.alias(self, "has_key?", "key?");
     Opal.alias(self, "include?", "key?");
     Opal.alias(self, "member?", "key?");
-    
+
     Opal.def(self, '$empty?', $empty$ques$4 = function() {
       var self = this;
 
       return Object.keys(process.env).length === 0;
     }, $empty$ques$4.$$arity = 0);
-    
+
     Opal.def(self, '$keys', $keys$5 = function $$keys() {
       var self = this;
 
       return Object.keys(process.env);
     }, $keys$5.$$arity = 0);
-    
+
     Opal.def(self, '$delete', $delete$6 = function(name) {
       var self = this;
 
-      
+
       var value = process.env[name] || nil;
       delete process.env[name];
       return value;
-    
+
     }, $delete$6.$$arity = 1);
     return (Opal.def(self, '$to_s', $to_s$7 = function $$to_s() {
       var self = this;
@@ -1316,7 +1316,7 @@ Opal.modules["nodejs"] = function(Opal) {
   var self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.$$$, $$ = Opal.$$, $module = Opal.module;
 
   Opal.add_stubs(['$require']);
-  
+
   (function($base, $parent_nesting) {
     var self = $module($base, 'NodeJS');
 
