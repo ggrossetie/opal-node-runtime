@@ -1,9 +1,9 @@
-/* global describe, it */
-const chai = require('chai')
-const dirtyChai = require('dirty-chai')
-const expect = chai.expect
+import chai from 'chai'
+import dirtyChai from 'dirty-chai'
+import { describe, it } from 'mocha'
 
 chai.use(dirtyChai)
+const expect = chai.expect
 
 const fundamentalObjects = [
   Function,
