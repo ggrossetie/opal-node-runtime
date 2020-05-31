@@ -1,6 +1,7 @@
 import chai from 'chai'
 import dirtyChai from 'dirty-chai'
-import { describe, it } from 'mocha'
+import 'mocha'
+import { Opal } from '../src/index.js'
 
 chai.use(dirtyChai)
 const expect = chai.expect
@@ -22,8 +23,6 @@ for (const index in fundamentalObjects) {
   const fundamentalObject = fundamentalObjects[index]
   fundamentalToStringValues.push(fundamentalObject.toString())
 }
-
-const Opal = require('../src/index.cjs').Opal
 
 describe('Opal Node Runtime', function () {
   describe('When loaded', function () {

@@ -40,6 +40,7 @@ const nodejsSourceFile = `src/nodejs.js`
 const nodejsSource = fs.readFileSync(nodejsSourceFile, 'utf8')
 if (!nodejsSource.includes('import __fs__ from \'fs\';')) {
   const data = nodejsSource
+    .replace('\r\n', '\n')
     .replace(/self\.__xmlhttprequest__ = require\('unxhr'\);/g, 'self.__xmlhttprequest__ = __xmlhttprequest__;')
     // path
     .replace(/self\.__path__ = require\('path'\);/g, 'self.__path__ = __path__;')
@@ -56,6 +57,8 @@ if (!nodejsSource.includes('import __fs__ from \'fs\';')) {
     // os
     .replace(/self\.__os__ = require\('os'\);/g, 'self.__os__ = __os__;')
     .replace(/\s+var __os__ = self\.__os__;/g, '')
+    .replace(/\s+self\.\$require\("nodejs\/kernel"\);/g, '')
+    .replace(/\/\*[^*]+\*\/\nOpal\.modules\["nodejs\/kernel"] = function\(Opal\) {.+?(?=};)};/gs, '')
   fs.writeFileSync(nodejsSourceFile, `import __fs__ from 'fs';
 import __path__ from 'path';
 import __util__ from 'util';

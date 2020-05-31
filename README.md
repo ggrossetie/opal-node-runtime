@@ -9,6 +9,6 @@
 ## Usage
 
 ```javascript
-var Opal = require('opal-runtime').Opal;
+import Opal from 'asciidoctor-opal-runtime'
 // Now let's have fun with Opal!
 ```
