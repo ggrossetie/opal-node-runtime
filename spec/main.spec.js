@@ -56,7 +56,7 @@ describe('Opal Node Runtime', function () {
       Opal.load('nodejs');
       var Dir = Opal.const_get_relative([], 'Dir');
       var currentDir = Dir['$pwd']();
-      expect(currentDir).to.equal(process.cwd());
+      expect(currentDir).to.equal(process.cwd().replace(/\\/g, '/'));
     });
   });
 });
