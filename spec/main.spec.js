@@ -1,7 +1,7 @@
 import chai from 'chai'
 import dirtyChai from 'dirty-chai'
 import 'mocha'
-import { Opal } from '../src/index.js'
+import Opal from '../src/index.js'
 
 chai.use(dirtyChai)
 const expect = chai.expect

@@ -3,4 +3,4 @@ import './nodejs.js'
 import './pathname.js'
 import './stringio.js'
 
-export { Opal }
+export default Opal
