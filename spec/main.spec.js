@@ -1,9 +1,10 @@
-/* global describe, it */
-const chai = require('chai')
-const dirtyChai = require('dirty-chai')
-const expect = chai.expect
+import chai from 'chai'
+import dirtyChai from 'dirty-chai'
+import 'mocha'
+import Opal from '../src/index.js'
 
 chai.use(dirtyChai)
+const expect = chai.expect
 
 const fundamentalObjects = [
   Function,
@@ -22,8 +23,6 @@ for (const index in fundamentalObjects) {
   const fundamentalObject = fundamentalObjects[index]
   fundamentalToStringValues.push(fundamentalObject.toString())
 }
-
-const Opal = require('../src/index').Opal
 
 describe('Opal Node Runtime', function () {
   describe('When loaded', function () {

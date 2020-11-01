@@ -9,6 +9,13 @@
 ## Usage
 
 ```javascript
-var Opal = require('opal-runtime').Opal;
+import Opal from 'asciidoctor-opal-runtime'
+// Now let's have fun with Opal!
+```
+
+This library is also available as a CommonJS module:
+
+```javascript
+const Opal = require('asciidoctor-opal-runtime')
 // Now let's have fun with Opal!
 ```
