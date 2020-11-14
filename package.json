@@ -22,7 +22,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha spec/*.spec.js",
-    "lint": "standard src/index.js spec npm"
+    "lint": "standard src/index.js spec"
   },
   "homepage": "http://github.com/mogztter/opal-node-runtime",
   "bugs": "https://github.com/mogztter/opal-node-runtime/issues",
@@ -36,7 +36,8 @@
   },
   "devDependencies": {
     "chai": "4.2.0",
-    "standard": "14.3.4",
-    "mocha": "8.2.1"
+    "dirty-chai": "^2.0.1",
+    "mocha": "8.2.1",
+    "standard": "16.0.2"
   }
 }
