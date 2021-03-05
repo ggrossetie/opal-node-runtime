@@ -42,7 +42,7 @@
     "unxhr": "1.2.0"
   },
   "devDependencies": {
-    "chai": "4.3.0",
+    "chai": "4.3.3",
     "dirty-chai": "^2.0.1",
     "mocha": "8.3.0",
     "rollup": "^2.10.9",
