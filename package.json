@@ -22,7 +22,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "test": "mocha spec/*.spec.js",
+    "test": "mocha spec/*.spec.js && mocha spec/load/load-compat.spec.js && mocha spec/load/load-error.spec.js",
     "lint": "standard src/index.js spec npm",
     "prepublishOnly": "node npm/prepublish.js",
     "postpublish": "node npm/postpublish.js"
