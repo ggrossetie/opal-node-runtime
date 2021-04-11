@@ -29,7 +29,8 @@
   "scripts": {
     "build": "rollup --config",
     "test": "mocha spec/*.spec.js",
-    "lint": "standard src/index.js spec"
+    "lint": "standard src/index.js spec",
+    "prepublishOnly": "npm run build"
   },
   "homepage": "http://github.com/mogztter/asciidoctor-opal-node-runtime",
   "bugs": "https://github.com/mogztter/asciidoctor-opal-node-runtime/issues",
