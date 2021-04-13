@@ -2340,6 +2340,37 @@
   };
 
 
+  // Strings
+  // -------
+
+  Opal.encodings = Object.create(null);
+
+  // Sets the encoding on a string, will treat string literals as frozen strings
+  // raising a FrozenError.
+  // @param str [String] the string on which the encoding should be set.
+  // @param name [String] the canonical name of the encoding
+  Opal.set_encoding = function(str, name) {
+    if (typeof str === 'string')
+      throw Opal.FrozenError.$new("can't modify frozen String");
+
+    var encoding = Opal.encodings[name];
+
+    if (encoding === str.encoding) { return str; }
+
+    str.encoding = encoding;
+
+    return str;
+  };
+
+  // @returns a String object with the encoding set from a string literal
+  Opal.enc = function(str, name) {
+    var dup = new String(str);
+    Opal.set_encoding(dup, name);
+    dup.internal_encoding = dup.encoding;
+    return dup
+  }
+
+
   // Initialization
   // --------------
   function $BasicObject() {};
@@ -18033,15 +18064,18 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
   function $rb_plus(lhs, rhs) {
     return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs + rhs : lhs['$+'](rhs);
   }
-  var $$12, $$15, $$18, $$21, $$24, self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2, $truthy = Opal.truthy, $send = Opal.send;
+  function $rb_lt(lhs, rhs) {
+    return (typeof(lhs) === 'number' && typeof(rhs) === 'number') ? lhs < rhs : lhs['$<'](rhs);
+  }
+  var $$11, $$14, $$17, $$20, $$23, self = Opal.top, $nesting = [], nil = Opal.nil, $$$ = Opal.const_get_qualified, $$ = Opal.const_get_relative, $breaker = Opal.breaker, $slice = Opal.slice, $klass = Opal.klass, $hash2 = Opal.hash2, $truthy = Opal.truthy, $send = Opal.send;
 
-  Opal.add_stubs(['$require', '$+', '$[]', '$new', '$to_proc', '$each', '$const_set', '$sub', '$==', '$default_external', '$upcase', '$raise', '$attr_accessor', '$attr_reader', '$register', '$length', '$bytes', '$to_a', '$each_byte', '$bytesize', '$enum_for', '$force_encoding', '$dup', '$coerce_to!', '$find', '$getbyte']);
+  Opal.add_stubs(['$require', '$+', '$[]', '$new', '$to_proc', '$each', '$const_set', '$sub', '$==', '$default_external', '$upcase', '$raise', '$attr_accessor', '$attr_reader', '$register', '$length', '$bytes', '$to_a', '$each_byte', '$dup', '$bytesize', '$enum_for', '$coerce_to!', '$find', '$<']);
   
   self.$require("corelib/string");
   (function($base, $super, $parent_nesting) {
     var self = $klass($base, $super, 'Encoding');
 
-    var $nesting = [self].concat($parent_nesting), $Encoding_register$1, $Encoding_find$3, $Encoding_initialize$4, $Encoding_ascii_compatible$ques$5, $Encoding_dummy$ques$6, $Encoding_to_s$7, $Encoding_inspect$8, $Encoding_each_byte$9, $Encoding_getbyte$10, $Encoding_bytesize$11;
+    var $nesting = [self].concat($parent_nesting), $Encoding_register$1, $Encoding_find$3, $Encoding_initialize$4, $Encoding_ascii_compatible$ques$5, $Encoding_dummy$ques$6, $Encoding_to_s$7, $Encoding_inspect$8, $Encoding_each_byte$9, $Encoding_bytesize$10;
 
     self.$$prototype.ascii = self.$$prototype.dummy = self.$$prototype.name = nil;
     
@@ -18139,7 +18173,7 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
       return self.$raise($$($nesting, 'NotImplementedError'));
     }, $Encoding_each_byte$9.$$arity = -1);
     
-    Opal.def(self, '$getbyte', $Encoding_getbyte$10 = function $$getbyte($a) {
+    Opal.def(self, '$bytesize', $Encoding_bytesize$10 = function $$bytesize($a) {
       var $post_args, self = this;
 
       
@@ -18147,17 +18181,7 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
       $post_args = Opal.slice.call(arguments, 0, arguments.length);
       ;
       return self.$raise($$($nesting, 'NotImplementedError'));
-    }, $Encoding_getbyte$10.$$arity = -1);
-    
-    Opal.def(self, '$bytesize', $Encoding_bytesize$11 = function $$bytesize($a) {
-      var $post_args, self = this;
-
-      
-      
-      $post_args = Opal.slice.call(arguments, 0, arguments.length);
-      ;
-      return self.$raise($$($nesting, 'NotImplementedError'));
-    }, $Encoding_bytesize$11.$$arity = -1);
+    }, $Encoding_bytesize$10.$$arity = -1);
     (function($base, $super, $parent_nesting) {
       var self = $klass($base, $super, 'EncodingError');
 
@@ -18173,50 +18197,120 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
       return nil
     })($nesting[0], $$($nesting, 'EncodingError'), $nesting);
   })($nesting[0], null, $nesting);
-  $send($$($nesting, 'Encoding'), 'register', ["UTF-8", $hash2(["aliases", "ascii"], {"aliases": ["CP65001"], "ascii": true})], ($$12 = function(){var self = $$12.$$s || this, $each_byte$13, $bytesize$14;
+  $send($$($nesting, 'Encoding'), 'register', ["UTF-8", $hash2(["aliases", "ascii"], {"aliases": ["CP65001"], "ascii": true})], ($$11 = function(){var self = $$11.$$s || this, $each_byte$12, $bytesize$13;
 
   
     
-    Opal.def(self, '$each_byte', $each_byte$13 = function $$each_byte(string) {
-      var $iter = $each_byte$13.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$each_byte', $each_byte$12 = function $$each_byte(string) {
+      var $iter = $each_byte$12.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $each_byte$13.$$p = null;
+      if ($iter) $each_byte$12.$$p = null;
       
       
-      if ($iter) $each_byte$13.$$p = null;;
+      if ($iter) $each_byte$12.$$p = null;;
       
-      for (var i = 0, length = string.length; i < length; i++) {
-        var code = string.charCodeAt(i);
+      var units = Infinity
+      var codePoint
+      var length = string.length
+      var leadSurrogate = null
 
-        if (code <= 0x7f) {
-          Opal.yield1(block, code);
-        }
-        else {
-          var encoded = encodeURIComponent(string.charAt(i)).substr(1).split('%');
+      for (var i = 0; i < length; ++i) {
+        codePoint = string.charCodeAt(i)
 
-          for (var j = 0, encoded_length = encoded.length; j < encoded_length; j++) {
-            Opal.yield1(block, parseInt(encoded[j], 16));
+        // is surrogate component
+        if (codePoint > 0xD7FF && codePoint < 0xE000) {
+          // last char was a lead
+          if (!leadSurrogate) {
+            // no lead yet
+            if (codePoint > 0xDBFF) {
+              // unexpected trail
+              if ((units -= 3) > -1) {
+                Opal.yield1(block, 0xEF);
+                Opal.yield1(block, 0xBF);
+                Opal.yield1(block, 0xBD);
+              }
+              continue
+            } else if (i + 1 === length) {
+              // unpaired lead
+              if ((units -= 3) > -1) {
+                Opal.yield1(block, 0xEF);
+                Opal.yield1(block, 0xBF);
+                Opal.yield1(block, 0xBD);
+              }
+              continue
+            }
+
+            // valid lead
+            leadSurrogate = codePoint
+
+            continue
+          }
+
+          // 2 leads in a row
+          if (codePoint < 0xDC00) {
+            if ((units -= 3) > -1) {
+              Opal.yield1(block, 0xEF);
+              Opal.yield1(block, 0xBF);
+              Opal.yield1(block, 0xBD);
+            }
+            leadSurrogate = codePoint
+            continue
+          }
+
+          // valid surrogate pair
+          codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000
+        } else if (leadSurrogate) {
+          // valid bmp char, but last char was a lead
+          if ((units -= 3) > -1) {
+            Opal.yield1(block, 0xEF);
+            Opal.yield1(block, 0xBF);
+            Opal.yield1(block, 0xBD);
           }
         }
+
+        leadSurrogate = null
+
+        // encode utf8
+        if (codePoint < 0x80) {
+          if ((units -= 1) < 0) break
+          Opal.yield1(block, codePoint);
+        } else if (codePoint < 0x800) {
+          if ((units -= 2) < 0) break
+          Opal.yield1(block, codePoint >> 0x6 | 0xC0);
+          Opal.yield1(block, codePoint & 0x3F | 0x80);
+        } else if (codePoint < 0x10000) {
+          if ((units -= 3) < 0) break
+          Opal.yield1(block, codePoint >> 0xC | 0xE0);
+          Opal.yield1(block, codePoint >> 0x6 & 0x3F | 0x80);
+          Opal.yield1(block, codePoint & 0x3F | 0x80);
+        } else if (codePoint < 0x110000) {
+          if ((units -= 4) < 0) break
+          Opal.yield1(block, codePoint >> 0x12 | 0xF0);
+          Opal.yield1(block, codePoint >> 0xC & 0x3F | 0x80);
+          Opal.yield1(block, codePoint >> 0x6 & 0x3F | 0x80);
+          Opal.yield1(block, codePoint & 0x3F | 0x80);
+        } else {
+          // Invalid code point
+        }
       }
     ;
-    }, $each_byte$13.$$arity = 1);
-    return (Opal.def(self, '$bytesize', $bytesize$14 = function $$bytesize(string) {
+    }, $each_byte$12.$$arity = 1);
+    return (Opal.def(self, '$bytesize', $bytesize$13 = function $$bytesize(string) {
       var self = this;
 
       return string.$bytes().$length()
-    }, $bytesize$14.$$arity = 1), nil) && 'bytesize';}, $$12.$$s = self, $$12.$$arity = 0, $$12));
-  $send($$($nesting, 'Encoding'), 'register', ["UTF-16LE"], ($$15 = function(){var self = $$15.$$s || this, $each_byte$16, $bytesize$17;
+    }, $bytesize$13.$$arity = 1), nil) && 'bytesize';}, $$11.$$s = self, $$11.$$arity = 0, $$11));
+  $send($$($nesting, 'Encoding'), 'register', ["UTF-16LE"], ($$14 = function(){var self = $$14.$$s || this, $each_byte$15, $bytesize$16;
 
   
     
-    Opal.def(self, '$each_byte', $each_byte$16 = function $$each_byte(string) {
-      var $iter = $each_byte$16.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$each_byte', $each_byte$15 = function $$each_byte(string) {
+      var $iter = $each_byte$15.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $each_byte$16.$$p = null;
+      if ($iter) $each_byte$15.$$p = null;
       
       
-      if ($iter) $each_byte$16.$$p = null;;
+      if ($iter) $each_byte$15.$$p = null;;
       
       for (var i = 0, length = string.length; i < length; i++) {
         var code = string.charCodeAt(i);
@@ -18225,23 +18319,23 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
         Opal.yield1(block, code >> 8);
       }
     ;
-    }, $each_byte$16.$$arity = 1);
-    return (Opal.def(self, '$bytesize', $bytesize$17 = function $$bytesize(string) {
+    }, $each_byte$15.$$arity = 1);
+    return (Opal.def(self, '$bytesize', $bytesize$16 = function $$bytesize(string) {
       var self = this;
 
       return string.$bytes().$length()
-    }, $bytesize$17.$$arity = 1), nil) && 'bytesize';}, $$15.$$s = self, $$15.$$arity = 0, $$15));
-  $send($$($nesting, 'Encoding'), 'register', ["UTF-16BE"], ($$18 = function(){var self = $$18.$$s || this, $each_byte$19, $bytesize$20;
+    }, $bytesize$16.$$arity = 1), nil) && 'bytesize';}, $$14.$$s = self, $$14.$$arity = 0, $$14));
+  $send($$($nesting, 'Encoding'), 'register', ["UTF-16BE"], ($$17 = function(){var self = $$17.$$s || this, $each_byte$18, $bytesize$19;
 
   
     
-    Opal.def(self, '$each_byte', $each_byte$19 = function $$each_byte(string) {
-      var $iter = $each_byte$19.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$each_byte', $each_byte$18 = function $$each_byte(string) {
+      var $iter = $each_byte$18.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $each_byte$19.$$p = null;
+      if ($iter) $each_byte$18.$$p = null;
       
       
-      if ($iter) $each_byte$19.$$p = null;;
+      if ($iter) $each_byte$18.$$p = null;;
       
       for (var i = 0, length = string.length; i < length; i++) {
         var code = string.charCodeAt(i);
@@ -18250,23 +18344,23 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
         Opal.yield1(block, code & 0xff);
       }
     ;
-    }, $each_byte$19.$$arity = 1);
-    return (Opal.def(self, '$bytesize', $bytesize$20 = function $$bytesize(string) {
+    }, $each_byte$18.$$arity = 1);
+    return (Opal.def(self, '$bytesize', $bytesize$19 = function $$bytesize(string) {
       var self = this;
 
       return string.$bytes().$length()
-    }, $bytesize$20.$$arity = 1), nil) && 'bytesize';}, $$18.$$s = self, $$18.$$arity = 0, $$18));
-  $send($$($nesting, 'Encoding'), 'register', ["UTF-32LE"], ($$21 = function(){var self = $$21.$$s || this, $each_byte$22, $bytesize$23;
+    }, $bytesize$19.$$arity = 1), nil) && 'bytesize';}, $$17.$$s = self, $$17.$$arity = 0, $$17));
+  $send($$($nesting, 'Encoding'), 'register', ["UTF-32LE"], ($$20 = function(){var self = $$20.$$s || this, $each_byte$21, $bytesize$22;
 
   
     
-    Opal.def(self, '$each_byte', $each_byte$22 = function $$each_byte(string) {
-      var $iter = $each_byte$22.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$each_byte', $each_byte$21 = function $$each_byte(string) {
+      var $iter = $each_byte$21.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $each_byte$22.$$p = null;
+      if ($iter) $each_byte$21.$$p = null;
       
       
-      if ($iter) $each_byte$22.$$p = null;;
+      if ($iter) $each_byte$21.$$p = null;;
       
       for (var i = 0, length = string.length; i < length; i++) {
         var code = string.charCodeAt(i);
@@ -18275,23 +18369,23 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
         Opal.yield1(block, code >> 8);
       }
     ;
-    }, $each_byte$22.$$arity = 1);
-    return (Opal.def(self, '$bytesize', $bytesize$23 = function $$bytesize(string) {
+    }, $each_byte$21.$$arity = 1);
+    return (Opal.def(self, '$bytesize', $bytesize$22 = function $$bytesize(string) {
       var self = this;
 
       return string.$bytes().$length()
-    }, $bytesize$23.$$arity = 1), nil) && 'bytesize';}, $$21.$$s = self, $$21.$$arity = 0, $$21));
-  $send($$($nesting, 'Encoding'), 'register', ["ASCII-8BIT", $hash2(["aliases", "ascii", "dummy"], {"aliases": ["BINARY", "US-ASCII", "ASCII"], "ascii": true, "dummy": true})], ($$24 = function(){var self = $$24.$$s || this, $each_byte$25, $bytesize$26;
+    }, $bytesize$22.$$arity = 1), nil) && 'bytesize';}, $$20.$$s = self, $$20.$$arity = 0, $$20));
+  $send($$($nesting, 'Encoding'), 'register', ["ASCII-8BIT", $hash2(["aliases", "ascii", "dummy"], {"aliases": ["BINARY", "US-ASCII", "ASCII"], "ascii": true, "dummy": true})], ($$23 = function(){var self = $$23.$$s || this, $each_byte$24, $bytesize$25;
 
   
     
-    Opal.def(self, '$each_byte', $each_byte$25 = function $$each_byte(string) {
-      var $iter = $each_byte$25.$$p, block = $iter || nil, self = this;
+    Opal.def(self, '$each_byte', $each_byte$24 = function $$each_byte(string) {
+      var $iter = $each_byte$24.$$p, block = $iter || nil, self = this;
 
-      if ($iter) $each_byte$25.$$p = null;
+      if ($iter) $each_byte$24.$$p = null;
       
       
-      if ($iter) $each_byte$25.$$p = null;;
+      if ($iter) $each_byte$24.$$p = null;;
       
       for (var i = 0, length = string.length; i < length; i++) {
         var code = string.charCodeAt(i);
@@ -18299,56 +18393,61 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
         Opal.yield1(block, code >> 8);
       }
     ;
-    }, $each_byte$25.$$arity = 1);
-    return (Opal.def(self, '$bytesize', $bytesize$26 = function $$bytesize(string) {
+    }, $each_byte$24.$$arity = 1);
+    return (Opal.def(self, '$bytesize', $bytesize$25 = function $$bytesize(string) {
       var self = this;
 
       return string.$bytes().$length()
-    }, $bytesize$26.$$arity = 1), nil) && 'bytesize';}, $$24.$$s = self, $$24.$$arity = 0, $$24));
+    }, $bytesize$25.$$arity = 1), nil) && 'bytesize';}, $$23.$$s = self, $$23.$$arity = 0, $$23));
   return (function($base, $super, $parent_nesting) {
     var self = $klass($base, $super, 'String');
 
-    var $nesting = [self].concat($parent_nesting), $String_bytes$27, $String_bytesize$28, $String_each_byte$29, $String_encode$30, $String_force_encoding$31, $String_getbyte$32, $String_valid_encoding$ques$33;
+    var $nesting = [self].concat($parent_nesting), $String_bytes$26, $String_bytesize$27, $String_each_byte$28, $String_encode$29, $String_force_encoding$30, $String_getbyte$31, $String_valid_encoding$ques$32;
 
-    self.$$prototype.encoding = nil;
+    self.$$prototype.bytes = self.$$prototype.internal_encoding = nil;
     
     self.$attr_reader("encoding");
-    Opal.defineProperty(String.prototype, 'encoding', $$$($$($nesting, 'Encoding'), 'UTF_16LE'));
+    self.$attr_reader("internal_encoding");
+    Opal.defineProperty(String.prototype, 'bytes', nil);
+    Opal.defineProperty(String.prototype, 'encoding', $$$($$($nesting, 'Encoding'), 'UTF_8'));
+    Opal.defineProperty(String.prototype, 'internal_encoding', $$$($$($nesting, 'Encoding'), 'UTF_8'));
     
-    Opal.def(self, '$bytes', $String_bytes$27 = function $$bytes() {
+    Opal.def(self, '$bytes', $String_bytes$26 = function $$bytes() {
+      var $a, self = this;
+
+      
+      self.bytes = ($truthy($a = self.bytes) ? $a : self.$each_byte().$to_a());
+      return self.bytes.$dup();
+    }, $String_bytes$26.$$arity = 0);
+    
+    Opal.def(self, '$bytesize', $String_bytesize$27 = function $$bytesize() {
       var self = this;
 
-      return self.$each_byte().$to_a()
-    }, $String_bytes$27.$$arity = 0);
+      return self.internal_encoding.$bytesize(self)
+    }, $String_bytesize$27.$$arity = 0);
     
-    Opal.def(self, '$bytesize', $String_bytesize$28 = function $$bytesize() {
-      var self = this;
+    Opal.def(self, '$each_byte', $String_each_byte$28 = function $$each_byte() {
+      var $iter = $String_each_byte$28.$$p, block = $iter || nil, self = this;
 
-      return self.encoding.$bytesize(self)
-    }, $String_bytesize$28.$$arity = 0);
-    
-    Opal.def(self, '$each_byte', $String_each_byte$29 = function $$each_byte() {
-      var $iter = $String_each_byte$29.$$p, block = $iter || nil, self = this;
-
-      if ($iter) $String_each_byte$29.$$p = null;
+      if ($iter) $String_each_byte$28.$$p = null;
       
       
-      if ($iter) $String_each_byte$29.$$p = null;;
+      if ($iter) $String_each_byte$28.$$p = null;;
       if ((block !== nil)) {
       } else {
         return self.$enum_for("each_byte")
       };
-      $send(self.encoding, 'each_byte', [self], block.$to_proc());
+      $send(self.internal_encoding, 'each_byte', [self], block.$to_proc());
       return self;
-    }, $String_each_byte$29.$$arity = 0);
+    }, $String_each_byte$28.$$arity = 0);
     
-    Opal.def(self, '$encode', $String_encode$30 = function $$encode(encoding) {
+    Opal.def(self, '$encode', $String_encode$29 = function $$encode(encoding) {
       var self = this;
 
-      return self.$dup().$force_encoding(encoding)
-    }, $String_encode$30.$$arity = 1);
+      return Opal.enc(self, encoding);
+    }, $String_encode$29.$$arity = 1);
     
-    Opal.def(self, '$force_encoding', $String_force_encoding$31 = function $$force_encoding(encoding) {
+    Opal.def(self, '$force_encoding', $String_force_encoding$30 = function $$force_encoding(encoding) {
       var self = this;
 
       
@@ -18362,18 +18461,23 @@ Opal.modules["corelib/string/encoding"] = function(Opal) {
       self.encoding = encoding;
       return self;
     
-    }, $String_force_encoding$31.$$arity = 1);
+    }, $String_force_encoding$30.$$arity = 1);
     
-    Opal.def(self, '$getbyte', $String_getbyte$32 = function $$getbyte(idx) {
-      var self = this;
+    Opal.def(self, '$getbyte', $String_getbyte$31 = function $$getbyte(idx) {
+      var self = this, string_bytes = nil;
 
-      return self.encoding.$getbyte(self, idx)
-    }, $String_getbyte$32.$$arity = 1);
-    return (Opal.def(self, '$valid_encoding?', $String_valid_encoding$ques$33 = function() {
+      
+      string_bytes = self.$bytes();
+      idx = $$($nesting, 'Opal')['$coerce_to!'](idx, $$($nesting, 'Integer'), "to_int");
+      if ($truthy($rb_lt(string_bytes.$length(), idx))) {
+        return nil};
+      return string_bytes['$[]'](idx);
+    }, $String_getbyte$31.$$arity = 1);
+    return (Opal.def(self, '$valid_encoding?', $String_valid_encoding$ques$32 = function() {
       var self = this;
 
       return true
-    }, $String_valid_encoding$ques$33.$$arity = 0), nil) && 'valid_encoding?';
+    }, $String_valid_encoding$ques$32.$$arity = 0), nil) && 'valid_encoding?';
   })($nesting[0], null, $nesting);
 };
 
