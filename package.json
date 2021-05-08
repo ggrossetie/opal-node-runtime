@@ -39,7 +39,7 @@
     "url": "git://github.com/mogztter/asciidoctor-opal-node-runtime.git"
   },
   "dependencies": {
-    "glob": "7.1.6",
+    "glob": "7.1.7",
     "unxhr": "1.2.0"
   },
   "devDependencies": {
