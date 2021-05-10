@@ -45,7 +45,7 @@
   "devDependencies": {
     "chai": "4.3.4",
     "dirty-chai": "^2.0.1",
-    "mocha": "8.3.2",
+    "mocha": "8.4.0",
     "rollup": "^2.10.9",
     "standard": "16.0.3"
   },
